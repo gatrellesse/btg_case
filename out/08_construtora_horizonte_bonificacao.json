@@ -1,0 +1,1369 @@
+{
+  "document": {
+    "file_name": "08_construtora_horizonte_bonificacao.pdf",
+    "n_pages": 1,
+    "producer": "ReportLab PDF Library - (opensource)",
+    "reader_kinds": [
+      "text_layer",
+      "ocr_deterministic",
+      "ocr_generative"
+    ],
+    "escalated": false,
+    "escalation_note": "docling:vlm: 14 célula(s) de tabela receberam a geometria medida por docling:parser; consenso de 3 leitura(s): 24 regiões, 24 com mais de um leitor"
+  },
+  "event_type": "bonificacao",
+  "classification": {
+    "event_type": "bonificacao",
+    "subtype": null,
+    "rationale": "2 modalidade(s) votaram: rule=bonificacao, text=bonificacao. Unânime.",
+    "prior": {
+      "ranked": [
+        [
+          "bonificacao",
+          12.5
+        ]
+      ],
+      "hits": [
+        {
+          "event_type": "bonificacao",
+          "marker": "bonificacao em acoes",
+          "weight": 3.0,
+          "definitional": true,
+          "matched_text": "bonificacao em acoes"
+        },
+        {
+          "event_type": "bonificacao",
+          "marker": "capitalizacao de reservas",
+          "weight": 3.0,
+          "definitional": true,
+          "matched_text": "capitalizacao de reservas"
+        },
+        {
+          "event_type": "bonificacao",
+          "marker": "acao nova para cada",
+          "weight": 3.0,
+          "definitional": true,
+          "matched_text": "acao nova para cada"
+        },
+        {
+          "event_type": "bonificacao",
+          "marker": "aumento do capital social mediante capitalizacao",
+          "weight": 2.5,
+          "definitional": true,
+          "matched_text": "aumento do capital social mediante capitalizacao"
+        },
+        {
+          "event_type": "bonificacao",
+          "marker": "custo atribuido",
+          "weight": 1.0,
+          "definitional": false,
+          "matched_text": "custo atribuido"
+        }
+      ],
+      "title_prior": "bonificacao",
+      "body_prior": "bonificacao"
+    },
+    "agrees_with_prior": true,
+    "unanimous": true
+  },
+  "fields": {
+    "cnpj": {
+      "name": "cnpj",
+      "value_raw": "09.888.999/0001-21",
+      "value": "09.888.999/0001-21",
+      "absence_reason": null,
+      "evidence_text": "Companhia Aberta  |  CNPJ/ME nº 09.888.999/0001-21  |  NIRE 35.300.000.008",
+      "rationale": "padrão estrutural de CNPJ",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 146.69904,
+        "y0": 83.42070000000012,
+        "x1": 448.30454,
+        "y1": 91.28320000000008,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": "out/snippets/08_construtora_horizonte_bonificacao/cnpj.png",
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "Companhia Aberta  |  CNPJ/ME nº 09.888.999/0001-21  |  NIRE 35.300.000.008",
+        "bbox": {
+          "page": 1,
+          "x0": 146.69904,
+          "y0": 83.42070000000012,
+          "x1": 448.30454,
+          "y1": 91.28320000000008,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='09.888.999/0001-21'; text='09.888.999/0001-21'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Companhia Aberta  | CNPJ/ME n° 09.888.999/0001-21 | NIRE 35.300.000.008'; docling:vlm='Companhia Aberta | CNPJ/ME nº 09.888.999/0001-21 | NIRE 35.300.000.008'"
+      ],
+      "audit": {
+        "field_class": "identity",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "ausente",
+          "expected": null
+        }
+      }
+    },
+    "cost_basis": {
+      "name": "cost_basis",
+      "value_raw": "R$ 7,820000",
+      "value": "7,820000",
+      "absence_reason": null,
+      "evidence_text": "R$ 7,820000 por ação",
+      "rationale": "rótulo 'Custo atribuído (base fiscal)'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 62.69291,
+        "y0": 261.8437000000001,
+        "x1": 533.4826719999999,
+        "y1": 286.0937000000001,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "R$ 7,820000 por ação",
+        "bbox": {
+          "page": 1,
+          "x0": 62.69291,
+          "y0": 261.8437000000001,
+          "x1": 533.4826719999999,
+          "y1": 286.0937000000001,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [
+        {
+          "field": "cost_basis",
+          "rule": "moeda_ptbr",
+          "value_from": "R$ 7,820000",
+          "value_to": "7,820000",
+          "candidates": []
+        }
+      ],
+      "notes": [
+        "leituras: rule='R$ 7,820000'; text='R$ 7,820000 por ação'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='u o  od o o   o so     uo  ese resultantes serão alienadas em leilão na B3.'; docling:vlm='O custo unitário atribuído às ações bonificadas, para fins fiscais, é de R$ 7,820000 por ação. As frações resultantes serão alienadas em leilão na B3.'"
+      ],
+      "audit": {
+        "field_class": "financial_critical",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "isin": {
+      "name": "isin",
+      "value_raw": "BRCNHZACNOR5",
+      "value": "BRCNHZACNOR5",
+      "absence_reason": null,
+      "evidence_text": "CNHZ3 (ISIN BRCNHZACNOR5)",
+      "rationale": "padrão estrutural de ISIN",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 432.8437,
+        "x1": 386.77090999999996,
+        "y1": 442.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": "out/snippets/08_construtora_horizonte_bonificacao/isin.png",
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "CNHZ3 (ISIN BRCNHZACNOR5)",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 432.8437,
+          "x1": 386.77090999999996,
+          "y1": 442.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='BRCNHZACNOR5'; text='BRCNHZACNOR5'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Código de negociação CNHZ3 (ISIN BRCNHZACNOR5)'; docling:vlm='Código de negociação CNHZ3 (ISIN BRCNHZACNOR5)'"
+      ],
+      "audit": {
+        "field_class": "identity",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "ausente",
+          "expected": null
+        }
+      }
+    },
+    "ticker": {
+      "name": "ticker",
+      "value_raw": "CNHZ3",
+      "value": "CNHZ3",
+      "absence_reason": null,
+      "evidence_text": "CNHZ3 (ISIN BRCNHZACNOR5)",
+      "rationale": "padrão estrutural de TICKER",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 432.8437,
+        "x1": 386.77090999999996,
+        "y1": 442.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": "out/snippets/08_construtora_horizonte_bonificacao/ticker.png",
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "CNHZ3 (ISIN BRCNHZACNOR5)",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 432.8437,
+          "x1": 386.77090999999996,
+          "y1": 442.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='CNHZ3'; text='CNHZ3'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Código de negociação CNHZ3 (ISIN BRCNHZACNOR5)'; docling:vlm='Código de negociação CNHZ3 (ISIN BRCNHZACNOR5)'"
+      ],
+      "audit": {
+        "field_class": "identity",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "ausente",
+          "expected": null
+        }
+      }
+    },
+    "trading_start": {
+      "name": "trading_start",
+      "value_raw": "19 de junho de 2026",
+      "value": "19/06/2026",
+      "absence_reason": null,
+      "evidence_text": "As ações passarão a ser negociadas 'ex-bonificação' a partir de 19 de junho de 2026.",
+      "rationale": "Data em que as ações passam a negociar ex-bonificação, equivalente ao início da nova negociação.",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 62.69291,
+        "y0": 208.84370000000013,
+        "x1": 532.5826709999998,
+        "y1": 248.09370000000013,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "As ações passarão a ser negociadas 'ex-bonificação' a partir de 19 de junho de 2026.",
+        "bbox": {
+          "page": 1,
+          "x0": 62.69291,
+          "y0": 208.84370000000013,
+          "x1": 532.5826709999998,
+          "y1": 248.09370000000013,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [
+        {
+          "field": "trading_start",
+          "rule": "dmy_extenso",
+          "value_from": "19 de junho de 2026",
+          "value_to": "19/06/2026",
+          "candidates": []
+        }
+      ],
+      "notes": [
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='A bonificação será atribuída na proporção de 1 (uma) ação nova para cada 20 (vinte) ações de que forem titulares os acionistas inscritos nos registros da Companhia ao final do dia 18 de junho de 2026 (\"data com\"). As ações passarão a ser negociadas \"ex-bonificação\" a partir de 19 de junho de 2026.'; docling:vlm='A bonificação será atribuída na proporção de 1 (uma) ação nova para cada 20 (vinte) ações de que forem titulares os acionistas inscritos nos registros da Companhia ao final do dia 18 de junho de 2026 (\"data com\"). As ações passarão a ser negociadas \"ex-bonificação\" a partir de 19 de junho de 2026.'"
+      ],
+      "audit": {
+        "field_class": "contextual",
+        "critical": false,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "fraction_period": {
+      "name": "fraction_period",
+      "value_raw": null,
+      "value": null,
+      "absence_reason": "not_applicable",
+      "evidence_text": null,
+      "rationale": "O aviso menciona leilão de frações na B3, mas não especifica período de negociação das frações.",
+      "page": null,
+      "bbox": null,
+      "snippet_path": null,
+      "reader_kind": null,
+      "corroborating_kinds": [],
+      "reading_level": "baixa",
+      "recovered": false,
+      "grounding": {
+        "status": "not_applicable",
+        "score": 0.0,
+        "matched_text": null,
+        "bbox": null
+      },
+      "repairs": [],
+      "notes": [],
+      "audit": {
+        "field_class": "contextual",
+        "critical": false,
+        "reading": {
+          "level": "baixa",
+          "corroborating_kinds": [],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "ratio_to": {
+      "name": "ratio_to",
+      "value_raw": "20",
+      "value": 20,
+      "absence_reason": null,
+      "evidence_text": "1 ação nova para cada 20 ações (5%)",
+      "rationale": "segundo número da proporção",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 327.8437,
+        "x1": 402.78091000000006,
+        "y1": 337.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "1 ação nova para cada 20 ações (5%)",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 327.8437,
+          "x1": 402.78091000000006,
+          "y1": 337.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='20'; text='20'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Proporção 1 ação nova para cada 20 ações (5%)'; docling:vlm='Proporção 1 ação nova para cada 20 ações (5%)'"
+      ],
+      "audit": {
+        "field_class": "financial_critical",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "com_date": {
+      "name": "com_date",
+      "value_raw": "18/06/2026",
+      "value": "18/06/2026",
+      "absence_reason": null,
+      "evidence_text": "18/06/2026",
+      "rationale": "rótulo 'Data-base ('data com')'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 369.8437,
+        "x1": 288.48091,
+        "y1": 379.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "18/06/2026",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 369.8437,
+          "x1": 288.48091,
+          "y1": 379.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='18/06/2026'; text='18/06/2026'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Data-base (“data com”) 18/06/2026'; docling:vlm='Data-base (\"data com\") 18/06/2026'"
+      ],
+      "audit": {
+        "field_class": "financial_critical",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "ratio_text": {
+      "name": "ratio_text",
+      "value_raw": "1 ação nova para cada 20 ações (5%)",
+      "value": "1 ação nova para cada 20 ações (5%)",
+      "absence_reason": null,
+      "evidence_text": "1 ação nova para cada 20 ações (5%)",
+      "rationale": "rótulo 'Proporção'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 327.8437,
+        "x1": 402.78091000000006,
+        "y1": 337.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "1 ação nova para cada 20 ações (5%)",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 327.8437,
+          "x1": 402.78091000000006,
+          "y1": 337.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='1 ação nova para cada 20 ações (5%)'; text='1 ação nova para cada 20 ações (5%)'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Proporção 1 ação nova para cada 20 ações (5%)'; docling:vlm='Proporção 1 ação nova para cada 20 ações (5%)'"
+      ],
+      "audit": {
+        "field_class": "default",
+        "critical": false,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "currency": {
+      "name": "currency",
+      "value_raw": "BRL",
+      "value": "BRL",
+      "absence_reason": null,
+      "evidence_text": "R$ 7,820000 por ação",
+      "rationale": "valor grafado em R$",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 62.69291,
+        "y0": 261.8437000000001,
+        "x1": 533.4826719999999,
+        "y1": 286.0937000000001,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "R$ 7,820000 por ação",
+        "bbox": {
+          "page": 1,
+          "x0": 62.69291,
+          "y0": 261.8437000000001,
+          "x1": 533.4826719999999,
+          "y1": 286.0937000000001,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='u o  od o o   o so     uo  ese resultantes serão alienadas em leilão na B3.'; docling:vlm='O custo unitário atribuído às ações bonificadas, para fins fiscais, é de R$ 7,820000 por ação. As frações resultantes serão alienadas em leilão na B3.'",
+        "valor não aparece dentro do trecho citado como evidência — verificar"
+      ],
+      "audit": {
+        "field_class": "contextual",
+        "critical": false,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "credit_date": {
+      "name": "credit_date",
+      "value_raw": "26/06/2026",
+      "value": "26/06/2026",
+      "absence_reason": null,
+      "evidence_text": "26/06/2026",
+      "rationale": "rótulo 'Crédito das ações bonificadas'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 411.8437,
+        "x1": 288.48091,
+        "y1": 421.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "26/06/2026",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 411.8437,
+          "x1": 288.48091,
+          "y1": 421.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='26/06/2026'; text='26/06/2026'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Crédito das ações bonificadas 26/06/2026'; docling:vlm='Crédito das ações bonificadas 26/06/2026'"
+      ],
+      "audit": {
+        "field_class": "contextual",
+        "critical": false,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "event_type_label": {
+      "name": "event_type_label",
+      "value_raw": "Bonificação em ações",
+      "value": "Bonificação em ações",
+      "absence_reason": null,
+      "evidence_text": "Bonificação em ações",
+      "rationale": "rótulo 'Tipo de evento'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 164.38380999999998,
+        "y0": 134.12570000000005,
+        "x1": 423.9508099999999,
+        "y1": 144.30070000000012,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "Bonificação em ações",
+        "bbox": {
+          "page": 1,
+          "x0": 164.38380999999998,
+          "y0": 134.12570000000005,
+          "x1": 423.9508099999999,
+          "y1": 144.30070000000012,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='AVISO AOS ACIONISTAS — Bonificação em Ações'; docling:vlm='AVISO AOS ACIONISTAS - Bonificação em Ações'"
+      ],
+      "audit": {
+        "field_class": "default",
+        "critical": false,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "approval_date": {
+      "name": "approval_date",
+      "value_raw": "04 de junho de 2026",
+      "value": "04/06/2026",
+      "absence_reason": null,
+      "evidence_text": "A Construtora Horizonte S.A. comunica aos seus acionistas que a Assembleia Geral Extraordinária de 04  de  junho  de  2026  aprovou  aumento  do  capital  social  mediante  capitalização  de  reservas,  com  a consequente bonificação em ações aos acionistas.",
+      "rationale": "padrão em prosa: 'assembleia geral extraordinaria(?: de| realizada em) (DATE)'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 62.69291,
+        "y0": 155.84370000000013,
+        "x1": 537.0226699999998,
+        "y1": 195.09370000000013,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "A Construtora Horizonte S.A. comunica aos seus acionistas que a Assembleia Geral Extraordinária de 04  de  junho  de  2026  aprovou  aumento  do  capital  social  mediante  capitalização  de  reservas,  com  a consequente bonificação em ações aos acionistas.",
+        "bbox": {
+          "page": 1,
+          "x0": 62.69291,
+          "y0": 155.84370000000013,
+          "x1": 537.0226699999998,
+          "y1": 195.09370000000013,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [
+        {
+          "field": "approval_date",
+          "rule": "dmy_extenso",
+          "value_from": "04 de junho de 2026",
+          "value_to": "04/06/2026",
+          "candidates": []
+        }
+      ],
+      "notes": [
+        "leituras: rule='04 de junho de 2026'; text='04 de junho de 2026'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='A Construtora Horizonte S.A. comunica aos seus acionistas que a Assembleia Geral Extraordinária de 04 de junho de 2026 aprovou aumento do capital social mediante capitalização de reservas, com a consequente bonificação em ações aos acionistas.'; docling:vlm='A Construtora Horizonte S.A. comunica aos seus acionistas que a Assembleia Geral Extraordinária de 04 de junho de 2026 aprovou aumento do capital social mediante capitalização de reservas, com a consequente bonificação em ações aos acionistas.'"
+      ],
+      "audit": {
+        "field_class": "contextual",
+        "critical": false,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "share_class": {
+      "name": "share_class",
+      "value_raw": "ON",
+      "value": "ON",
+      "absence_reason": null,
+      "evidence_text": "ON",
+      "rationale": "classe citada no texto",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 192.55230999999998,
+        "y0": 60.68970000000013,
+        "x1": 402.72330999999986,
+        "y1": 72.71470000000011,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "ON",
+        "bbox": {
+          "page": 1,
+          "x0": 192.55230999999998,
+          "y0": 60.68970000000013,
+          "x1": 402.72330999999986,
+          "y1": 72.71470000000011,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='CONSTRUTORA HORIZONTE S.A.'; docling:vlm='CONSTRUTORA HORIZONTE S.A.'"
+      ],
+      "audit": {
+        "field_class": "contextual",
+        "critical": false,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "ratio_from": {
+      "name": "ratio_from",
+      "value_raw": "1",
+      "value": 1,
+      "absence_reason": null,
+      "evidence_text": "1 ação nova para cada 20 ações (5%)",
+      "rationale": "primeiro número da proporção",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 327.8437,
+        "x1": 402.78091000000006,
+        "y1": 337.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "1 ação nova para cada 20 ações (5%)",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 327.8437,
+          "x1": 402.78091000000006,
+          "y1": 337.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='1'; text='1'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Proporção 1 ação nova para cada 20 ações (5%)'; docling:vlm='Proporção 1 ação nova para cada 20 ações (5%)'"
+      ],
+      "audit": {
+        "field_class": "financial_critical",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "ex_date": {
+      "name": "ex_date",
+      "value_raw": "19/06/2026",
+      "value": "19/06/2026",
+      "absence_reason": null,
+      "evidence_text": "19/06/2026",
+      "rationale": "rótulo 'Data 'ex-bonificação''",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 390.8437,
+        "x1": 288.48091,
+        "y1": 400.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "19/06/2026",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 390.8437,
+          "x1": 288.48091,
+          "y1": 400.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='19/06/2026'; text='19/06/2026'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Data “ex-bonificação” 19/06/2026'; docling:vlm='Data \"ex-bonificação\" 19/06/2026'"
+      ],
+      "audit": {
+        "field_class": "financial_critical",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "issuer": {
+      "name": "issuer",
+      "value_raw": "CONSTRUTORA HORIZONTE S.A.",
+      "value": "CONSTRUTORA HORIZONTE S.A.",
+      "absence_reason": null,
+      "evidence_text": "CONSTRUTORA HORIZONTE S.A.",
+      "rationale": "razão social no cabeçalho do aviso",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 192.55230999999998,
+        "y0": 60.68970000000013,
+        "x1": 402.72330999999986,
+        "y1": 72.71470000000011,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": "out/snippets/08_construtora_horizonte_bonificacao/issuer.png",
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "CONSTRUTORA HORIZONTE S.A.",
+        "bbox": {
+          "page": 1,
+          "x0": 192.55230999999998,
+          "y0": 60.68970000000013,
+          "x1": 402.72330999999986,
+          "y1": 72.71470000000011,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='CONSTRUTORA HORIZONTE S.A.'; text='Construtora Horizonte S.A.'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='CONSTRUTORA HORIZONTE S.A.'; docling:vlm='CONSTRUTORA HORIZONTE S.A.'"
+      ],
+      "audit": {
+        "field_class": "identity",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "ausente",
+          "expected": null
+        }
+      }
+    }
+  },
+  "validations": [
+    {
+      "tool": "lookup_golden_record",
+      "args": {
+        "issuer": "CONSTRUTORA HORIZONTE S.A.",
+        "cnpj": "09.888.999/0001-21",
+        "isin": "BRCNHZACNOR5",
+        "ticker": "CNHZ3",
+        "share_class": "ON"
+      },
+      "status": "info",
+      "detail": {
+        "status": "NOT_FOUND",
+        "reason_code": "ISSUER_NOT_IN_GOLDEN",
+        "message": "nenhum identificador do aviso consta na base de referência",
+        "keys_tried": {
+          "isin": "BRCNHZACNOR5",
+          "ticker": "CNHZ3",
+          "cnpj": "09.888.999/0001-21",
+          "issuer": "CONSTRUTORA HORIZONTE S.A."
+        },
+        "severity": "INFO"
+      },
+      "reason_codes": [
+        "ISSUER_NOT_IN_GOLDEN"
+      ],
+      "fields_affected": [
+        "issuer",
+        "cnpj",
+        "isin",
+        "ticker"
+      ],
+      "message": "nenhum identificador do aviso consta na base de referência"
+    },
+    {
+      "tool": "check_date_coherence",
+      "args": {
+        "approval_date": "04/06/2026",
+        "com_date": "18/06/2026",
+        "ex_date": "19/06/2026",
+        "event_type": "bonificacao"
+      },
+      "status": "pass",
+      "detail": {
+        "status": "PASS",
+        "reason_code": null,
+        "violations": [],
+        "message": "cronologia coerente",
+        "dates_checked": {
+          "approval_date": "04/06/2026",
+          "com_date": "18/06/2026",
+          "ex_date": "19/06/2026"
+        }
+      },
+      "reason_codes": [],
+      "fields_affected": [
+        "approval_date",
+        "com_date",
+        "ex_date",
+        "payment_date"
+      ],
+      "message": "cronologia coerente"
+    },
+    {
+      "tool": "check_amount_coherence",
+      "args": {},
+      "status": "info",
+      "detail": {
+        "status": "INFO",
+        "message": "bruto ou líquido ausente; identidade não aplicável"
+      },
+      "reason_codes": [],
+      "fields_affected": [
+        "gross_per_share",
+        "net_per_share"
+      ],
+      "message": "bruto ou líquido ausente; identidade não aplicável"
+    },
+    {
+      "tool": "check_event_type_consistency",
+      "args": {
+        "declared_type": "bonificacao",
+        "title_prior": "bonificacao",
+        "body_prior": "bonificacao",
+        "markers": "bonificacao em acoes, capitalizacao de reservas, acao nova para cada, aumento do capital social mediante capitalizacao"
+      },
+      "status": "pass",
+      "detail": {
+        "status": "PASS",
+        "reason_codes": [],
+        "declared_type": "bonificacao",
+        "title_prior": "bonificacao",
+        "body_prior": "bonificacao",
+        "markers": "bonificacao em acoes, capitalizacao de reservas, acao nova para cada, aumento do capital social mediante capitalizacao",
+        "message": "tipo consistente com os marcadores do corpo"
+      },
+      "reason_codes": [],
+      "fields_affected": [
+        "event_type"
+      ],
+      "message": "tipo consistente com os marcadores do corpo"
+    },
+    {
+      "tool": "check_identifier_format",
+      "args": {
+        "isin": "BRCNHZACNOR5",
+        "cnpj": "09.888.999/0001-21",
+        "ticker": "CNHZ3",
+        "share_class": "ON"
+      },
+      "status": "info",
+      "detail": {
+        "status": "INFO",
+        "findings": {
+          "isin_structure_ok": true,
+          "isin_checksum_ok": false,
+          "cnpj_checksum_ok": true,
+          "ticker_pattern_ok": true,
+          "ticker_class_consistent": true
+        },
+        "message": "checagens estruturais são informativas: a base de referência é a única autoridade sobre identidade"
+      },
+      "reason_codes": [],
+      "fields_affected": [
+        "isin",
+        "cnpj",
+        "ticker"
+      ],
+      "message": "checagens estruturais são informativas: a base de referência é a única autoridade sobre identidade"
+    },
+    {
+      "tool": "check_required_fields",
+      "args": {
+        "event_type": "bonificacao",
+        "present": "cnpj,cost_basis,isin,ticker,trading_start,ratio_to,com_date,ratio_text,currency,credit_date,event_type_label,approval_date,share_class,ratio_from,ex_date,issuer",
+        "absent": "fraction_period"
+      },
+      "status": "pass",
+      "detail": {
+        "status": "PASS",
+        "reason_code": null,
+        "required": [
+          "issuer",
+          "isin",
+          "ticker",
+          "event_type_label",
+          "ratio_from",
+          "ratio_to",
+          "com_date",
+          "ex_date",
+          "currency"
+        ],
+        "missing": [],
+        "excused_absences": [
+          "fraction_period"
+        ],
+        "fields_affected": [],
+        "message": "todos os campos obrigatórios do tipo vieram"
+      },
+      "reason_codes": [],
+      "fields_affected": [],
+      "message": "todos os campos obrigatórios do tipo vieram"
+    }
+  ],
+  "triage": {
+    "disposition": "review",
+    "reasons": [
+      {
+        "code": "ISSUER_NOT_IN_GOLDEN",
+        "severity": "review",
+        "field": "issuer",
+        "message": "nenhum identificador do aviso consta na base de referência",
+        "layer": "validacao",
+        "error_type": "identidade"
+      },
+      {
+        "code": "ISSUER_NOT_IN_GOLDEN",
+        "severity": "review",
+        "field": "cnpj",
+        "message": "nenhum identificador do aviso consta na base de referência",
+        "layer": "validacao",
+        "error_type": "identidade"
+      },
+      {
+        "code": "ISSUER_NOT_IN_GOLDEN",
+        "severity": "review",
+        "field": "isin",
+        "message": "nenhum identificador do aviso consta na base de referência",
+        "layer": "validacao",
+        "error_type": "identidade"
+      },
+      {
+        "code": "ISSUER_NOT_IN_GOLDEN",
+        "severity": "review",
+        "field": "ticker",
+        "message": "nenhum identificador do aviso consta na base de referência",
+        "layer": "validacao",
+        "error_type": "identidade"
+      }
+    ],
+    "justification": "Documento de bonificação da Construtora Horizonte com todos os campos obrigatórios preenchidos, cronologia coerente e tipo de evento consistente com o corpo do aviso. Porém, nenhum identificador do documento (CNPJ, ISIN, emissor, ticker) foi localizado na base golden record, impedindo a confirmação de identidade do emissor. É necessário que um humano valide manualmente esses identificadores junto à base de referência antes de liberar o registro.",
+    "weakest_level": "muito_alta",
+    "fields_for_review": [
+      "cnpj",
+      "isin",
+      "issuer",
+      "ticker"
+    ]
+  },
+  "extra_fields": {},
+  "error": null
+}

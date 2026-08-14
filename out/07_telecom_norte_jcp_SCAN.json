@@ -1,0 +1,1192 @@
+{
+  "document": {
+    "file_name": "07_telecom_norte_jcp_SCAN.pdf",
+    "n_pages": 1,
+    "producer": null,
+    "reader_kinds": [
+      "ocr_deterministic",
+      "ocr_generative"
+    ],
+    "escalated": true,
+    "escalation_note": "docling:parser não leu nada nesta página — abstém-se; docling:vlm eliminado: ISIN BRTLNRACPR2 tem 11 caracteres, ISO 6166 exige 12; consenso de 3 leitura(s): 19 regiões, 19 com mais de um leitor"
+  },
+  "event_type": "jcp",
+  "classification": {
+    "event_type": "jcp",
+    "subtype": null,
+    "rationale": "2 modalidade(s) votaram: rule=jcp, text=jcp. Unânime.",
+    "prior": {
+      "ranked": [
+        [
+          "jcp",
+          9.8
+        ]
+      ],
+      "hits": [
+        {
+          "event_type": "jcp",
+          "marker": "juros sobre o capital proprio",
+          "weight": 3.0,
+          "definitional": true,
+          "matched_text": "juros sobre o capital proprio"
+        },
+        {
+          "event_type": "jcp",
+          "marker": "\\bjcp\\b",
+          "weight": 2.5,
+          "definitional": true,
+          "matched_text": "jcp"
+        },
+        {
+          "event_type": "jcp",
+          "marker": "lei n?[º°o]?\\s*9\\.?249",
+          "weight": 3.0,
+          "definitional": true,
+          "matched_text": "lei no 9.249"
+        },
+        {
+          "event_type": "jcp",
+          "marker": "art(?:igo)?\\.? ?9[º°o]?\\b",
+          "weight": 1.0,
+          "definitional": true,
+          "matched_text": "art. 9o"
+        },
+        {
+          "event_type": "jcp",
+          "marker": "retencao de imposto de renda|irrf",
+          "weight": 0.3,
+          "definitional": false,
+          "matched_text": "retencao de imposto de renda"
+        }
+      ],
+      "title_prior": "jcp",
+      "body_prior": "jcp"
+    },
+    "agrees_with_prior": true,
+    "unanimous": true
+  },
+  "fields": {
+    "cnpj": {
+      "name": "cnpj",
+      "value_raw": "33.222.111/0001-44",
+      "value": "33.222.111/0001-44",
+      "absence_reason": null,
+      "evidence_text": "Companhia Aberta | CNPJ/ME nº 33.222.111/0001-44 | NIRE 33.300.000.007",
+      "rationale": "padrão estrutural de CNPJ",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 198.5,
+        "y0": 60.641999999999996,
+        "x1": 616.144,
+        "y1": 76.364,
+        "page_width": 0.0,
+        "page_height": 1122.719970703125
+      },
+      "snippet_path": null,
+      "reader_kind": "ocr_generative",
+      "corroborating_kinds": [
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "media",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "Companhia Aberta | CNPJ/ME nº 33.222.111/0001-44 | NIRE 33.300.000.007",
+        "bbox": {
+          "page": 1,
+          "x0": 198.5,
+          "y0": 60.641999999999996,
+          "x1": 616.144,
+          "y1": 76.364,
+          "page_width": 0.0,
+          "page_height": 1122.719970703125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='33.222.111/0001-44'; text='33.222.111/0001-44'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Companhia Aberta |·CNPJ/ME nº 33.222.111/0001-44 |NIRE 33.300.000.007'",
+        "varredura final localizou o mesmo valor em: ocr_deterministic — a região não casou na votação, a leitura sim",
+        "valor confirmado na base de referência"
+      ],
+      "audit": {
+        "field_class": "identity",
+        "critical": true,
+        "reading": {
+          "level": "media",
+          "corroborating_kinds": [
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "confere",
+          "expected": null
+        }
+      }
+    },
+    "isin": {
+      "name": "isin",
+      "value_raw": "BRTLNRACNPR2",
+      "value": "BRTLNRACNPR2",
+      "absence_reason": null,
+      "evidence_text": "TLNR4(ISIN BRTLNRACNPR2)",
+      "rationale": "padrão estrutural de ISIN",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 235.10355631510419,
+        "y0": 433.44893391927076,
+        "x1": 431.9630533854167,
+        "y1": 457.21504720052076,
+        "page_width": 0.0,
+        "page_height": 1122.719970703125
+      },
+      "snippet_path": "out/snippets/07_telecom_norte_jcp_SCAN/isin.png",
+      "reader_kind": "ocr_deterministic",
+      "corroborating_kinds": [
+        "ocr_deterministic"
+      ],
+      "reading_level": "baixa",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "TLNR4(ISIN BRTLNRACNPR2)",
+        "bbox": {
+          "page": 1,
+          "x0": 235.10355631510419,
+          "y0": 433.44893391927076,
+          "x1": 431.9630533854167,
+          "y1": 457.21504720052076,
+          "page_width": 0.0,
+          "page_height": 1122.719970703125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='BRTLNRACNPR2'; text='BRTLNRACNPR2'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:vlm='Código de negociação TLNR4 (ISIN BRTLNRACPR2)'",
+        "varredura final não localizou este valor em nenhuma outra leitura",
+        "valor confirmado na base de referência"
+      ],
+      "audit": {
+        "field_class": "identity",
+        "critical": true,
+        "reading": {
+          "level": "baixa",
+          "corroborating_kinds": [
+            "ocr_deterministic"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "confere",
+          "expected": null
+        }
+      }
+    },
+    "tax_rate": {
+      "name": "tax_rate",
+      "value_raw": "17,5%",
+      "value": "0,175",
+      "absence_reason": null,
+      "evidence_text": "IRRF na fonte … 17,5%",
+      "rationale": "Alíquota de IRRF retida sobre o valor bruto, conforme tabela do aviso.",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 72.74573771158855,
+        "y0": 343.4771728515625,
+        "x1": 285.9076741536458,
+        "y1": 364.9798583984375,
+        "page_width": 0.0,
+        "page_height": 1122.719970703125
+      },
+      "snippet_path": null,
+      "reader_kind": "ocr_deterministic",
+      "corroborating_kinds": [
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "media",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "IRRF na fonte … 17,5%",
+        "bbox": {
+          "page": 1,
+          "x0": 72.74573771158855,
+          "y0": 343.4771728515625,
+          "x1": 285.9076741536458,
+          "y1": 364.9798583984375,
+          "page_width": 0.0,
+          "page_height": 1122.719970703125
+        }
+      },
+      "repairs": [
+        {
+          "field": "tax_rate",
+          "rule": "percentual",
+          "value_from": "17,5%",
+          "value_to": "0,175",
+          "candidates": []
+        }
+      ],
+      "notes": [
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:vlm='IRRF na fonte 17,5%'"
+      ],
+      "audit": {
+        "field_class": "contextual",
+        "critical": false,
+        "reading": {
+          "level": "media",
+          "corroborating_kinds": [
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "ticker": {
+      "name": "ticker",
+      "value_raw": "TLNR4",
+      "value": "TLNR4",
+      "absence_reason": null,
+      "evidence_text": "TLNR4(ISIN BRTLNRACNPR2)",
+      "rationale": "padrão estrutural de TICKER",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 235.10355631510419,
+        "y0": 433.44893391927076,
+        "x1": 431.9630533854167,
+        "y1": 457.21504720052076,
+        "page_width": 0.0,
+        "page_height": 1122.719970703125
+      },
+      "snippet_path": null,
+      "reader_kind": "ocr_deterministic",
+      "corroborating_kinds": [
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "media",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "TLNR4(ISIN BRTLNRACNPR2)",
+        "bbox": {
+          "page": 1,
+          "x0": 235.10355631510419,
+          "y0": 433.44893391927076,
+          "x1": 431.9630533854167,
+          "y1": 457.21504720052076,
+          "page_width": 0.0,
+          "page_height": 1122.719970703125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='TLNR4'; text='TLNR4'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:vlm='Código de negociação TLNR4 (ISIN BRTLNRACPR2)'",
+        "varredura final localizou o mesmo valor em: ocr_generative — a região não casou na votação, a leitura sim",
+        "valor confirmado na base de referência"
+      ],
+      "audit": {
+        "field_class": "identity",
+        "critical": true,
+        "reading": {
+          "level": "media",
+          "corroborating_kinds": [
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "confere",
+          "expected": null
+        }
+      }
+    },
+    "com_date": {
+      "name": "com_date",
+      "value_raw": "22/06/2026",
+      "value": "22/06/2026",
+      "absence_reason": null,
+      "evidence_text": "22/06/2026",
+      "rationale": "rótulo 'Data-base (data com)'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 246.24526977539062,
+        "y0": 379.1263427734375,
+        "x1": 332.71307373046875,
+        "y1": 400.6290283203125,
+        "page_width": 0.0,
+        "page_height": 1122.719970703125
+      },
+      "snippet_path": null,
+      "reader_kind": "ocr_deterministic",
+      "corroborating_kinds": [
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "media",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "22/06/2026",
+        "bbox": {
+          "page": 1,
+          "x0": 246.24526977539062,
+          "y0": 379.1263427734375,
+          "x1": 332.71307373046875,
+          "y1": 400.6290283203125,
+          "page_width": 0.0,
+          "page_height": 1122.719970703125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='22/06/2026'; text='22/06/2026'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:vlm='Data-base (data com) 22/06/2026'"
+      ],
+      "audit": {
+        "field_class": "financial_critical",
+        "critical": true,
+        "reading": {
+          "level": "media",
+          "corroborating_kinds": [
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "currency": {
+      "name": "currency",
+      "value_raw": "BRL",
+      "value": "BRL",
+      "absence_reason": null,
+      "evidence_text": "R$ 0,1124300000",
+      "rationale": "valor grafado em R$",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 254.09068311724747,
+        "y0": 327.06722005208326,
+        "x1": 371.6235758463542,
+        "y1": 349.13578287760424,
+        "page_width": 0.0,
+        "page_height": 1122.719970703125
+      },
+      "snippet_path": null,
+      "reader_kind": "ocr_deterministic",
+      "corroborating_kinds": [
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "media",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "R$ 0,1124300000",
+        "bbox": {
+          "page": 1,
+          "x0": 254.09068311724747,
+          "y0": 327.06722005208326,
+          "x1": 371.6235758463542,
+          "y1": 349.13578287760424,
+          "page_width": 0.0,
+          "page_height": 1122.719970703125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='BRL'; text='R$'",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:vlm='Valor bruto por ação PN R$ 0,112430000'",
+        "valor não aparece dentro do trecho citado como evidência — verificar"
+      ],
+      "audit": {
+        "field_class": "contextual",
+        "critical": false,
+        "reading": {
+          "level": "media",
+          "corroborating_kinds": [
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "approval_date": {
+      "name": "approval_date",
+      "value_raw": "06 de junho de 2026",
+      "value": "06/06/2026",
+      "absence_reason": null,
+      "evidence_text": "reunão realizada em 06 de junho de 2026, aprovou o crédito de juros sobre o Capital Próprio",
+      "rationale": "Data da reunião do Conselho de Administração que aprovou o JCP.",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 76.224,
+        "y0": 150.482,
+        "x1": 554.212,
+        "y1": 240.322,
+        "page_width": 0.0,
+        "page_height": 1122.719970703125
+      },
+      "snippet_path": null,
+      "reader_kind": "ocr_generative",
+      "corroborating_kinds": [
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "media",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "reunão realizada em 06 de junho de 2026, aprovou o crédito de juros sobre o Capital Próprio",
+        "bbox": {
+          "page": 1,
+          "x0": 76.224,
+          "y0": 150.482,
+          "x1": 554.212,
+          "y1": 240.322,
+          "page_width": 0.0,
+          "page_height": 1122.719970703125
+        }
+      },
+      "repairs": [
+        {
+          "field": "approval_date",
+          "rule": "dmy_extenso",
+          "value_from": "06 de junho de 2026",
+          "value_to": "06/06/2026",
+          "candidates": []
+        }
+      ],
+      "notes": [
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='A Telecom Norte Participações S.A. comunica aos seus acionistas que o Conselho de Administração, em reunião realizada em 06 de junho de 2026, aprovou o crédito de Juros sobre o Capital Próprio (jCP), nos termos do art. 9º da Lei nº 9.249/95, com retenção de Imposto de Renda na Fonte (IRRF) à alíquota de 17,5% sobre o valor bruto.'",
+        "varredura final localizou o mesmo valor em: ocr_deterministic — a região não casou na votação, a leitura sim"
+      ],
+      "audit": {
+        "field_class": "contextual",
+        "critical": false,
+        "reading": {
+          "level": "media",
+          "corroborating_kinds": [
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "event_type_label": {
+      "name": "event_type_label",
+      "value_raw": "Juros sobre o Capital Próprio (JCP)",
+      "value": "Juros sobre o Capital Próprio (JCP)",
+      "absence_reason": null,
+      "evidence_text": "Juros sobre o Capital Próprio (JCP)",
+      "rationale": "rótulo 'Tipo de evento'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 273.13599999999997,
+        "y0": 125.776,
+        "x1": 538.332,
+        "y1": 143.744,
+        "page_width": 0.0,
+        "page_height": 1122.719970703125
+      },
+      "snippet_path": null,
+      "reader_kind": "ocr_generative",
+      "corroborating_kinds": [
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "media",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "Juros sobre o Capital Próprio (JCP)",
+        "bbox": {
+          "page": 1,
+          "x0": 273.13599999999997,
+          "y0": 125.776,
+          "x1": 538.332,
+          "y1": 143.744,
+          "page_width": 0.0,
+          "page_height": 1122.719970703125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='AVISO AOS ACIONISTAS Juros sobre o Capital Próprio (JCP)'",
+        "varredura final localizou o mesmo valor em: ocr_deterministic — a região não casou na votação, a leitura sim"
+      ],
+      "audit": {
+        "field_class": "default",
+        "critical": false,
+        "reading": {
+          "level": "media",
+          "corroborating_kinds": [
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "share_class": {
+      "name": "share_class",
+      "value_raw": "PN",
+      "value": "PN",
+      "absence_reason": null,
+      "evidence_text": "PN",
+      "rationale": "classe citada no texto",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 73.87358093261719,
+        "y0": 327.06722005208326,
+        "x1": 254.09068311724747,
+        "y1": 349.13578287760424,
+        "page_width": 0.0,
+        "page_height": 1122.719970703125
+      },
+      "snippet_path": null,
+      "reader_kind": "ocr_deterministic",
+      "corroborating_kinds": [
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "media",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "PN",
+        "bbox": {
+          "page": 1,
+          "x0": 73.87358093261719,
+          "y0": 327.06722005208326,
+          "x1": 254.09068311724747,
+          "y1": 349.13578287760424,
+          "page_width": 0.0,
+          "page_height": 1122.719970703125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='PN'; text='PN'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:vlm='Valor bruto por ação PN R$ 0,112430000'"
+      ],
+      "audit": {
+        "field_class": "contextual",
+        "critical": false,
+        "reading": {
+          "level": "media",
+          "corroborating_kinds": [
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "net_per_share": {
+      "name": "net_per_share",
+      "value_raw": "R$ 0,0927547500",
+      "value": "0,0927547500",
+      "absence_reason": null,
+      "evidence_text": "R$ 0,0927547500",
+      "rationale": "rótulo 'Valor líquido por ação PN'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 257.923131942749,
+        "y0": 361.58467610677076,
+        "x1": 369.367919921875,
+        "y1": 383.65323893229174,
+        "page_width": 0.0,
+        "page_height": 1122.719970703125
+      },
+      "snippet_path": null,
+      "reader_kind": "ocr_deterministic",
+      "corroborating_kinds": [
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "media",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "R$ 0,0927547500",
+        "bbox": {
+          "page": 1,
+          "x0": 257.923131942749,
+          "y0": 361.58467610677076,
+          "x1": 369.367919921875,
+          "y1": 383.65323893229174,
+          "page_width": 0.0,
+          "page_height": 1122.719970703125
+        }
+      },
+      "repairs": [
+        {
+          "field": "net_per_share",
+          "rule": "moeda_ptbr",
+          "value_from": "R$ 0,0927547500",
+          "value_to": "0,0927547500",
+          "candidates": []
+        }
+      ],
+      "notes": [
+        "leituras: rule='R$ 0,0927547500'; text='R$ 0,0927547500'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:vlm='Valor líquido por ação PN, R$ 0,0927547500'"
+      ],
+      "audit": {
+        "field_class": "financial_critical",
+        "critical": true,
+        "reading": {
+          "level": "media",
+          "corroborating_kinds": [
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "payment_date": {
+      "name": "payment_date",
+      "value_raw": "21/08/2026",
+      "value": "21/08/2026",
+      "absence_reason": null,
+      "evidence_text": "21/08/2026",
+      "rationale": "rótulo 'Data de pagamento'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 249.316,
+        "y0": 415.51,
+        "x1": 327.128,
+        "y1": 433.478,
+        "page_width": 0.0,
+        "page_height": 1122.719970703125
+      },
+      "snippet_path": "out/snippets/07_telecom_norte_jcp_SCAN/payment_date.png",
+      "reader_kind": "ocr_generative",
+      "corroborating_kinds": [
+        "ocr_generative"
+      ],
+      "reading_level": "baixa",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "21/08/2026",
+        "bbox": {
+          "page": 1,
+          "x0": 249.316,
+          "y0": 415.51,
+          "x1": 327.128,
+          "y1": 433.478,
+          "page_width": 0.0,
+          "page_height": 1122.719970703125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='21/08/2026'; text='21/08/2026'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Data d pagamen. .../08/22026'",
+        "varredura confirmou o valor, mas em nenhuma leitura além da que já o sustentava — segue sem corroboração"
+      ],
+      "audit": {
+        "field_class": "financial_critical",
+        "critical": true,
+        "reading": {
+          "level": "baixa",
+          "corroborating_kinds": [
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "gross_per_share": {
+      "name": "gross_per_share",
+      "value_raw": "R$ 0,1124300000",
+      "value": "0,1124300000",
+      "absence_reason": null,
+      "evidence_text": "R$ 0,1124300000",
+      "rationale": "rótulo 'Valor bruto por ação PN'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 254.09068311724747,
+        "y0": 327.06722005208326,
+        "x1": 371.6235758463542,
+        "y1": 349.13578287760424,
+        "page_width": 0.0,
+        "page_height": 1122.719970703125
+      },
+      "snippet_path": null,
+      "reader_kind": "ocr_deterministic",
+      "corroborating_kinds": [
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "media",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "R$ 0,1124300000",
+        "bbox": {
+          "page": 1,
+          "x0": 254.09068311724747,
+          "y0": 327.06722005208326,
+          "x1": 371.6235758463542,
+          "y1": 349.13578287760424,
+          "page_width": 0.0,
+          "page_height": 1122.719970703125
+        }
+      },
+      "repairs": [
+        {
+          "field": "gross_per_share",
+          "rule": "moeda_ptbr",
+          "value_from": "R$ 0,1124300000",
+          "value_to": "0,1124300000",
+          "candidates": []
+        }
+      ],
+      "notes": [
+        "leituras: rule='R$ 0,1124300000'; text='R$ 0,1124300000'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:vlm='Valor bruto por ação PN R$ 0,112430000'"
+      ],
+      "audit": {
+        "field_class": "financial_critical",
+        "critical": true,
+        "reading": {
+          "level": "media",
+          "corroborating_kinds": [
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "ex_date": {
+      "name": "ex_date",
+      "value_raw": "23/06/2026",
+      "value": "23/06/2026",
+      "absence_reason": null,
+      "evidence_text": "23/06/2026",
+      "rationale": "rótulo 'Data ex-JCP'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 196.0026351686508,
+        "y0": 397.23388671875,
+        "x1": 309.5923258463542,
+        "y1": 419.30244954427076,
+        "page_width": 0.0,
+        "page_height": 1122.719970703125
+      },
+      "snippet_path": null,
+      "reader_kind": "ocr_deterministic",
+      "corroborating_kinds": [
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "media",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "23/06/2026",
+        "bbox": {
+          "page": 1,
+          "x0": 196.0026351686508,
+          "y0": 397.23388671875,
+          "x1": 309.5923258463542,
+          "y1": 419.30244954427076,
+          "page_width": 0.0,
+          "page_height": 1122.719970703125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='23/06/2026'; text='23/06/2026'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:vlm='Data ex-JCP 23/06/2026'"
+      ],
+      "audit": {
+        "field_class": "financial_critical",
+        "critical": true,
+        "reading": {
+          "level": "media",
+          "corroborating_kinds": [
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "issuer": {
+      "name": "issuer",
+      "value_raw": "TELECOM NORTE PARTICIPAÇÕES S.A.",
+      "value": "TELECOM NORTE PARTICIPAÇÕES S.A.",
+      "absence_reason": null,
+      "evidence_text": "TELECOM NORTE PARTICIPAÇÕES S.A.",
+      "rationale": "razão social no cabeçalho do aviso",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 202.44744873046875,
+        "y0": 27.727152506510492,
+        "x1": 609.0340983072916,
+        "y1": 58.28360493977857,
+        "page_width": 0.0,
+        "page_height": 1122.719970703125
+      },
+      "snippet_path": null,
+      "reader_kind": "ocr_deterministic",
+      "corroborating_kinds": [
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "media",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "TELECOM NORTE PARTICIPAÇÕES S.A.",
+        "bbox": {
+          "page": 1,
+          "x0": 202.44744873046875,
+          "y0": 27.727152506510492,
+          "x1": 609.0340983072916,
+          "y1": 58.28360493977857,
+          "page_width": 0.0,
+          "page_height": 1122.719970703125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='TELECOM NORTE PARTICIPAÇÕES S.A.'; text='TELECOM NORTE PARTICIPAÇÕES S.A.'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:vlm='TELECOM NORTE PARTICIPAÇÔES S.A.'",
+        "valor confirmado na base de referência"
+      ],
+      "audit": {
+        "field_class": "identity",
+        "critical": true,
+        "reading": {
+          "level": "media",
+          "corroborating_kinds": [
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "confere",
+          "expected": null
+        }
+      }
+    }
+  },
+  "validations": [
+    {
+      "tool": "lookup_golden_record",
+      "args": {
+        "issuer": "TELECOM NORTE PARTICIPAÇÕES S.A.",
+        "cnpj": "33.222.111/0001-44",
+        "isin": "BRTLNRACNPR2",
+        "ticker": "TLNR4",
+        "share_class": "PN"
+      },
+      "status": "pass",
+      "detail": {
+        "status": "MATCH",
+        "message": "identidade confirmada na base de referência",
+        "matched_row": {
+          "emissor": "Telecom Norte Participações S.A.",
+          "cnpj": "33.222.111/0001-44",
+          "isin": "BRTLNRACNPR2",
+          "ticker": "TLNR4",
+          "classe": "PN",
+          "segmento_listagem": "Tradicional",
+          "status": "ativo"
+        },
+        "agreeing_keys": [
+          "isin",
+          "ticker",
+          "cnpj",
+          "issuer"
+        ],
+        "severity": "PASS"
+      },
+      "reason_codes": [],
+      "fields_affected": [
+        "issuer",
+        "cnpj",
+        "isin",
+        "ticker"
+      ],
+      "message": "identidade confirmada na base de referência"
+    },
+    {
+      "tool": "check_date_coherence",
+      "args": {
+        "approval_date": "06/06/2026",
+        "com_date": "22/06/2026",
+        "ex_date": "23/06/2026",
+        "payment_date": "21/08/2026",
+        "event_type": "jcp"
+      },
+      "status": "pass",
+      "detail": {
+        "status": "PASS",
+        "reason_code": null,
+        "violations": [],
+        "message": "cronologia coerente",
+        "dates_checked": {
+          "approval_date": "06/06/2026",
+          "com_date": "22/06/2026",
+          "ex_date": "23/06/2026",
+          "payment_date": "21/08/2026"
+        }
+      },
+      "reason_codes": [],
+      "fields_affected": [
+        "approval_date",
+        "com_date",
+        "ex_date",
+        "payment_date"
+      ],
+      "message": "cronologia coerente"
+    },
+    {
+      "tool": "check_amount_coherence",
+      "args": {
+        "gross_per_share": "0,1124300000",
+        "tax_rate": "0,175",
+        "net_per_share": "0,0927547500"
+      },
+      "status": "pass",
+      "detail": {
+        "status": "PASS",
+        "reason_code": null,
+        "gross": "0.1124300000",
+        "rate": "0.175",
+        "net_declared": "0.0927547500",
+        "net_expected": "0.0927547500000",
+        "delta": "0E-13",
+        "tolerance": "0.000001"
+      },
+      "reason_codes": [],
+      "fields_affected": [
+        "gross_per_share",
+        "net_per_share"
+      ],
+      "message": ""
+    },
+    {
+      "tool": "check_event_type_consistency",
+      "args": {
+        "declared_type": "jcp",
+        "title_prior": "jcp",
+        "body_prior": "jcp",
+        "markers": "juros sobre o capital proprio, jcp, lei no 9.249, art. 9o"
+      },
+      "status": "pass",
+      "detail": {
+        "status": "PASS",
+        "reason_codes": [],
+        "declared_type": "jcp",
+        "title_prior": "jcp",
+        "body_prior": "jcp",
+        "markers": "juros sobre o capital proprio, jcp, lei no 9.249, art. 9o",
+        "message": "tipo consistente com os marcadores do corpo"
+      },
+      "reason_codes": [],
+      "fields_affected": [
+        "event_type"
+      ],
+      "message": "tipo consistente com os marcadores do corpo"
+    },
+    {
+      "tool": "check_identifier_format",
+      "args": {
+        "isin": "BRTLNRACNPR2",
+        "cnpj": "33.222.111/0001-44",
+        "ticker": "TLNR4",
+        "share_class": "PN"
+      },
+      "status": "info",
+      "detail": {
+        "status": "INFO",
+        "findings": {
+          "isin_structure_ok": true,
+          "isin_checksum_ok": false,
+          "cnpj_checksum_ok": false,
+          "ticker_pattern_ok": true,
+          "ticker_class_consistent": true
+        },
+        "message": "checagens estruturais são informativas: a base de referência é a única autoridade sobre identidade"
+      },
+      "reason_codes": [],
+      "fields_affected": [
+        "isin",
+        "cnpj",
+        "ticker"
+      ],
+      "message": "checagens estruturais são informativas: a base de referência é a única autoridade sobre identidade"
+    },
+    {
+      "tool": "check_required_fields",
+      "args": {
+        "event_type": "jcp",
+        "present": "cnpj,isin,tax_rate,ticker,com_date,currency,approval_date,event_type_label,share_class,net_per_share,payment_date,gross_per_share,ex_date,issuer",
+        "absent": ""
+      },
+      "status": "pass",
+      "detail": {
+        "status": "PASS",
+        "reason_code": null,
+        "required": [
+          "issuer",
+          "isin",
+          "ticker",
+          "event_type_label",
+          "currency",
+          "gross_per_share",
+          "com_date",
+          "ex_date"
+        ],
+        "missing": [],
+        "excused_absences": [],
+        "fields_affected": [],
+        "message": "todos os campos obrigatórios do tipo vieram"
+      },
+      "reason_codes": [],
+      "fields_affected": [],
+      "message": "todos os campos obrigatórios do tipo vieram"
+    }
+  ],
+  "triage": {
+    "disposition": "review",
+    "reasons": [
+      {
+        "code": "NO_CORROBORATION",
+        "severity": "review",
+        "field": "isin",
+        "message": "'isin' sustentado por um único mecanismo de pixel (ocr_deterministic); nenhuma outra leitura confirma o valor",
+        "layer": "consenso",
+        "error_type": "ausencia"
+      },
+      {
+        "code": "NO_CORROBORATION",
+        "severity": "review",
+        "field": "payment_date",
+        "message": "'payment_date' sustentado por um único mecanismo de pixel (ocr_generative); nenhuma outra leitura confirma o valor",
+        "layer": "consenso",
+        "error_type": "ausencia"
+      }
+    ],
+    "justification": "Documento JCP (07_telecom_norte_jcp_SCAN.pdf) com identidade confirmada no golden record, datas coerentes, valores e tipo de evento consistentes, e todos os campos obrigatórios presentes. Disposição em review porque 'isin' e 'payment_date' foram extraídos por um único mecanismo de OCR cada (determinístico e generativo, respectivamente), sem segunda leitura que corrobore os valores. É necessário que um humano confira visualmente esses dois campos no scan original antes de aprovar o registro.",
+    "weakest_level": "baixa",
+    "fields_for_review": [
+      "isin",
+      "payment_date"
+    ]
+  },
+  "extra_fields": {},
+  "error": null
+}

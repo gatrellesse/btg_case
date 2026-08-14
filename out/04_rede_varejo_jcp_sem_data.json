@@ -1,0 +1,1204 @@
+{
+  "document": {
+    "file_name": "04_rede_varejo_jcp_sem_data.pdf",
+    "n_pages": 1,
+    "producer": "ReportLab PDF Library - (opensource)",
+    "reader_kinds": [
+      "text_layer",
+      "ocr_deterministic",
+      "ocr_generative"
+    ],
+    "escalated": false,
+    "escalation_note": "docling:vlm: 16 célula(s) de tabela receberam a geometria medida por docling:parser; consenso de 3 leitura(s): 26 regiões, 26 com mais de um leitor"
+  },
+  "event_type": "jcp",
+  "classification": {
+    "event_type": "jcp",
+    "subtype": null,
+    "rationale": "2 modalidade(s) votaram: rule=jcp, text=jcp. Unânime.",
+    "prior": {
+      "ranked": [
+        [
+          "jcp",
+          5.8
+        ]
+      ],
+      "hits": [
+        {
+          "event_type": "jcp",
+          "marker": "juros sobre o capital proprio",
+          "weight": 3.0,
+          "definitional": true,
+          "matched_text": "juros sobre o capital proprio"
+        },
+        {
+          "event_type": "jcp",
+          "marker": "\\bjcp\\b",
+          "weight": 2.5,
+          "definitional": true,
+          "matched_text": "jcp"
+        },
+        {
+          "event_type": "jcp",
+          "marker": "retencao de imposto de renda|irrf",
+          "weight": 0.3,
+          "definitional": false,
+          "matched_text": "irrf"
+        }
+      ],
+      "title_prior": "jcp",
+      "body_prior": "jcp"
+    },
+    "agrees_with_prior": true,
+    "unanimous": true
+  },
+  "fields": {
+    "tax_rate": {
+      "name": "tax_rate",
+      "value_raw": "17,5%",
+      "value": "0,175",
+      "absence_reason": null,
+      "evidence_text": "17,5%",
+      "rationale": "rótulo 'IRRF na fonte'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 62.69291,
+        "y0": 155.84370000000013,
+        "x1": 530.1626789999999,
+        "y1": 195.09370000000013,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "17,5%",
+        "bbox": {
+          "page": 1,
+          "x0": 62.69291,
+          "y0": 155.84370000000013,
+          "x1": 530.1626789999999,
+          "y1": 195.09370000000013,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [
+        {
+          "field": "tax_rate",
+          "rule": "percentual",
+          "value_from": "17,5%",
+          "value_to": "0,175",
+          "candidates": []
+        }
+      ],
+      "notes": [
+        "leituras: rule='17,5%'; text='17,5%'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='A Rede Varejo Brasil S.A. informa que o Conselho de Administração, em reunião realizada em 09 de junho de 2026, aprovou o pagamento de Juros sobre o Capital Próprio (JCP), com retenção de IRRF de 17,5% sobre o valor bruto.'; docling:vlm='A Rede Varejo Brasil S.A. informa que o Conselho de Administração, em reunião realizada em 09 de junho de 2026, aprovou o pagamento de Juros sobre o Capital Próprio (JCP), com retenção de IRRF de 17,5% sobre o valor bruto.'"
+      ],
+      "audit": {
+        "field_class": "contextual",
+        "critical": false,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "isin": {
+      "name": "isin",
+      "value_raw": "BRRVBRACNOR9",
+      "value": "BRRVBRACNOR9",
+      "absence_reason": null,
+      "evidence_text": "RVBR3 (ISIN BRRVBRACNOR9)",
+      "rationale": "padrão estrutural de ISIN",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 453.8437,
+        "x1": 386.79091,
+        "y1": 463.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "RVBR3 (ISIN BRRVBRACNOR9)",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 453.8437,
+          "x1": 386.79091,
+          "y1": 463.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='BRRVBRACNOR9'; text='BRRVBRACNOR9'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Código de negociação RVBR3 (ISIN BRRVBRACNOR9)'; docling:vlm='Código de negociação RVBR3 (ISIN BRRVBRACNOR9)'",
+        "valor confirmado na base de referência"
+      ],
+      "audit": {
+        "field_class": "identity",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "confere",
+          "expected": null
+        }
+      }
+    },
+    "cnpj": {
+      "name": "cnpj",
+      "value_raw": "08.777.666/0001-33",
+      "value": "08.777.666/0001-33",
+      "absence_reason": null,
+      "evidence_text": "Companhia Aberta  |  CNPJ/ME nº 08.777.666/0001-33  |  NIRE 35.300.000.004",
+      "rationale": "padrão estrutural de CNPJ",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 146.69904,
+        "y0": 83.42070000000012,
+        "x1": 448.30454,
+        "y1": 91.28320000000008,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "Companhia Aberta  |  CNPJ/ME nº 08.777.666/0001-33  |  NIRE 35.300.000.004",
+        "bbox": {
+          "page": 1,
+          "x0": 146.69904,
+          "y0": 83.42070000000012,
+          "x1": 448.30454,
+          "y1": 91.28320000000008,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='08.777.666/0001-33'; text='08.777.666/0001-33'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Companhia Aberta | CNPJ/ME n° 08.777.666/0001-33 | NIRE 35.300.000.004'; docling:vlm='Companhia Aberta | CNPJ/ME nº 08.777.666/0001-33 | NIRE 35.300.000.004'",
+        "valor confirmado na base de referência"
+      ],
+      "audit": {
+        "field_class": "identity",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "confere",
+          "expected": null
+        }
+      }
+    },
+    "ticker": {
+      "name": "ticker",
+      "value_raw": "RVBR3",
+      "value": "RVBR3",
+      "absence_reason": null,
+      "evidence_text": "RVBR3 (ISIN BRRVBRACNOR9)",
+      "rationale": "padrão estrutural de TICKER",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 453.8437,
+        "x1": 386.79091,
+        "y1": 463.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "RVBR3 (ISIN BRRVBRACNOR9)",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 453.8437,
+          "x1": 386.79091,
+          "y1": 463.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='RVBR3'; text='RVBR3'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Código de negociação RVBR3 (ISIN BRRVBRACNOR9)'; docling:vlm='Código de negociação RVBR3 (ISIN BRRVBRACNOR9)'",
+        "valor confirmado na base de referência"
+      ],
+      "audit": {
+        "field_class": "identity",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "confere",
+          "expected": null
+        }
+      }
+    },
+    "com_date": {
+      "name": "com_date",
+      "value_raw": "23/06/2026",
+      "value": "23/06/2026",
+      "absence_reason": null,
+      "evidence_text": "23/06/2026",
+      "rationale": "rótulo 'Data-base ('data com')'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 390.8437,
+        "x1": 288.48091,
+        "y1": 400.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "23/06/2026",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 390.8437,
+          "x1": 288.48091,
+          "y1": 400.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='23/06/2026'; text='23/06/2026'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Data-base (“data com”) 23/06/2026'; docling:vlm='Data-base (\"data com\") 23/06/2026'"
+      ],
+      "audit": {
+        "field_class": "financial_critical",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "currency": {
+      "name": "currency",
+      "value_raw": "BRL",
+      "value": "BRL",
+      "absence_reason": null,
+      "evidence_text": "R$ 0,2050000000",
+      "rationale": "valor grafado em R$",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 327.8437,
+        "x1": 317.94091000000003,
+        "y1": 337.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "R$ 0,2050000000",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 327.8437,
+          "x1": 317.94091000000003,
+          "y1": 337.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='BRL'; text='R$'",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Valor bruto por ação ON R$ 0,2050000000'; docling:vlm='Valor bruto por ação ON R$ 0,2050000000'",
+        "valor não aparece dentro do trecho citado como evidência — verificar"
+      ],
+      "audit": {
+        "field_class": "contextual",
+        "critical": false,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "approval_date": {
+      "name": "approval_date",
+      "value_raw": "09 de junho de 2026",
+      "value": "09/06/2026",
+      "absence_reason": null,
+      "evidence_text": "A Rede Varejo Brasil S.A. informa que o Conselho de Administração, em reunião realizada em 09 de junho de 2026, aprovou o pagamento de Juros sobre o Capital Próprio (JCP), com retenção de IRRF de 17,5% sobre o valor bruto.",
+      "rationale": "padrão em prosa: 'reuniao realizada em (DATE)'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 62.69291,
+        "y0": 155.84370000000013,
+        "x1": 530.1626789999999,
+        "y1": 195.09370000000013,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "A Rede Varejo Brasil S.A. informa que o Conselho de Administração, em reunião realizada em 09 de junho de 2026, aprovou o pagamento de Juros sobre o Capital Próprio (JCP), com retenção de IRRF de 17,5% sobre o valor bruto.",
+        "bbox": {
+          "page": 1,
+          "x0": 62.69291,
+          "y0": 155.84370000000013,
+          "x1": 530.1626789999999,
+          "y1": 195.09370000000013,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [
+        {
+          "field": "approval_date",
+          "rule": "dmy_extenso",
+          "value_from": "09 de junho de 2026",
+          "value_to": "09/06/2026",
+          "candidates": []
+        }
+      ],
+      "notes": [
+        "leituras: rule='09 de junho de 2026'; text='09 de junho de 2026'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='A Rede Varejo Brasil S.A. informa que o Conselho de Administração, em reunião realizada em 09 de junho de 2026, aprovou o pagamento de Juros sobre o Capital Próprio (JCP), com retenção de IRRF de 17,5% sobre o valor bruto.'; docling:vlm='A Rede Varejo Brasil S.A. informa que o Conselho de Administração, em reunião realizada em 09 de junho de 2026, aprovou o pagamento de Juros sobre o Capital Próprio (JCP), com retenção de IRRF de 17,5% sobre o valor bruto.'"
+      ],
+      "audit": {
+        "field_class": "contextual",
+        "critical": false,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "event_type_label": {
+      "name": "event_type_label",
+      "value_raw": "Juros sobre o Capital Próprio (JCP)",
+      "value": "Juros sobre o Capital Próprio (JCP)",
+      "absence_reason": null,
+      "evidence_text": "Juros sobre o Capital Próprio (JCP)",
+      "rationale": "rótulo 'Tipo de evento'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 62.69291,
+        "y0": 155.84370000000013,
+        "x1": 530.1626789999999,
+        "y1": 195.09370000000013,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "Juros sobre o Capital Próprio (JCP)",
+        "bbox": {
+          "page": 1,
+          "x0": 62.69291,
+          "y0": 155.84370000000013,
+          "x1": 530.1626789999999,
+          "y1": 195.09370000000013,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='A Rede Varejo Brasil S.A. informa que o Conselho de Administração, em reunião realizada em 09 de junho de 2026, aprovou o pagamento de Juros sobre o Capital Próprio (JCP), com retenção de IRRF de 17,5% sobre o valor bruto.'; docling:vlm='A Rede Varejo Brasil S.A. informa que o Conselho de Administração, em reunião realizada em 09 de junho de 2026, aprovou o pagamento de Juros sobre o Capital Próprio (JCP), com retenção de IRRF de 17,5% sobre o valor bruto.'"
+      ],
+      "audit": {
+        "field_class": "default",
+        "critical": false,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "share_class": {
+      "name": "share_class",
+      "value_raw": "ON",
+      "value": "ON",
+      "absence_reason": null,
+      "evidence_text": "ON",
+      "rationale": "classe citada no texto",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 145.74428999999998,
+        "y0": 134.12570000000005,
+        "x1": 448.31028999999984,
+        "y1": 144.30070000000012,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "ON",
+        "bbox": {
+          "page": 1,
+          "x0": 145.74428999999998,
+          "y0": 134.12570000000005,
+          "x1": 448.31028999999984,
+          "y1": 144.30070000000012,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='ON'; text='ON'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='AVISO AOS ACIONISTAS — Juros sobre o Capital Próprio'; docling:vlm='AVISO AOS ACIONISTAS - Juros sobre o Capital Próprio'"
+      ],
+      "audit": {
+        "field_class": "contextual",
+        "critical": false,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "net_per_share": {
+      "name": "net_per_share",
+      "value_raw": "R$ 0,1691250000",
+      "value": "0,1691250000",
+      "absence_reason": null,
+      "evidence_text": "R$ 0,1691250000",
+      "rationale": "rótulo 'Valor líquido por ação ON'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 369.8437,
+        "x1": 317.94091000000003,
+        "y1": 379.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "R$ 0,1691250000",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 369.8437,
+          "x1": 317.94091000000003,
+          "y1": 379.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [
+        {
+          "field": "net_per_share",
+          "rule": "moeda_ptbr",
+          "value_from": "R$ 0,1691250000",
+          "value_to": "0,1691250000",
+          "candidates": []
+        }
+      ],
+      "notes": [
+        "leituras: rule='R$ 0,1691250000'; text='R$ 0,1691250000'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Valor líquido por ação ON R$ 0,1691250000'; docling:vlm='Valor líquido por ação ON R$ 0,1691250000'"
+      ],
+      "audit": {
+        "field_class": "financial_critical",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "payment_date": {
+      "name": "payment_date",
+      "value_raw": "A definir (vide aviso complementar)",
+      "value": null,
+      "absence_reason": "stated_undefined",
+      "evidence_text": "A definir (vide aviso complementar)",
+      "rationale": "rótulo 'Data de pagamento'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 432.8437,
+        "x1": 395.15091,
+        "y1": 442.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": "out/snippets/04_rede_varejo_jcp_sem_data/payment_date.png",
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "A definir (vide aviso complementar)",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 432.8437,
+          "x1": 395.15091,
+          "y1": 442.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [
+        {
+          "field": "payment_date",
+          "rule": "ausencia_declarada",
+          "value_from": "A definir (vide aviso complementar)",
+          "value_to": null,
+          "candidates": []
+        }
+      ],
+      "notes": [
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Data de pagamento A definir (vide aviso complementar)'; docling:vlm='Data de pagamento A definir (vide aviso complementar)'"
+      ],
+      "audit": {
+        "field_class": "financial_critical",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "gross_per_share": {
+      "name": "gross_per_share",
+      "value_raw": "R$ 0,2050000000",
+      "value": "0,2050000000",
+      "absence_reason": null,
+      "evidence_text": "R$ 0,2050000000",
+      "rationale": "rótulo 'Valor bruto por ação ON'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 327.8437,
+        "x1": 317.94091000000003,
+        "y1": 337.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "R$ 0,2050000000",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 327.8437,
+          "x1": 317.94091000000003,
+          "y1": 337.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [
+        {
+          "field": "gross_per_share",
+          "rule": "moeda_ptbr",
+          "value_from": "R$ 0,2050000000",
+          "value_to": "0,2050000000",
+          "candidates": []
+        }
+      ],
+      "notes": [
+        "leituras: rule='R$ 0,2050000000'; text='R$ 0,2050000000'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Valor bruto por ação ON R$ 0,2050000000'; docling:vlm='Valor bruto por ação ON R$ 0,2050000000'"
+      ],
+      "audit": {
+        "field_class": "financial_critical",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "ex_date": {
+      "name": "ex_date",
+      "value_raw": "24/06/2026",
+      "value": "24/06/2026",
+      "absence_reason": null,
+      "evidence_text": "24/06/2026",
+      "rationale": "rótulo 'Data 'ex-JCP''",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 411.8437,
+        "x1": 288.48091,
+        "y1": 421.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "24/06/2026",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 411.8437,
+          "x1": 288.48091,
+          "y1": 421.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='24/06/2026'; text='24/06/2026'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Data “ex-JCP” 24/06/2026'; docling:vlm='Data \"ex-JCP\" 24/06/2026'"
+      ],
+      "audit": {
+        "field_class": "financial_critical",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "issuer": {
+      "name": "issuer",
+      "value_raw": "REDE VAREJO BRASIL S.A.",
+      "value": "REDE VAREJO BRASIL S.A.",
+      "absence_reason": null,
+      "evidence_text": "REDE VAREJO BRASIL S.A.",
+      "rationale": "razão social no cabeçalho do aviso",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 210.59631000000002,
+        "y0": 60.68970000000013,
+        "x1": 384.6793099999999,
+        "y1": 72.71470000000011,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "REDE VAREJO BRASIL S.A.",
+        "bbox": {
+          "page": 1,
+          "x0": 210.59631000000002,
+          "y0": 60.68970000000013,
+          "x1": 384.6793099999999,
+          "y1": 72.71470000000011,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='REDE VAREJO BRASIL S.A.'; text='Rede Varejo Brasil S.A.'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='REDE VAREJO BRASIL S.A.'; docling:vlm='REDE VAREJO BRASIL S.A.'",
+        "valor confirmado na base de referência"
+      ],
+      "audit": {
+        "field_class": "identity",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "confere",
+          "expected": null
+        }
+      }
+    }
+  },
+  "validations": [
+    {
+      "tool": "lookup_golden_record",
+      "args": {
+        "issuer": "REDE VAREJO BRASIL S.A.",
+        "cnpj": "08.777.666/0001-33",
+        "isin": "BRRVBRACNOR9",
+        "ticker": "RVBR3",
+        "share_class": "ON"
+      },
+      "status": "pass",
+      "detail": {
+        "status": "MATCH",
+        "message": "identidade confirmada na base de referência",
+        "matched_row": {
+          "emissor": "Rede Varejo Brasil S.A.",
+          "cnpj": "08.777.666/0001-33",
+          "isin": "BRRVBRACNOR9",
+          "ticker": "RVBR3",
+          "classe": "ON",
+          "segmento_listagem": "Novo Mercado",
+          "status": "ativo"
+        },
+        "agreeing_keys": [
+          "isin",
+          "ticker",
+          "cnpj",
+          "issuer"
+        ],
+        "severity": "PASS"
+      },
+      "reason_codes": [],
+      "fields_affected": [
+        "issuer",
+        "cnpj",
+        "isin",
+        "ticker"
+      ],
+      "message": "identidade confirmada na base de referência"
+    },
+    {
+      "tool": "check_date_coherence",
+      "args": {
+        "approval_date": "09/06/2026",
+        "com_date": "23/06/2026",
+        "ex_date": "24/06/2026",
+        "event_type": "jcp"
+      },
+      "status": "pass",
+      "detail": {
+        "status": "PASS",
+        "reason_code": null,
+        "violations": [],
+        "message": "cronologia coerente",
+        "dates_checked": {
+          "approval_date": "09/06/2026",
+          "com_date": "23/06/2026",
+          "ex_date": "24/06/2026"
+        }
+      },
+      "reason_codes": [],
+      "fields_affected": [
+        "approval_date",
+        "com_date",
+        "ex_date",
+        "payment_date"
+      ],
+      "message": "cronologia coerente"
+    },
+    {
+      "tool": "check_amount_coherence",
+      "args": {
+        "gross_per_share": "0,2050000000",
+        "tax_rate": "0,175",
+        "net_per_share": "0,1691250000"
+      },
+      "status": "pass",
+      "detail": {
+        "status": "PASS",
+        "reason_code": null,
+        "gross": "0.2050000000",
+        "rate": "0.175",
+        "net_declared": "0.1691250000",
+        "net_expected": "0.1691250000000",
+        "delta": "0E-13",
+        "tolerance": "0.000001"
+      },
+      "reason_codes": [],
+      "fields_affected": [
+        "gross_per_share",
+        "net_per_share"
+      ],
+      "message": ""
+    },
+    {
+      "tool": "check_event_type_consistency",
+      "args": {
+        "declared_type": "jcp",
+        "title_prior": "jcp",
+        "body_prior": "jcp",
+        "markers": "juros sobre o capital proprio, jcp"
+      },
+      "status": "pass",
+      "detail": {
+        "status": "PASS",
+        "reason_codes": [],
+        "declared_type": "jcp",
+        "title_prior": "jcp",
+        "body_prior": "jcp",
+        "markers": "juros sobre o capital proprio, jcp",
+        "message": "tipo consistente com os marcadores do corpo"
+      },
+      "reason_codes": [],
+      "fields_affected": [
+        "event_type"
+      ],
+      "message": "tipo consistente com os marcadores do corpo"
+    },
+    {
+      "tool": "check_identifier_format",
+      "args": {
+        "isin": "BRRVBRACNOR9",
+        "cnpj": "08.777.666/0001-33",
+        "ticker": "RVBR3",
+        "share_class": "ON"
+      },
+      "status": "info",
+      "detail": {
+        "status": "INFO",
+        "findings": {
+          "isin_structure_ok": true,
+          "isin_checksum_ok": false,
+          "cnpj_checksum_ok": false,
+          "ticker_pattern_ok": true,
+          "ticker_class_consistent": true
+        },
+        "message": "checagens estruturais são informativas: a base de referência é a única autoridade sobre identidade"
+      },
+      "reason_codes": [],
+      "fields_affected": [
+        "isin",
+        "cnpj",
+        "ticker"
+      ],
+      "message": "checagens estruturais são informativas: a base de referência é a única autoridade sobre identidade"
+    },
+    {
+      "tool": "check_required_fields",
+      "args": {
+        "event_type": "jcp",
+        "present": "tax_rate,isin,cnpj,ticker,com_date,currency,approval_date,event_type_label,share_class,net_per_share,gross_per_share,ex_date,issuer",
+        "absent": "payment_date"
+      },
+      "status": "pass",
+      "detail": {
+        "status": "PASS",
+        "reason_code": null,
+        "required": [
+          "issuer",
+          "isin",
+          "ticker",
+          "event_type_label",
+          "currency",
+          "gross_per_share",
+          "com_date",
+          "ex_date"
+        ],
+        "missing": [],
+        "excused_absences": [
+          "payment_date"
+        ],
+        "fields_affected": [],
+        "message": "todos os campos obrigatórios do tipo vieram"
+      },
+      "reason_codes": [],
+      "fields_affected": [],
+      "message": "todos os campos obrigatórios do tipo vieram"
+    }
+  ],
+  "triage": {
+    "disposition": "review",
+    "reasons": [
+      {
+        "code": "FIELD_STATED_UNDEFINED",
+        "severity": "review",
+        "field": "payment_date",
+        "message": "'payment_date' declarado como indefinido pelo próprio emissor",
+        "layer": "extracao",
+        "error_type": "ausencia"
+      }
+    ],
+    "justification": "Identidade confirmada na base de referência, cronologia coerente, valores e tipo de evento (JCP) consistentes, e todos os campos obrigatórios foram extraídos. Porém, o campo 'payment_date' consta como indefinido pelo próprio emissor no documento, não sendo possível confirmar a data de pagamento. Registro classificado para revisão por esse motivo. Um humano precisa acompanhar a divulgação futura do emissor para obter a data de pagamento definitiva antes de liberar o registro.",
+    "weakest_level": "muito_alta",
+    "fields_for_review": [
+      "payment_date"
+    ]
+  },
+  "extra_fields": {},
+  "error": null
+}

@@ -1,0 +1,1218 @@
+{
+  "document": {
+    "file_name": "02_banco_meridional_jcp.pdf",
+    "n_pages": 1,
+    "producer": "ReportLab PDF Library - (opensource)",
+    "reader_kinds": [
+      "text_layer",
+      "ocr_deterministic",
+      "ocr_generative"
+    ],
+    "escalated": false,
+    "escalation_note": "docling:vlm: 16 célula(s) de tabela receberam a geometria medida por docling:parser; consenso de 3 leitura(s): 26 regiões, 26 com mais de um leitor"
+  },
+  "event_type": "jcp",
+  "classification": {
+    "event_type": "jcp",
+    "subtype": null,
+    "rationale": "2 modalidade(s) votaram: rule=jcp, text=jcp. Unânime.",
+    "prior": {
+      "ranked": [
+        [
+          "jcp",
+          13.8
+        ],
+        [
+          "dividendo",
+          0.4
+        ]
+      ],
+      "hits": [
+        {
+          "event_type": "jcp",
+          "marker": "juros sobre o capital proprio",
+          "weight": 3.0,
+          "definitional": true,
+          "matched_text": "juros sobre o capital proprio"
+        },
+        {
+          "event_type": "jcp",
+          "marker": "\\bjcp\\b",
+          "weight": 2.5,
+          "definitional": true,
+          "matched_text": "jcp"
+        },
+        {
+          "event_type": "jcp",
+          "marker": "lei n?[º°o]?\\s*9\\.?249",
+          "weight": 3.0,
+          "definitional": true,
+          "matched_text": "lei no 9.249"
+        },
+        {
+          "event_type": "jcp",
+          "marker": "imputad[oa]s? ao[s]? dividendo",
+          "weight": 2.5,
+          "definitional": true,
+          "matched_text": "imputado aos dividendo"
+        },
+        {
+          "event_type": "jcp",
+          "marker": "patrimonio liquido",
+          "weight": 1.5,
+          "definitional": true,
+          "matched_text": "patrimonio liquido"
+        },
+        {
+          "event_type": "jcp",
+          "marker": "art(?:igo)?\\.? ?9[º°o]?\\b",
+          "weight": 1.0,
+          "definitional": true,
+          "matched_text": "art. 9o"
+        },
+        {
+          "event_type": "jcp",
+          "marker": "retencao de imposto de renda|irrf",
+          "weight": 0.3,
+          "definitional": false,
+          "matched_text": "irrf"
+        },
+        {
+          "event_type": "dividendo",
+          "marker": "\\bdividendos?\\b",
+          "weight": 0.4,
+          "definitional": false,
+          "matched_text": "dividendos"
+        }
+      ],
+      "title_prior": "jcp",
+      "body_prior": "jcp"
+    },
+    "agrees_with_prior": true,
+    "unanimous": true
+  },
+  "fields": {
+    "tax_rate": {
+      "name": "tax_rate",
+      "value_raw": "17,5%",
+      "value": "0,175",
+      "absence_reason": null,
+      "evidence_text": "17,5%",
+      "rationale": "rótulo 'IRRF na fonte'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 62.69291,
+        "y0": 223.84370000000013,
+        "x1": 543.1226750000001,
+        "y1": 263.0937000000001,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "17,5%",
+        "bbox": {
+          "page": 1,
+          "x0": 62.69291,
+          "y0": 223.84370000000013,
+          "x1": 543.1226750000001,
+          "y1": 263.0937000000001,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [
+        {
+          "field": "tax_rate",
+          "rule": "percentual",
+          "value_from": "17,5%",
+          "value_to": "0,175",
+          "candidates": []
+        }
+      ],
+      "notes": [
+        "leituras: rule='17,5%'; text='17,5%'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='O JCP será imputado aos dividendos obrigatórios do exercício de 2026. Sobre o valor bruto incidirá 1 d    o     (i o   o  dt de janeiro de 2026, ressalvados os acionistas comprovadamente imunes ou isentos.'; docling:vlm='O JCP será imputado aos dividendos obrigatórios do exercício de 2026. Sobre o valor bruto incidirá Imposto de Renda Retido na Fonte (IRRF) à alíquota de 17,5%, conforme legislação vigente a partir de 1º de janeiro de 2026, ressalvados os acionistas comprovadamente imunes ou isentos.'"
+      ],
+      "audit": {
+        "field_class": "contextual",
+        "critical": false,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "isin": {
+      "name": "isin",
+      "value_raw": "BRBMRDACNPR7",
+      "value": "BRBMRDACNPR7",
+      "absence_reason": null,
+      "evidence_text": "BMRD4 (ISIN BRBMRDACNPR7)",
+      "rationale": "padrão estrutural de ISIN",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 483.8437,
+        "x1": 389.00091,
+        "y1": 493.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "BMRD4 (ISIN BRBMRDACNPR7)",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 483.8437,
+          "x1": 389.00091,
+          "y1": 493.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='BRBMRDACNPR7'; text='BRBMRDACNPR7'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Código de negociação BMRD4 (ISIN BRBMRDACNPR7)'; docling:vlm='Código de negociação BMRD4 (ISIN BRBMRDACNPR7)'",
+        "valor confirmado na base de referência"
+      ],
+      "audit": {
+        "field_class": "identity",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "confere",
+          "expected": null
+        }
+      }
+    },
+    "cnpj": {
+      "name": "cnpj",
+      "value_raw": "60.111.222/0001-55",
+      "value": "60.111.222/0001-55",
+      "absence_reason": null,
+      "evidence_text": "Companhia Aberta  |  CNPJ/ME nº 60.111.222/0001-55  |  NIRE 35.300.000.002",
+      "rationale": "padrão estrutural de CNPJ",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 146.69904,
+        "y0": 83.42070000000012,
+        "x1": 448.30454,
+        "y1": 91.28320000000008,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "Companhia Aberta  |  CNPJ/ME nº 60.111.222/0001-55  |  NIRE 35.300.000.002",
+        "bbox": {
+          "page": 1,
+          "x0": 146.69904,
+          "y0": 83.42070000000012,
+          "x1": 448.30454,
+          "y1": 91.28320000000008,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='60.111.222/0001-55'; text='60.111.222/0001-55'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Companhia Aberta  | CNPJ/ME n° 60.111.222/0001-55 | NIRE 35.300.000.002'; docling:vlm='Companhia Aberta | CNPJ/ME nº 60.111.222/0001-55 | NIRE 35.300.000.002'",
+        "valor confirmado na base de referência"
+      ],
+      "audit": {
+        "field_class": "identity",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "confere",
+          "expected": null
+        }
+      }
+    },
+    "ticker": {
+      "name": "ticker",
+      "value_raw": "BMRD4",
+      "value": "BMRD4",
+      "absence_reason": null,
+      "evidence_text": "BMRD4 (ISIN BRBMRDACNPR7)",
+      "rationale": "padrão estrutural de TICKER",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 483.8437,
+        "x1": 389.00091,
+        "y1": 493.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "BMRD4 (ISIN BRBMRDACNPR7)",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 483.8437,
+          "x1": 389.00091,
+          "y1": 493.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='BMRD4'; text='BMRD4'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Código de negociação BMRD4 (ISIN BRBMRDACNPR7)'; docling:vlm='Código de negociação BMRD4 (ISIN BRBMRDACNPR7)'",
+        "valor confirmado na base de referência"
+      ],
+      "audit": {
+        "field_class": "identity",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "confere",
+          "expected": null
+        }
+      }
+    },
+    "com_date": {
+      "name": "com_date",
+      "value_raw": "16/06/2026",
+      "value": "16/06/2026",
+      "absence_reason": null,
+      "evidence_text": "16/06/2026",
+      "rationale": "rótulo 'Data-base ('data com')'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 420.8437,
+        "x1": 288.48091,
+        "y1": 430.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "16/06/2026",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 420.8437,
+          "x1": 288.48091,
+          "y1": 430.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='16/06/2026'; text='16/06/2026'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Data-base (“data com”) 16/06/2026'; docling:vlm='Data-base (\"data com\") 16/06/2026'"
+      ],
+      "audit": {
+        "field_class": "financial_critical",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "currency": {
+      "name": "currency",
+      "value_raw": "BRL",
+      "value": "BRL",
+      "absence_reason": null,
+      "evidence_text": "R$ 0,1738420000",
+      "rationale": "valor grafado em R$",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 342.8437,
+        "x1": 317.94091000000003,
+        "y1": 352.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "R$ 0,1738420000",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 342.8437,
+          "x1": 317.94091000000003,
+          "y1": 352.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='BRL'; text='R$'",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Val  $ Va    00 (Nd)'; docling:vlm='Valor bruto por ação preferencial  (PN) R$ 0,1738420000'",
+        "valor não aparece dentro do trecho citado como evidência — verificar"
+      ],
+      "audit": {
+        "field_class": "contextual",
+        "critical": false,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "approval_date": {
+      "name": "approval_date",
+      "value_raw": "02 de junho de 2026",
+      "value": "02/06/2026",
+      "absence_reason": null,
+      "evidence_text": "O Banco  Meridional  do  Brasil  S.A. ('Banco')  comunica  aos  seus  acionistas  que  o  Conselho  de Administração, em reunião realizada em 02 de junho de 2026, aprovou o crédito de Juros sobre o Capital Próprio  (JCP),  com  base  no  patrimônio  líquido  apurado  nas  demonstrações  financeiras  do  exercício corrente, nos termos do art. 9º da Lei nº 9.249/95.",
+      "rationale": "padrão em prosa: 'reuniao realizada em (DATE)'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 62.69291,
+        "y0": 155.84370000000013,
+        "x1": 533.122678,
+        "y1": 210.09370000000013,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "O Banco  Meridional  do  Brasil  S.A. ('Banco')  comunica  aos  seus  acionistas  que  o  Conselho  de Administração, em reunião realizada em 02 de junho de 2026, aprovou o crédito de Juros sobre o Capital Próprio  (JCP),  com  base  no  patrimônio  líquido  apurado  nas  demonstrações  financeiras  do  exercício corrente, nos termos do art. 9º da Lei nº 9.249/95.",
+        "bbox": {
+          "page": 1,
+          "x0": 62.69291,
+          "y0": 155.84370000000013,
+          "x1": 533.122678,
+          "y1": 210.09370000000013,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [
+        {
+          "field": "approval_date",
+          "rule": "dmy_extenso",
+          "value_from": "02 de junho de 2026",
+          "value_to": "02/06/2026",
+          "candidates": []
+        }
+      ],
+      "notes": [
+        "leituras: rule='02 de junho de 2026'; text='02 de junho de 2026'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='O Banco Meridional do Brasil S.A. (\"Banco\") comunica aos seus acionistas que o Conselho de Administração, em reunião realizada em 02 de junho de 2026, aprovou o crédito de Juros sobre o Capital Próprio (JCP), com base no patrimônio líquido apurado nas demonstrações financeiras do exercício corrente, nos termos do art. 9º da Lei nº 9.249/95.'; docling:vlm='O Banco Meridional do Brasil S.A. (\"Banco\") comunica aos seus acionistas que o Conselho de Administração, em reunião realizada em 02 de junho de 2026, aprovou o crédito de Juros sobre o Capital Próprio (JCP), com base no patrimônio líquido apurado nas demonstrações financeiras do exercício corrente, nos termos do art. 9º da Lei nº 9.249/95.'"
+      ],
+      "audit": {
+        "field_class": "contextual",
+        "critical": false,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "event_type_label": {
+      "name": "event_type_label",
+      "value_raw": "Juros sobre o Capital Próprio (JCP)",
+      "value": "Juros sobre o Capital Próprio (JCP)",
+      "absence_reason": null,
+      "evidence_text": "Juros sobre o Capital Próprio (JCP)",
+      "rationale": "rótulo 'Tipo de evento'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 129.85478999999998,
+        "y0": 134.12570000000005,
+        "x1": 464.1997899999999,
+        "y1": 144.30070000000012,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "Juros sobre o Capital Próprio (JCP)",
+        "bbox": {
+          "page": 1,
+          "x0": 129.85478999999998,
+          "y0": 134.12570000000005,
+          "x1": 464.1997899999999,
+          "y1": 144.30070000000012,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='AVISO AOS ACIONISTAS — Juros sobre o Capital Próprio (JCP)'; docling:vlm='AVISO AOS ACIONISTAS - Juros sobre o Capital Próprio (JCP)'"
+      ],
+      "audit": {
+        "field_class": "default",
+        "critical": false,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "share_class": {
+      "name": "share_class",
+      "value_raw": "PN",
+      "value": "PN",
+      "absence_reason": null,
+      "evidence_text": "PN",
+      "rationale": "classe citada no texto",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 62.69291,
+        "y0": 342.8437,
+        "x1": 224.020942,
+        "y1": 367.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "PN",
+        "bbox": {
+          "page": 1,
+          "x0": 62.69291,
+          "y0": 342.8437,
+          "x1": 224.020942,
+          "y1": 367.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='PN'; text='PN'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Val  $ Va    00 (Nd)'; docling:vlm='Valor bruto por ação preferencial  (PN) R$ 0,1738420000'"
+      ],
+      "audit": {
+        "field_class": "contextual",
+        "critical": false,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "net_per_share": {
+      "name": "net_per_share",
+      "value_raw": "R$ 0,1434196500",
+      "value": "0,1434196500",
+      "absence_reason": null,
+      "evidence_text": "R$ 0,1434196500",
+      "rationale": "rótulo 'Valor líquido por ação (PN)'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 399.8437,
+        "x1": 317.94091000000003,
+        "y1": 409.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "R$ 0,1434196500",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 399.8437,
+          "x1": 317.94091000000003,
+          "y1": 409.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [
+        {
+          "field": "net_per_share",
+          "rule": "moeda_ptbr",
+          "value_from": "R$ 0,1434196500",
+          "value_to": "0,1434196500",
+          "candidates": []
+        }
+      ],
+      "notes": [
+        "leituras: rule='R$ 0,1434196500'; text='R$ 0,1434196500'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Valor líquido por ação (PN) R$ 0,1434196500'; docling:vlm='Valor líquido por ação (PN) R$ 0,1434196500'"
+      ],
+      "audit": {
+        "field_class": "financial_critical",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "payment_date": {
+      "name": "payment_date",
+      "value_raw": "14/08/2026",
+      "value": "14/08/2026",
+      "absence_reason": null,
+      "evidence_text": "14/08/2026",
+      "rationale": "rótulo 'Data de pagamento'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 462.8437,
+        "x1": 288.48091,
+        "y1": 472.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "14/08/2026",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 462.8437,
+          "x1": 288.48091,
+          "y1": 472.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='14/08/2026'; text='14/08/2026'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Data de pagamento 14/08/2026'; docling:vlm='Data de pagamento 14/08/2026'"
+      ],
+      "audit": {
+        "field_class": "financial_critical",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "gross_per_share": {
+      "name": "gross_per_share",
+      "value_raw": "R$ 0,1738420000",
+      "value": "0,1738420000",
+      "absence_reason": null,
+      "evidence_text": "R$ 0,1738420000",
+      "rationale": "rótulo 'Valor bruto por ação preferencial (PN)'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 342.8437,
+        "x1": 317.94091000000003,
+        "y1": 352.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "R$ 0,1738420000",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 342.8437,
+          "x1": 317.94091000000003,
+          "y1": 352.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [
+        {
+          "field": "gross_per_share",
+          "rule": "moeda_ptbr",
+          "value_from": "R$ 0,1738420000",
+          "value_to": "0,1738420000",
+          "candidates": []
+        }
+      ],
+      "notes": [
+        "leituras: rule='R$ 0,1738420000'; text='R$ 0,1738420000'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Val  $ Va    00 (Nd)'; docling:vlm='Valor bruto por ação preferencial  (PN) R$ 0,1738420000'"
+      ],
+      "audit": {
+        "field_class": "financial_critical",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "ex_date": {
+      "name": "ex_date",
+      "value_raw": "17/06/2026",
+      "value": "17/06/2026",
+      "absence_reason": null,
+      "evidence_text": "17/06/2026",
+      "rationale": "rótulo 'Data 'ex-JCP''",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 441.8437,
+        "x1": 288.48091,
+        "y1": 451.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "17/06/2026",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 441.8437,
+          "x1": 288.48091,
+          "y1": 451.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='17/06/2026'; text='17/06/2026'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Data “ex-JCP” 17/06/2026'; docling:vlm='Data \"ex-JCP\" 17/06/2026'"
+      ],
+      "audit": {
+        "field_class": "financial_critical",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "issuer": {
+      "name": "issuer",
+      "value_raw": "BANCO MERIDIONAL DO BRASIL S.A.",
+      "value": "BANCO MERIDIONAL DO BRASIL S.A.",
+      "absence_reason": null,
+      "evidence_text": "BANCO MERIDIONAL DO BRASIL S.A.",
+      "rationale": "razão social no cabeçalho do aviso",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 178.83080999999999,
+        "y0": 60.68970000000013,
+        "x1": 416.4448099999999,
+        "y1": 72.71470000000011,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "BANCO MERIDIONAL DO BRASIL S.A.",
+        "bbox": {
+          "page": 1,
+          "x0": 178.83080999999999,
+          "y0": 60.68970000000013,
+          "x1": 416.4448099999999,
+          "y1": 72.71470000000011,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='BANCO MERIDIONAL DO BRASIL S.A.'; text='BANCO MERIDIONAL DO BRASIL S.A.'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='BANCO MERIDIONAL DO BRASIL S.A.'; docling:vlm='BANCO MERIDIONAL DO BRASIL S.A.'",
+        "valor confirmado na base de referência"
+      ],
+      "audit": {
+        "field_class": "identity",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "confere",
+          "expected": null
+        }
+      }
+    }
+  },
+  "validations": [
+    {
+      "tool": "lookup_golden_record",
+      "args": {
+        "issuer": "BANCO MERIDIONAL DO BRASIL S.A.",
+        "cnpj": "60.111.222/0001-55",
+        "isin": "BRBMRDACNPR7",
+        "ticker": "BMRD4",
+        "share_class": "PN"
+      },
+      "status": "pass",
+      "detail": {
+        "status": "MATCH",
+        "message": "identidade confirmada na base de referência",
+        "matched_row": {
+          "emissor": "Banco Meridional do Brasil S.A.",
+          "cnpj": "60.111.222/0001-55",
+          "isin": "BRBMRDACNPR7",
+          "ticker": "BMRD4",
+          "classe": "PN",
+          "segmento_listagem": "Nível 1",
+          "status": "ativo"
+        },
+        "agreeing_keys": [
+          "isin",
+          "ticker",
+          "cnpj",
+          "issuer"
+        ],
+        "severity": "PASS"
+      },
+      "reason_codes": [],
+      "fields_affected": [
+        "issuer",
+        "cnpj",
+        "isin",
+        "ticker"
+      ],
+      "message": "identidade confirmada na base de referência"
+    },
+    {
+      "tool": "check_date_coherence",
+      "args": {
+        "approval_date": "02/06/2026",
+        "com_date": "16/06/2026",
+        "ex_date": "17/06/2026",
+        "payment_date": "14/08/2026",
+        "event_type": "jcp"
+      },
+      "status": "pass",
+      "detail": {
+        "status": "PASS",
+        "reason_code": null,
+        "violations": [],
+        "message": "cronologia coerente",
+        "dates_checked": {
+          "approval_date": "02/06/2026",
+          "com_date": "16/06/2026",
+          "ex_date": "17/06/2026",
+          "payment_date": "14/08/2026"
+        }
+      },
+      "reason_codes": [],
+      "fields_affected": [
+        "approval_date",
+        "com_date",
+        "ex_date",
+        "payment_date"
+      ],
+      "message": "cronologia coerente"
+    },
+    {
+      "tool": "check_amount_coherence",
+      "args": {
+        "gross_per_share": "0,1738420000",
+        "tax_rate": "0,175",
+        "net_per_share": "0,1434196500"
+      },
+      "status": "pass",
+      "detail": {
+        "status": "PASS",
+        "reason_code": null,
+        "gross": "0.1738420000",
+        "rate": "0.175",
+        "net_declared": "0.1434196500",
+        "net_expected": "0.1434196500000",
+        "delta": "0E-13",
+        "tolerance": "0.000001"
+      },
+      "reason_codes": [],
+      "fields_affected": [
+        "gross_per_share",
+        "net_per_share"
+      ],
+      "message": ""
+    },
+    {
+      "tool": "check_event_type_consistency",
+      "args": {
+        "declared_type": "jcp",
+        "title_prior": "jcp",
+        "body_prior": "jcp",
+        "markers": "juros sobre o capital proprio, jcp, lei no 9.249, imputado aos dividendo, patrimonio liquido, art. 9o"
+      },
+      "status": "pass",
+      "detail": {
+        "status": "PASS",
+        "reason_codes": [],
+        "declared_type": "jcp",
+        "title_prior": "jcp",
+        "body_prior": "jcp",
+        "markers": "juros sobre o capital proprio, jcp, lei no 9.249, imputado aos dividendo, patrimonio liquido, art. 9o",
+        "message": "tipo consistente com os marcadores do corpo"
+      },
+      "reason_codes": [],
+      "fields_affected": [
+        "event_type"
+      ],
+      "message": "tipo consistente com os marcadores do corpo"
+    },
+    {
+      "tool": "check_identifier_format",
+      "args": {
+        "isin": "BRBMRDACNPR7",
+        "cnpj": "60.111.222/0001-55",
+        "ticker": "BMRD4",
+        "share_class": "PN"
+      },
+      "status": "info",
+      "detail": {
+        "status": "INFO",
+        "findings": {
+          "isin_structure_ok": true,
+          "isin_checksum_ok": false,
+          "cnpj_checksum_ok": false,
+          "ticker_pattern_ok": true,
+          "ticker_class_consistent": true
+        },
+        "message": "checagens estruturais são informativas: a base de referência é a única autoridade sobre identidade"
+      },
+      "reason_codes": [],
+      "fields_affected": [
+        "isin",
+        "cnpj",
+        "ticker"
+      ],
+      "message": "checagens estruturais são informativas: a base de referência é a única autoridade sobre identidade"
+    },
+    {
+      "tool": "check_required_fields",
+      "args": {
+        "event_type": "jcp",
+        "present": "tax_rate,isin,cnpj,ticker,com_date,currency,approval_date,event_type_label,share_class,net_per_share,payment_date,gross_per_share,ex_date,issuer",
+        "absent": ""
+      },
+      "status": "pass",
+      "detail": {
+        "status": "PASS",
+        "reason_code": null,
+        "required": [
+          "issuer",
+          "isin",
+          "ticker",
+          "event_type_label",
+          "currency",
+          "gross_per_share",
+          "com_date",
+          "ex_date"
+        ],
+        "missing": [],
+        "excused_absences": [],
+        "fields_affected": [],
+        "message": "todos os campos obrigatórios do tipo vieram"
+      },
+      "reason_codes": [],
+      "fields_affected": [],
+      "message": "todos os campos obrigatórios do tipo vieram"
+    }
+  ],
+  "triage": {
+    "disposition": "auto",
+    "reasons": [],
+    "justification": "Registro de JCP do Banco Meridional totalmente validado: identidade confirmada na base de referência (golden record), cronologia coerente, valores consistentes, tipo de evento compatível com os marcadores do documento e todos os campos obrigatórios presentes. A checagem estrutural de identificador retornou apenas informativo, sem impacto, pois a base de referência é a autoridade sobre identidade. Não há pendências nem inconsistências a resolver. Disposição automática pode ser confirmada sem necessidade de revisão manual adicional.",
+    "weakest_level": "muito_alta",
+    "fields_for_review": []
+  },
+  "extra_fields": {},
+  "error": null
+}

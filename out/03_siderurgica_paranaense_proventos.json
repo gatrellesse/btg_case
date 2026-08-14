@@ -1,0 +1,1207 @@
+{
+  "document": {
+    "file_name": "03_siderurgica_paranaense_proventos.pdf",
+    "n_pages": 1,
+    "producer": "ReportLab PDF Library - (opensource)",
+    "reader_kinds": [
+      "text_layer",
+      "ocr_deterministic",
+      "ocr_generative"
+    ],
+    "escalated": false,
+    "escalation_note": "docling:vlm: 16 célula(s) sem geometria — nenhum leitor mediu uma tabela 8x2 na mesma região; não votam; 16 célula(s) sem geometria ficaram fora da votação; consenso de 3 leitura(s): 25 regiões, 25 com mais de um leitor"
+  },
+  "event_type": "jcp",
+  "classification": {
+    "event_type": "jcp",
+    "subtype": null,
+    "rationale": "2 modalidade(s) votaram: rule=jcp, text=jcp. Unânime.",
+    "prior": {
+      "ranked": [
+        [
+          "jcp",
+          10.3
+        ],
+        [
+          "dividendo",
+          1.9
+        ]
+      ],
+      "hits": [
+        {
+          "event_type": "jcp",
+          "marker": "remuneracao do capital proprio",
+          "weight": 3.0,
+          "definitional": true,
+          "matched_text": "remuneracao do capital proprio"
+        },
+        {
+          "event_type": "jcp",
+          "marker": "taxa de juros de longo prazo|\\btjlp\\b",
+          "weight": 3.0,
+          "definitional": true,
+          "matched_text": "taxa de juros de longo prazo"
+        },
+        {
+          "event_type": "jcp",
+          "marker": "imputad[oa]s? ao[s]? dividendo",
+          "weight": 2.5,
+          "definitional": true,
+          "matched_text": "imputado ao dividendo"
+        },
+        {
+          "event_type": "jcp",
+          "marker": "patrimonio liquido",
+          "weight": 1.5,
+          "definitional": true,
+          "matched_text": "patrimonio liquido"
+        },
+        {
+          "event_type": "jcp",
+          "marker": "retencao de imposto de renda|irrf",
+          "weight": 0.3,
+          "definitional": false,
+          "matched_text": "retencao de imposto de renda"
+        },
+        {
+          "event_type": "dividendo",
+          "marker": "distribuicao de dividendos",
+          "weight": 1.5,
+          "definitional": true,
+          "matched_text": "distribuicao de dividendos"
+        },
+        {
+          "event_type": "dividendo",
+          "marker": "\\bdividendos?\\b",
+          "weight": 0.4,
+          "definitional": false,
+          "matched_text": "dividendos"
+        }
+      ],
+      "title_prior": "dividendo",
+      "body_prior": "jcp"
+    },
+    "agrees_with_prior": true,
+    "unanimous": true
+  },
+  "fields": {
+    "tax_rate": {
+      "name": "tax_rate",
+      "value_raw": "17,5%",
+      "value": "0,175",
+      "absence_reason": null,
+      "evidence_text": "17,5%",
+      "rationale": "rótulo 'Imposto de Renda Retido na Fonte'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 62.69291,
+        "y0": 223.84370000000013,
+        "x1": 537.0226700000001,
+        "y1": 263.0937000000001,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "17,5%",
+        "bbox": {
+          "page": 1,
+          "x0": 62.69291,
+          "y0": 223.84370000000013,
+          "x1": 537.0226700000001,
+          "y1": 263.0937000000001,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [
+        {
+          "field": "tax_rate",
+          "rule": "percentual",
+          "value_from": "17,5%",
+          "value_to": "0,175",
+          "candidates": []
+        }
+      ],
+      "notes": [
+        "leituras: rule='17,5%'; text='17,5%'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='O valor ora deliberado será objeto de retenção de Imposto de Renda na Fonte à alíquota de 17,5% no momento do pagamento ou crédito, o que ocorrer primeiro, sendo informado abaixo o valor líquido por ação. O montante será imputado ao dividendo mínimo obrigatório do exercício.'; docling:vlm='O valor ora deliberado será objeto de retenção de Imposto de Renda na Fonte à alíquota de 17,5% no momento do pagamento ou crédito, o que ocorrer primeiro, sendo informado abaixo o valor líquido por ação. O montante será imputado ao dividendo mínimo obrigatório do exercício.'"
+      ],
+      "audit": {
+        "field_class": "contextual",
+        "critical": false,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "isin": {
+      "name": "isin",
+      "value_raw": "BRCSPRACNOR1",
+      "value": "BRCSPRACNOR1",
+      "absence_reason": null,
+      "evidence_text": "CSPR3 (ISIN BRCSPRACNOR1)",
+      "rationale": "padrão estrutural de ISIN",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 498.8437,
+        "x1": 386.79091,
+        "y1": 508.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "CSPR3 (ISIN BRCSPRACNOR1)",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 498.8437,
+          "x1": 386.79091,
+          "y1": 508.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='BRCSPRACNOR1'; text='BRCSPRACNOR1'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Código de negociação CSPR3 (ISIN BRCSPRACNOR1)'",
+        "valor confirmado na base de referência"
+      ],
+      "audit": {
+        "field_class": "identity",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "confere",
+          "expected": null
+        }
+      }
+    },
+    "cnpj": {
+      "name": "cnpj",
+      "value_raw": "76.543.210/0001-12",
+      "value": "76.543.210/0001-12",
+      "absence_reason": null,
+      "evidence_text": "Companhia Aberta  |  CNPJ/ME nº 76.543.210/0001-12  |  NIRE 41.300.000.003",
+      "rationale": "padrão estrutural de CNPJ",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 146.69904,
+        "y0": 83.42070000000012,
+        "x1": 448.30454,
+        "y1": 91.28320000000008,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer"
+      ],
+      "reading_level": "alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "Companhia Aberta  |  CNPJ/ME nº 76.543.210/0001-12  |  NIRE 41.300.000.003",
+        "bbox": {
+          "page": 1,
+          "x0": 146.69904,
+          "y0": 83.42070000000012,
+          "x1": 448.30454,
+          "y1": 91.28320000000008,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='76.543.210/0001-12'; text='76.543.210/0001-12'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Companhia Aberta  |CNPJ/ME n° 76.543.210/0001-12 |NIRE 41.300.000.003'; docling:vlm='Companhia Alberta | CNPJ/ME nº 76.543.210/0001-12 | NIRE 41.300.000.003'",
+        "valor confirmado na base de referência"
+      ],
+      "audit": {
+        "field_class": "identity",
+        "critical": true,
+        "reading": {
+          "level": "alta",
+          "corroborating_kinds": [
+            "text_layer"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "confere",
+          "expected": null
+        }
+      }
+    },
+    "ticker": {
+      "name": "ticker",
+      "value_raw": "CSPR3",
+      "value": "CSPR3",
+      "absence_reason": null,
+      "evidence_text": "CSPR3 (ISIN BRCSPRACNOR1)",
+      "rationale": "padrão estrutural de TICKER",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 498.8437,
+        "x1": 386.79091,
+        "y1": 508.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "CSPR3 (ISIN BRCSPRACNOR1)",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 498.8437,
+          "x1": 386.79091,
+          "y1": 508.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='CSPR3'; text='CSPR3'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Código de negociação CSPR3 (ISIN BRCSPRACNOR1)'",
+        "valor confirmado na base de referência"
+      ],
+      "audit": {
+        "field_class": "identity",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "confere",
+          "expected": null
+        }
+      }
+    },
+    "com_date": {
+      "name": "com_date",
+      "value_raw": "19/06/2026",
+      "value": "19/06/2026",
+      "absence_reason": null,
+      "evidence_text": "19/06/2026",
+      "rationale": "rótulo 'Data-base ('data com')'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 435.8437,
+        "x1": 288.48091,
+        "y1": 445.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "19/06/2026",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 435.8437,
+          "x1": 288.48091,
+          "y1": 445.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='19/06/2026'; text='19/06/2026'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Data-base (“data com”) 19/06/2026'"
+      ],
+      "audit": {
+        "field_class": "financial_critical",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "currency": {
+      "name": "currency",
+      "value_raw": "BRL",
+      "value": "BRL",
+      "absence_reason": null,
+      "evidence_text": "R$ 0,0921500000",
+      "rationale": "valor grafado em R$",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 357.8437,
+        "x1": 317.94091000000003,
+        "y1": 367.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "R$ 0,0921500000",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 357.8437,
+          "x1": 317.94091000000003,
+          "y1": 367.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='BRL'; text='R$'",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Valor bruto por ação ON R$ 0,0921500000'",
+        "valor não aparece dentro do trecho citado como evidência — verificar"
+      ],
+      "audit": {
+        "field_class": "contextual",
+        "critical": false,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "approval_date": {
+      "name": "approval_date",
+      "value_raw": "05 de junho de 2026",
+      "value": "05/06/2026",
+      "absence_reason": null,
+      "evidence_text": "A Companhia Siderúrgica Paranaense S.A. comunica aos seus acionistas a deliberação do Conselho de Administração, em reunião de 05 de junho de 2026, que aprovou a distribuição de proventos a título de remuneração  do  capital  próprio aos  acionistas,  calculados  sobre  as  contas  do  patrimônio  líquido  e limitados à variação pro rata die da Taxa de Juros de Longo Prazo, na forma da legislação aplicável.",
+      "rationale": "padrão em prosa: 'reuniao de (DATE)'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 62.69291,
+        "y0": 155.84370000000013,
+        "x1": 534.0526779999999,
+        "y1": 210.09370000000013,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "A Companhia Siderúrgica Paranaense S.A. comunica aos seus acionistas a deliberação do Conselho de Administração, em reunião de 05 de junho de 2026, que aprovou a distribuição de proventos a título de remuneração  do  capital  próprio aos  acionistas,  calculados  sobre  as  contas  do  patrimônio  líquido  e limitados à variação pro rata die da Taxa de Juros de Longo Prazo, na forma da legislação aplicável.",
+        "bbox": {
+          "page": 1,
+          "x0": 62.69291,
+          "y0": 155.84370000000013,
+          "x1": 534.0526779999999,
+          "y1": 210.09370000000013,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [
+        {
+          "field": "approval_date",
+          "rule": "dmy_extenso",
+          "value_from": "05 de junho de 2026",
+          "value_to": "05/06/2026",
+          "candidates": []
+        }
+      ],
+      "notes": [
+        "leituras: rule='05 de junho de 2026'; text='05 de junho de 2026'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='A Companhia Siderúrgica Paranaense S.A. comunica aos seus acionistas a deliberação do Conselho de Administração, em reunião de 05 de junho de 2026, que aprovou a distribuição de proventos a título de remuneração do capital próprio aos acionistas, calculados sobre as contas do patrimônio líquido e limitados à variação pro rata die da Taxa de Juros de Longo Prazo, na forma da legislação aplicável.'; docling:vlm='A Companhia Siderúrgica Paranaense S.A. comunica aos seus acionistas a deliberação do Conselho de Administração, em reunião de 05 de junho de 2026, que aprovou a distribuição de proventos a título de remuneração do capital próprio aos acionistas, calculados sobre as contas do patrimônio líquido e limitados à variação pro rata de da Taxa de Juros de Longo Prazo, na forma da legislação aplicável.'"
+      ],
+      "audit": {
+        "field_class": "contextual",
+        "critical": false,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "share_class": {
+      "name": "share_class",
+      "value_raw": "ON",
+      "value": "ON",
+      "absence_reason": null,
+      "evidence_text": "ON",
+      "rationale": "classe citada no texto",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 152.16279,
+        "y0": 134.12570000000005,
+        "x1": 440.45078999999987,
+        "y1": 144.30070000000012,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "ON",
+        "bbox": {
+          "page": 1,
+          "x0": 152.16279,
+          "y0": 134.12570000000005,
+          "x1": 440.45078999999987,
+          "y1": 144.30070000000012,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='ON'; text='ON'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='AVISO AOS ACIONISTAS — Distribuição de Dividendos'; docling:vlm='AVISO AOS ACIONISTAS - Distribuição de Dividendos'"
+      ],
+      "audit": {
+        "field_class": "contextual",
+        "critical": false,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "net_per_share": {
+      "name": "net_per_share",
+      "value_raw": "R$ 0,0760237500",
+      "value": "0,0760237500",
+      "absence_reason": null,
+      "evidence_text": "R$ 0,0760237500",
+      "rationale": "rótulo 'Valor líquido por ação ON'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 414.8437,
+        "x1": 317.94091000000003,
+        "y1": 424.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "R$ 0,0760237500",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 414.8437,
+          "x1": 317.94091000000003,
+          "y1": 424.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [
+        {
+          "field": "net_per_share",
+          "rule": "moeda_ptbr",
+          "value_from": "R$ 0,0760237500",
+          "value_to": "0,0760237500",
+          "candidates": []
+        }
+      ],
+      "notes": [
+        "leituras: rule='R$ 0,0760237500'; text='R$ 0,0760237500'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Valor líquido por ação ON R$ 0,0760237500'"
+      ],
+      "audit": {
+        "field_class": "financial_critical",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "payment_date": {
+      "name": "payment_date",
+      "value_raw": "11/09/2026",
+      "value": "11/09/2026",
+      "absence_reason": null,
+      "evidence_text": "11/09/2026",
+      "rationale": "rótulo 'Data de pagamento'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 477.8437,
+        "x1": 288.48091,
+        "y1": 487.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "11/09/2026",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 477.8437,
+          "x1": 288.48091,
+          "y1": 487.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='11/09/2026'; text='11/09/2026'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Data de pagamento 11/09/2026'"
+      ],
+      "audit": {
+        "field_class": "financial_critical",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "gross_per_share": {
+      "name": "gross_per_share",
+      "value_raw": "R$ 0,0921500000",
+      "value": "0,0921500000",
+      "absence_reason": null,
+      "evidence_text": "R$ 0,0921500000",
+      "rationale": "rótulo 'Valor bruto por ação ON'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 357.8437,
+        "x1": 317.94091000000003,
+        "y1": 367.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "R$ 0,0921500000",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 357.8437,
+          "x1": 317.94091000000003,
+          "y1": 367.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [
+        {
+          "field": "gross_per_share",
+          "rule": "moeda_ptbr",
+          "value_from": "R$ 0,0921500000",
+          "value_to": "0,0921500000",
+          "candidates": []
+        }
+      ],
+      "notes": [
+        "leituras: rule='R$ 0,0921500000'; text='R$ 0,0921500000'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Valor bruto por ação ON R$ 0,0921500000'"
+      ],
+      "audit": {
+        "field_class": "financial_critical",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "ex_date": {
+      "name": "ex_date",
+      "value_raw": "22/06/2026",
+      "value": "22/06/2026",
+      "absence_reason": null,
+      "evidence_text": "22/06/2026",
+      "rationale": "rótulo 'Data 'ex''",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 456.8437,
+        "x1": 288.48091,
+        "y1": 466.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "22/06/2026",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 456.8437,
+          "x1": 288.48091,
+          "y1": 466.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='22/06/2026'; text='22/06/2026'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Data “ex” 22/06/2026'"
+      ],
+      "audit": {
+        "field_class": "financial_critical",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "issuer": {
+      "name": "issuer",
+      "value_raw": "COMPANHIA SIDERÚRGICA PARANAENSE S.A.",
+      "value": "COMPANHIA SIDERÚRGICA PARANAENSE S.A.",
+      "absence_reason": null,
+      "evidence_text": "COMPANHIA SIDERÚRGICA PARANAENSE S.A.",
+      "rationale": "razão social no cabeçalho do aviso",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 148.49529,
+        "y0": 60.68970000000013,
+        "x1": 443.89429,
+        "y1": 72.71470000000011,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "COMPANHIA SIDERÚRGICA PARANAENSE S.A.",
+        "bbox": {
+          "page": 1,
+          "x0": 148.49529,
+          "y0": 60.68970000000013,
+          "x1": 443.89429,
+          "y1": 72.71470000000011,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='COMPANHIA SIDERÚRGICA PARANAENSE S.A.'; text='Companhia Siderúrgica Paranaense S.A.'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='COMPANHIA SIDERÚRGICA PARANAENSE S.A.'; docling:vlm='COMPANHIA SIDERÚRGICA PARANAENSE S.A.'",
+        "valor confirmado na base de referência"
+      ],
+      "audit": {
+        "field_class": "identity",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "confere",
+          "expected": null
+        }
+      }
+    },
+    "event_type_label": {
+      "name": "event_type_label",
+      "value_raw": "Distribuição de Dividendos",
+      "value": "Distribuição de Dividendos",
+      "absence_reason": null,
+      "evidence_text": "Distribuição de Dividendos",
+      "rationale": "localizado na varredura final sobre as três leituras",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 152.16279,
+        "y0": 134.12570000000005,
+        "x1": 440.45078999999987,
+        "y1": 144.30070000000012,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": true,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "Distribuição de Dividendos",
+        "bbox": null
+      },
+      "repairs": [],
+      "notes": [
+        "recuperado pela varredura final; presente em: text_layer, ocr_deterministic, ocr_generative",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='AVISO AOS ACIONISTAS — Distribuição de Dividendos'; docling:vlm='AVISO AOS ACIONISTAS - Distribuição de Dividendos'"
+      ],
+      "audit": {
+        "field_class": "default",
+        "critical": false,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    }
+  },
+  "validations": [
+    {
+      "tool": "lookup_golden_record",
+      "args": {
+        "issuer": "COMPANHIA SIDERÚRGICA PARANAENSE S.A.",
+        "cnpj": "76.543.210/0001-12",
+        "isin": "BRCSPRACNOR1",
+        "ticker": "CSPR3",
+        "share_class": "ON"
+      },
+      "status": "pass",
+      "detail": {
+        "status": "MATCH",
+        "message": "identidade confirmada na base de referência",
+        "matched_row": {
+          "emissor": "Companhia Siderúrgica Paranaense S.A.",
+          "cnpj": "76.543.210/0001-12",
+          "isin": "BRCSPRACNOR1",
+          "ticker": "CSPR3",
+          "classe": "ON",
+          "segmento_listagem": "Novo Mercado",
+          "status": "ativo"
+        },
+        "agreeing_keys": [
+          "isin",
+          "ticker",
+          "cnpj",
+          "issuer"
+        ],
+        "severity": "PASS"
+      },
+      "reason_codes": [],
+      "fields_affected": [
+        "issuer",
+        "cnpj",
+        "isin",
+        "ticker"
+      ],
+      "message": "identidade confirmada na base de referência"
+    },
+    {
+      "tool": "check_date_coherence",
+      "args": {
+        "approval_date": "05/06/2026",
+        "com_date": "19/06/2026",
+        "ex_date": "22/06/2026",
+        "payment_date": "11/09/2026",
+        "event_type": "jcp"
+      },
+      "status": "pass",
+      "detail": {
+        "status": "PASS",
+        "reason_code": null,
+        "violations": [],
+        "message": "cronologia coerente",
+        "dates_checked": {
+          "approval_date": "05/06/2026",
+          "com_date": "19/06/2026",
+          "ex_date": "22/06/2026",
+          "payment_date": "11/09/2026"
+        }
+      },
+      "reason_codes": [],
+      "fields_affected": [
+        "approval_date",
+        "com_date",
+        "ex_date",
+        "payment_date"
+      ],
+      "message": "cronologia coerente"
+    },
+    {
+      "tool": "check_amount_coherence",
+      "args": {
+        "gross_per_share": "0,0921500000",
+        "tax_rate": "0,175",
+        "net_per_share": "0,0760237500"
+      },
+      "status": "pass",
+      "detail": {
+        "status": "PASS",
+        "reason_code": null,
+        "gross": "0.0921500000",
+        "rate": "0.175",
+        "net_declared": "0.0760237500",
+        "net_expected": "0.0760237500000",
+        "delta": "0E-13",
+        "tolerance": "0.000001"
+      },
+      "reason_codes": [],
+      "fields_affected": [
+        "gross_per_share",
+        "net_per_share"
+      ],
+      "message": ""
+    },
+    {
+      "tool": "check_event_type_consistency",
+      "args": {
+        "declared_type": "jcp",
+        "title_prior": "dividendo",
+        "body_prior": "jcp",
+        "markers": "remuneracao do capital proprio, taxa de juros de longo prazo, imputado ao dividendo, patrimonio liquido, distribuicao de dividendos"
+      },
+      "status": "warn",
+      "detail": {
+        "status": "WARN",
+        "reason_codes": [
+          "EVENT_TYPE_TITLE_CONFLICT"
+        ],
+        "declared_type": "jcp",
+        "title_prior": "dividendo",
+        "body_prior": "jcp",
+        "markers": "remuneracao do capital proprio, taxa de juros de longo prazo, imputado ao dividendo, patrimonio liquido, distribuicao de dividendos",
+        "message": "cabeçalho e corpo do aviso indicam tipos diferentes; a substância prevalece"
+      },
+      "reason_codes": [
+        "EVENT_TYPE_TITLE_CONFLICT"
+      ],
+      "fields_affected": [
+        "event_type"
+      ],
+      "message": "cabeçalho e corpo do aviso indicam tipos diferentes; a substância prevalece"
+    },
+    {
+      "tool": "check_identifier_format",
+      "args": {
+        "isin": "BRCSPRACNOR1",
+        "cnpj": "76.543.210/0001-12",
+        "ticker": "CSPR3",
+        "share_class": "ON"
+      },
+      "status": "info",
+      "detail": {
+        "status": "INFO",
+        "findings": {
+          "isin_structure_ok": true,
+          "isin_checksum_ok": false,
+          "cnpj_checksum_ok": false,
+          "ticker_pattern_ok": true,
+          "ticker_class_consistent": true
+        },
+        "message": "checagens estruturais são informativas: a base de referência é a única autoridade sobre identidade"
+      },
+      "reason_codes": [],
+      "fields_affected": [
+        "isin",
+        "cnpj",
+        "ticker"
+      ],
+      "message": "checagens estruturais são informativas: a base de referência é a única autoridade sobre identidade"
+    },
+    {
+      "tool": "check_required_fields",
+      "args": {
+        "event_type": "jcp",
+        "present": "tax_rate,isin,cnpj,ticker,com_date,currency,approval_date,share_class,net_per_share,payment_date,gross_per_share,ex_date,issuer,event_type_label",
+        "absent": ""
+      },
+      "status": "pass",
+      "detail": {
+        "status": "PASS",
+        "reason_code": null,
+        "required": [
+          "issuer",
+          "isin",
+          "ticker",
+          "event_type_label",
+          "currency",
+          "gross_per_share",
+          "com_date",
+          "ex_date"
+        ],
+        "missing": [],
+        "excused_absences": [],
+        "fields_affected": [],
+        "message": "todos os campos obrigatórios do tipo vieram"
+      },
+      "reason_codes": [],
+      "fields_affected": [],
+      "message": "todos os campos obrigatórios do tipo vieram"
+    }
+  ],
+  "triage": {
+    "disposition": "review",
+    "reasons": [
+      {
+        "code": "EVENT_TYPE_TITLE_CONFLICT",
+        "severity": "review",
+        "field": "event_type",
+        "message": "cabeçalho e corpo do aviso indicam tipos diferentes; a substância prevalece",
+        "layer": "classificacao",
+        "error_type": "divergencia"
+      }
+    ],
+    "justification": "Identidade confirmada na base de referência, cronologia coerente, valores consistentes e todos os campos obrigatórios presentes. Porém, o cabeçalho do aviso e o corpo do texto indicam tipos de evento diferentes (EVENT_TYPE_TITLE_CONFLICT); adotou-se o tipo indicado pela substância do corpo (JCP), mas o campo event_type ficou marcado para revisão. É necessário que um humano confirme, lendo o documento original, qual classificação deve prevalecer antes de liberar o registro.",
+    "weakest_level": "alta",
+    "fields_for_review": [
+      "event_type"
+    ]
+  },
+  "extra_fields": {},
+  "error": null
+}

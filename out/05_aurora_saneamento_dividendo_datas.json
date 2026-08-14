@@ -1,0 +1,1164 @@
+{
+  "document": {
+    "file_name": "05_aurora_saneamento_dividendo_datas.pdf",
+    "n_pages": 1,
+    "producer": "ReportLab PDF Library - (opensource)",
+    "reader_kinds": [
+      "text_layer",
+      "ocr_deterministic",
+      "ocr_generative"
+    ],
+    "escalated": false,
+    "escalation_note": "docling:vlm: 14 célula(s) de tabela receberam a geometria medida por docling:parser; consenso de 3 leitura(s): 24 regiões, 24 com mais de um leitor"
+  },
+  "event_type": "dividendo",
+  "classification": {
+    "event_type": "dividendo",
+    "subtype": null,
+    "rationale": "2 modalidade(s) votaram: rule=dividendo, text=dividendo. Unânime.",
+    "prior": {
+      "ranked": [
+        [
+          "dividendo",
+          6.9
+        ]
+      ],
+      "hits": [
+        {
+          "event_type": "dividendo",
+          "marker": "dividendos? intercalar",
+          "weight": 3.0,
+          "definitional": true,
+          "matched_text": "dividendos intercalar"
+        },
+        {
+          "event_type": "dividendo",
+          "marker": "reservas? de lucros",
+          "weight": 2.0,
+          "definitional": true,
+          "matched_text": "reservas de lucros"
+        },
+        {
+          "event_type": "dividendo",
+          "marker": "distribuicao de dividendos",
+          "weight": 1.5,
+          "definitional": true,
+          "matched_text": "distribuicao de dividendos"
+        },
+        {
+          "event_type": "dividendo",
+          "marker": "\\bdividendos?\\b",
+          "weight": 0.4,
+          "definitional": false,
+          "matched_text": "dividendos"
+        }
+      ],
+      "title_prior": "dividendo",
+      "body_prior": "dividendo"
+    },
+    "agrees_with_prior": true,
+    "unanimous": true
+  },
+  "fields": {
+    "cnpj": {
+      "name": "cnpj",
+      "value_raw": "22.333.444/0001-77",
+      "value": "22.333.444/0001-77",
+      "absence_reason": null,
+      "evidence_text": "Companhia Aberta  |  CNPJ/ME nº 22.333.444/0001-77  |  NIRE 33.300.000.005",
+      "rationale": "padrão estrutural de CNPJ",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 146.69904,
+        "y0": 83.42070000000012,
+        "x1": 448.30454,
+        "y1": 91.28320000000008,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer"
+      ],
+      "reading_level": "alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "Companhia Aberta  |  CNPJ/ME nº 22.333.444/0001-77  |  NIRE 33.300.000.005",
+        "bbox": {
+          "page": 1,
+          "x0": 146.69904,
+          "y0": 83.42070000000012,
+          "x1": 448.30454,
+          "y1": 91.28320000000008,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='22.333.444/0001-77'; text='22.333.444/0001-77'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Companhia Aberta | CNPJ/ME n° 22.333.444/0001-77 | NIRE 33.300.000.005'; docling:vlm='Companhia Alberta | CNPJ/ME nº 22.333.444/0001-77 | NIRE 33.300.000.005'",
+        "valor confirmado na base de referência"
+      ],
+      "audit": {
+        "field_class": "identity",
+        "critical": true,
+        "reading": {
+          "level": "alta",
+          "corroborating_kinds": [
+            "text_layer"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "confere",
+          "expected": null
+        }
+      }
+    },
+    "isin": {
+      "name": "isin",
+      "value_raw": "BRAURSACNOR4",
+      "value": "BRAURSACNOR4",
+      "absence_reason": null,
+      "evidence_text": "AURS3 (ISIN BRAURSACNOR4)",
+      "rationale": "padrão estrutural de ISIN",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 402.8437,
+        "x1": 386.79091,
+        "y1": 412.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "AURS3 (ISIN BRAURSACNOR4)",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 402.8437,
+          "x1": 386.79091,
+          "y1": 412.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='BRAURSACNOR4'; text='BRAURSACNOR4'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Código de negociação AURS3 (ISIN BRAURSACNOR4)'; docling:vlm='Código de negociação AURS3 (ISIN BRAURSACNOR4)'",
+        "valor confirmado na base de referência"
+      ],
+      "audit": {
+        "field_class": "identity",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "confere",
+          "expected": null
+        }
+      }
+    },
+    "tax_rate": {
+      "name": "tax_rate",
+      "value_raw": null,
+      "value": null,
+      "absence_reason": "not_applicable",
+      "evidence_text": null,
+      "rationale": "Dividendos são isentos de imposto de renda, não havendo alíquota aplicável.",
+      "page": null,
+      "bbox": null,
+      "snippet_path": null,
+      "reader_kind": null,
+      "corroborating_kinds": [],
+      "reading_level": "baixa",
+      "recovered": false,
+      "grounding": {
+        "status": "not_applicable",
+        "score": 0.0,
+        "matched_text": null,
+        "bbox": null
+      },
+      "repairs": [],
+      "notes": [],
+      "audit": {
+        "field_class": "contextual",
+        "critical": false,
+        "reading": {
+          "level": "baixa",
+          "corroborating_kinds": [],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "ticker": {
+      "name": "ticker",
+      "value_raw": "AURS3",
+      "value": "AURS3",
+      "absence_reason": null,
+      "evidence_text": "AURS3 (ISIN BRAURSACNOR4)",
+      "rationale": "padrão estrutural de TICKER",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 402.8437,
+        "x1": 386.79091,
+        "y1": 412.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "AURS3 (ISIN BRAURSACNOR4)",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 402.8437,
+          "x1": 386.79091,
+          "y1": 412.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='AURS3'; text='AURS3'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Código de negociação AURS3 (ISIN BRAURSACNOR4)'; docling:vlm='Código de negociação AURS3 (ISIN BRAURSACNOR4)'",
+        "valor confirmado na base de referência"
+      ],
+      "audit": {
+        "field_class": "identity",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "confere",
+          "expected": null
+        }
+      }
+    },
+    "net_per_share": {
+      "name": "net_per_share",
+      "value_raw": null,
+      "value": null,
+      "absence_reason": "not_applicable",
+      "evidence_text": null,
+      "rationale": "Como dividendos são isentos de imposto, o valor líquido é igual ao bruto e não é discriminado separadamente no aviso.",
+      "page": null,
+      "bbox": null,
+      "snippet_path": null,
+      "reader_kind": null,
+      "corroborating_kinds": [],
+      "reading_level": "baixa",
+      "recovered": false,
+      "grounding": {
+        "status": "not_applicable",
+        "score": 0.0,
+        "matched_text": null,
+        "bbox": null
+      },
+      "repairs": [],
+      "notes": [],
+      "audit": {
+        "field_class": "financial_critical",
+        "critical": true,
+        "reading": {
+          "level": "baixa",
+          "corroborating_kinds": [],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "com_date": {
+      "name": "com_date",
+      "value_raw": "15/07/2026",
+      "value": "15/07/2026",
+      "absence_reason": null,
+      "evidence_text": "15/07/2026",
+      "rationale": "rótulo 'Data-base ('data com')'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 339.8437,
+        "x1": 288.48091,
+        "y1": 349.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": "out/snippets/05_aurora_saneamento_dividendo_datas/com_date.png",
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "15/07/2026",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 339.8437,
+          "x1": 288.48091,
+          "y1": 349.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='15/07/2026'; text='15/07/2026'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Data-base (“data com”) 15/07/2026'; docling:vlm='Data-base (\"data com\") 15/07/2026'"
+      ],
+      "audit": {
+        "field_class": "financial_critical",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": [
+            "check_date_coherence"
+          ]
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "currency": {
+      "name": "currency",
+      "value_raw": "BRL",
+      "value": "BRL",
+      "absence_reason": null,
+      "evidence_text": "R$ 0,3100000000",
+      "rationale": "valor grafado em R$",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 297.8437000000001,
+        "x1": 317.94091000000003,
+        "y1": 307.0937000000001,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "R$ 0,3100000000",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 297.8437000000001,
+          "x1": 317.94091000000003,
+          "y1": 307.0937000000001,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='BRL'; text='R$'",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Valor bruto por ação ON R$ 0,3100000000'; docling:vlm='Valor bruto por ação ON R$ 0,3100000000'",
+        "valor não aparece dentro do trecho citado como evidência — verificar"
+      ],
+      "audit": {
+        "field_class": "contextual",
+        "critical": false,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "event_type_label": {
+      "name": "event_type_label",
+      "value_raw": "Dividendo intercalar",
+      "value": "Dividendo intercalar",
+      "absence_reason": null,
+      "evidence_text": "Dividendo intercalar",
+      "rationale": "rótulo 'Tipo de evento'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 276.8437000000001,
+        "x1": 326.80091,
+        "y1": 286.0937000000001,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "Dividendo intercalar",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 276.8437000000001,
+          "x1": 326.80091,
+          "y1": 286.0937000000001,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Tipo de evento Dividendo intercalar'; docling:vlm='Tipo de evento Dividendo intercalar'"
+      ],
+      "audit": {
+        "field_class": "default",
+        "critical": false,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "share_class": {
+      "name": "share_class",
+      "value_raw": "ON",
+      "value": "ON",
+      "absence_reason": null,
+      "evidence_text": "ON",
+      "rationale": "classe citada no texto",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 121.89629,
+        "y0": 134.12570000000005,
+        "x1": 473.37928999999986,
+        "y1": 144.30070000000012,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "ON",
+        "bbox": {
+          "page": 1,
+          "x0": 121.89629,
+          "y0": 134.12570000000005,
+          "x1": 473.37928999999986,
+          "y1": 144.30070000000012,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='ON'; text='ON'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='AVISO AOS ACIONISTAS — Pagamento de Dividendos Intercalares'; docling:vlm='AVISO AOS ACIONISTAS - Pagamento de Dividendos Intercalares'"
+      ],
+      "audit": {
+        "field_class": "contextual",
+        "critical": false,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "approval_date": {
+      "name": "approval_date",
+      "value_raw": "01/06/2026",
+      "value": "01/06/2026",
+      "absence_reason": null,
+      "evidence_text": "01/06/2026",
+      "rationale": "rótulo 'Data de aprovação (RCA)'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 318.8437,
+        "x1": 288.48091,
+        "y1": 328.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": "out/snippets/05_aurora_saneamento_dividendo_datas/approval_date.png",
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "01/06/2026",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 318.8437,
+          "x1": 288.48091,
+          "y1": 328.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='01/06/2026'; text='01/06/2026'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Data de aprovação (RCA) 01/06/2026'; docling:vlm='Data de aprovação (RCA) 01/06/2026'"
+      ],
+      "audit": {
+        "field_class": "contextual",
+        "critical": false,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": [
+            "check_date_coherence"
+          ]
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "payment_date": {
+      "name": "payment_date",
+      "value_raw": "10/07/2026",
+      "value": "10/07/2026",
+      "absence_reason": null,
+      "evidence_text": "10/07/2026",
+      "rationale": "rótulo 'Data de pagamento'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 381.8437,
+        "x1": 288.48091,
+        "y1": 391.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": "out/snippets/05_aurora_saneamento_dividendo_datas/payment_date.png",
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "10/07/2026",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 381.8437,
+          "x1": 288.48091,
+          "y1": 391.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='10/07/2026'; text='10/07/2026'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Data de pagamento 10/07/2026'; docling:vlm='Data de pagamento 10/07/2026'"
+      ],
+      "audit": {
+        "field_class": "financial_critical",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": [
+            "check_date_coherence"
+          ]
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "gross_per_share": {
+      "name": "gross_per_share",
+      "value_raw": "R$ 0,3100000000",
+      "value": "0,3100000000",
+      "absence_reason": null,
+      "evidence_text": "R$ 0,3100000000",
+      "rationale": "rótulo 'Valor bruto por ação ON'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 297.8437000000001,
+        "x1": 317.94091000000003,
+        "y1": 307.0937000000001,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "R$ 0,3100000000",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 297.8437000000001,
+          "x1": 317.94091000000003,
+          "y1": 307.0937000000001,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [
+        {
+          "field": "gross_per_share",
+          "rule": "moeda_ptbr",
+          "value_from": "R$ 0,3100000000",
+          "value_to": "0,3100000000",
+          "candidates": []
+        }
+      ],
+      "notes": [
+        "leituras: rule='R$ 0,3100000000'; text='R$ 0,3100000000'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Valor bruto por ação ON R$ 0,3100000000'; docling:vlm='Valor bruto por ação ON R$ 0,3100000000'"
+      ],
+      "audit": {
+        "field_class": "financial_critical",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "ex_date": {
+      "name": "ex_date",
+      "value_raw": "16/07/2026",
+      "value": "16/07/2026",
+      "absence_reason": null,
+      "evidence_text": "16/07/2026",
+      "rationale": "rótulo 'Data 'ex-dividendos''",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 360.8437,
+        "x1": 288.48091,
+        "y1": 370.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": "out/snippets/05_aurora_saneamento_dividendo_datas/ex_date.png",
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "16/07/2026",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 360.8437,
+          "x1": 288.48091,
+          "y1": 370.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='16/07/2026'; text='16/07/2026'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Data“ex-dividendos” 16/07/2026'; docling:vlm='Data \"ex-dividendos\" 16/07/2026'"
+      ],
+      "audit": {
+        "field_class": "financial_critical",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": [
+            "check_date_coherence"
+          ]
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "issuer": {
+      "name": "issuer",
+      "value_raw": "AURORA SANEAMENTO S.A.",
+      "value": "AURORA SANEAMENTO S.A.",
+      "absence_reason": null,
+      "evidence_text": "AURORA SANEAMENTO S.A.",
+      "rationale": "razão social no cabeçalho do aviso",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 206.63781,
+        "y0": 60.68970000000013,
+        "x1": 388.63780999999983,
+        "y1": 72.71470000000011,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "AURORA SANEAMENTO S.A.",
+        "bbox": {
+          "page": 1,
+          "x0": 206.63781,
+          "y0": 60.68970000000013,
+          "x1": 388.63780999999983,
+          "y1": 72.71470000000011,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='AURORA SANEAMENTO S.A.'; text='Aurora Saneamento S.A.'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='AURORA SANEAMENTO S.A.'; docling:vlm='AURORA SANEAMENTO S.A.'",
+        "valor confirmado na base de referência"
+      ],
+      "audit": {
+        "field_class": "identity",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "confere",
+          "expected": null
+        }
+      }
+    }
+  },
+  "validations": [
+    {
+      "tool": "lookup_golden_record",
+      "args": {
+        "issuer": "AURORA SANEAMENTO S.A.",
+        "cnpj": "22.333.444/0001-77",
+        "isin": "BRAURSACNOR4",
+        "ticker": "AURS3",
+        "share_class": "ON"
+      },
+      "status": "pass",
+      "detail": {
+        "status": "MATCH",
+        "message": "identidade confirmada na base de referência",
+        "matched_row": {
+          "emissor": "Aurora Saneamento S.A.",
+          "cnpj": "22.333.444/0001-77",
+          "isin": "BRAURSACNOR4",
+          "ticker": "AURS3",
+          "classe": "ON",
+          "segmento_listagem": "Novo Mercado",
+          "status": "ativo"
+        },
+        "agreeing_keys": [
+          "isin",
+          "ticker",
+          "cnpj",
+          "issuer"
+        ],
+        "severity": "PASS"
+      },
+      "reason_codes": [],
+      "fields_affected": [
+        "issuer",
+        "cnpj",
+        "isin",
+        "ticker"
+      ],
+      "message": "identidade confirmada na base de referência"
+    },
+    {
+      "tool": "check_date_coherence",
+      "args": {
+        "approval_date": "01/06/2026",
+        "com_date": "15/07/2026",
+        "ex_date": "16/07/2026",
+        "payment_date": "10/07/2026",
+        "event_type": "dividendo"
+      },
+      "status": "fail",
+      "detail": {
+        "status": "FAIL",
+        "reason_code": "DATE_INCOHERENCE",
+        "violations": [
+          {
+            "rule": "pagamento não pode anteceder a data ex",
+            "ex_date": "16/07/2026",
+            "payment_date": "10/07/2026"
+          },
+          {
+            "rule": "pagamento não pode anteceder a data com",
+            "com_date": "15/07/2026",
+            "payment_date": "10/07/2026"
+          }
+        ],
+        "message": "cronologia impossível: pagamento não pode anteceder a data ex (ex_date=16/07/2026, payment_date=10/07/2026); pagamento não pode anteceder a data com (com_date=15/07/2026, payment_date=10/07/2026)",
+        "dates_checked": {
+          "approval_date": "01/06/2026",
+          "com_date": "15/07/2026",
+          "ex_date": "16/07/2026",
+          "payment_date": "10/07/2026"
+        }
+      },
+      "reason_codes": [
+        "DATE_INCOHERENCE"
+      ],
+      "fields_affected": [
+        "approval_date",
+        "com_date",
+        "ex_date",
+        "payment_date"
+      ],
+      "message": "cronologia impossível: pagamento não pode anteceder a data ex (ex_date=16/07/2026, payment_date=10/07/2026); pagamento não pode anteceder a data com (com_date=15/07/2026, payment_date=10/07/2026)"
+    },
+    {
+      "tool": "check_amount_coherence",
+      "args": {
+        "gross_per_share": "0,3100000000"
+      },
+      "status": "info",
+      "detail": {
+        "status": "INFO",
+        "message": "bruto ou líquido ausente; identidade não aplicável"
+      },
+      "reason_codes": [],
+      "fields_affected": [
+        "gross_per_share",
+        "net_per_share"
+      ],
+      "message": "bruto ou líquido ausente; identidade não aplicável"
+    },
+    {
+      "tool": "check_event_type_consistency",
+      "args": {
+        "declared_type": "dividendo",
+        "title_prior": "dividendo",
+        "body_prior": "dividendo",
+        "markers": "dividendos intercalar, reservas de lucros, distribuicao de dividendos"
+      },
+      "status": "pass",
+      "detail": {
+        "status": "PASS",
+        "reason_codes": [],
+        "declared_type": "dividendo",
+        "title_prior": "dividendo",
+        "body_prior": "dividendo",
+        "markers": "dividendos intercalar, reservas de lucros, distribuicao de dividendos",
+        "message": "tipo consistente com os marcadores do corpo"
+      },
+      "reason_codes": [],
+      "fields_affected": [
+        "event_type"
+      ],
+      "message": "tipo consistente com os marcadores do corpo"
+    },
+    {
+      "tool": "check_identifier_format",
+      "args": {
+        "isin": "BRAURSACNOR4",
+        "cnpj": "22.333.444/0001-77",
+        "ticker": "AURS3",
+        "share_class": "ON"
+      },
+      "status": "info",
+      "detail": {
+        "status": "INFO",
+        "findings": {
+          "isin_structure_ok": true,
+          "isin_checksum_ok": false,
+          "cnpj_checksum_ok": false,
+          "ticker_pattern_ok": true,
+          "ticker_class_consistent": true
+        },
+        "message": "checagens estruturais são informativas: a base de referência é a única autoridade sobre identidade"
+      },
+      "reason_codes": [],
+      "fields_affected": [
+        "isin",
+        "cnpj",
+        "ticker"
+      ],
+      "message": "checagens estruturais são informativas: a base de referência é a única autoridade sobre identidade"
+    },
+    {
+      "tool": "check_required_fields",
+      "args": {
+        "event_type": "dividendo",
+        "present": "cnpj,isin,ticker,com_date,currency,event_type_label,share_class,approval_date,payment_date,gross_per_share,ex_date,issuer",
+        "absent": "tax_rate,net_per_share"
+      },
+      "status": "pass",
+      "detail": {
+        "status": "PASS",
+        "reason_code": null,
+        "required": [
+          "issuer",
+          "isin",
+          "ticker",
+          "event_type_label",
+          "currency",
+          "gross_per_share",
+          "com_date",
+          "ex_date"
+        ],
+        "missing": [],
+        "excused_absences": [
+          "net_per_share",
+          "tax_rate"
+        ],
+        "fields_affected": [],
+        "message": "todos os campos obrigatórios do tipo vieram"
+      },
+      "reason_codes": [],
+      "fields_affected": [],
+      "message": "todos os campos obrigatórios do tipo vieram"
+    }
+  ],
+  "triage": {
+    "disposition": "blocked",
+    "reasons": [
+      {
+        "code": "DATE_INCOHERENCE",
+        "severity": "block",
+        "field": "approval_date",
+        "message": "cronologia impossível: pagamento não pode anteceder a data ex (ex_date=16/07/2026, payment_date=10/07/2026); pagamento não pode anteceder a data com (com_date=15/07/2026, payment_date=10/07/2026)",
+        "layer": "validacao",
+        "error_type": "incoerencia"
+      },
+      {
+        "code": "DATE_INCOHERENCE",
+        "severity": "block",
+        "field": "com_date",
+        "message": "cronologia impossível: pagamento não pode anteceder a data ex (ex_date=16/07/2026, payment_date=10/07/2026); pagamento não pode anteceder a data com (com_date=15/07/2026, payment_date=10/07/2026)",
+        "layer": "validacao",
+        "error_type": "incoerencia"
+      },
+      {
+        "code": "DATE_INCOHERENCE",
+        "severity": "block",
+        "field": "ex_date",
+        "message": "cronologia impossível: pagamento não pode anteceder a data ex (ex_date=16/07/2026, payment_date=10/07/2026); pagamento não pode anteceder a data com (com_date=15/07/2026, payment_date=10/07/2026)",
+        "layer": "validacao",
+        "error_type": "incoerencia"
+      },
+      {
+        "code": "DATE_INCOHERENCE",
+        "severity": "block",
+        "field": "payment_date",
+        "message": "cronologia impossível: pagamento não pode anteceder a data ex (ex_date=16/07/2026, payment_date=10/07/2026); pagamento não pode anteceder a data com (com_date=15/07/2026, payment_date=10/07/2026)",
+        "layer": "validacao",
+        "error_type": "incoerencia"
+      }
+    ],
+    "justification": "Identidade confirmada na base de referência e campos obrigatórios completos. Registro bloqueado por cronologia impossível: payment_date (10/07/2026) antecede ex_date (16/07/2026) e com_date (15/07/2026), o que não é aceitável para dividendo. Validação de valores é apenas informativa (bruto ou líquido ausente, sem impacto na identidade). Necessário revisão humana das datas approval_date, com_date, ex_date e payment_date, confirmando junto ao documento original ou emissor a sequência correta antes de liberar o registro.",
+    "weakest_level": "alta",
+    "fields_for_review": [
+      "approval_date",
+      "com_date",
+      "ex_date",
+      "payment_date"
+    ]
+  },
+  "extra_fields": {},
+  "error": null
+}

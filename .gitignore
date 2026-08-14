@@ -12,5 +12,8 @@ __pycache__/
 out/cache/
 
 out/*
+# JSON por documento e o relatório do operador: exemplo de saída, versionado
+!out/[0-9][0-9]_*.json
+!out/exceptions_report.pdf
 # Em reescrita — volta ao repositório depois
 docs/

@@ -1,0 +1,1105 @@
+{
+  "document": {
+    "file_name": "01_energetica_vale_tiete_dividendo.pdf",
+    "n_pages": 1,
+    "producer": "ReportLab PDF Library - (opensource)",
+    "reader_kinds": [
+      "text_layer",
+      "ocr_deterministic",
+      "ocr_generative"
+    ],
+    "escalated": false,
+    "escalation_note": "docling:vlm: 14 célula(s) de tabela receberam a geometria medida por docling:parser; consenso de 3 leitura(s): 24 regiões, 24 com mais de um leitor"
+  },
+  "event_type": "dividendo",
+  "classification": {
+    "event_type": "dividendo",
+    "subtype": null,
+    "rationale": "2 modalidade(s) votaram: rule=dividendo, text=dividendo. Unânime.",
+    "prior": {
+      "ranked": [
+        [
+          "dividendo",
+          3.4
+        ],
+        [
+          "jcp",
+          0.3
+        ]
+      ],
+      "hits": [
+        {
+          "event_type": "jcp",
+          "marker": "retencao de imposto de renda|irrf",
+          "weight": 0.3,
+          "definitional": false,
+          "matched_text": "retencao de imposto de renda"
+        },
+        {
+          "event_type": "dividendo",
+          "marker": "lucro do exercicio|resultado do exercicio",
+          "weight": 1.5,
+          "definitional": true,
+          "matched_text": "resultado do exercicio"
+        },
+        {
+          "event_type": "dividendo",
+          "marker": "distribuicao de dividendos",
+          "weight": 1.5,
+          "definitional": true,
+          "matched_text": "distribuicao de dividendos"
+        },
+        {
+          "event_type": "dividendo",
+          "marker": "\\bdividendos?\\b",
+          "weight": 0.4,
+          "definitional": false,
+          "matched_text": "dividendos"
+        }
+      ],
+      "title_prior": "dividendo",
+      "body_prior": "dividendo"
+    },
+    "agrees_with_prior": true,
+    "unanimous": true
+  },
+  "fields": {
+    "cnpj": {
+      "name": "cnpj",
+      "value_raw": "12.345.678/0001-90",
+      "value": "12.345.678/0001-90",
+      "absence_reason": null,
+      "evidence_text": "Companhia Aberta  |  CNPJ/ME nº 12.345.678/0001-90  |  NIRE 35.300.000.001",
+      "rationale": "padrão estrutural de CNPJ",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 146.69904,
+        "y0": 83.42070000000012,
+        "x1": 448.30454,
+        "y1": 91.28320000000008,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer"
+      ],
+      "reading_level": "alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "Companhia Aberta  |  CNPJ/ME nº 12.345.678/0001-90  |  NIRE 35.300.000.001",
+        "bbox": {
+          "page": 1,
+          "x0": 146.69904,
+          "y0": 83.42070000000012,
+          "x1": 448.30454,
+          "y1": 91.28320000000008,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='12.345.678/0001-90'; text='12.345.678/0001-90'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Companhia Aberta  |CNPJ/ME n° 12.345.678/0001-90 |NIRE 35.300.000.001'; docling:vlm='Companhia Alberta | CNPJ/ME nº 12.345.678/0001-90 | NIRE 35.300.000.001'",
+        "valor confirmado na base de referência"
+      ],
+      "audit": {
+        "field_class": "identity",
+        "critical": true,
+        "reading": {
+          "level": "alta",
+          "corroborating_kinds": [
+            "text_layer"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "confere",
+          "expected": null
+        }
+      }
+    },
+    "isin": {
+      "name": "isin",
+      "value_raw": "BRTIETACNOR3",
+      "value": "BRTIETACNOR3",
+      "absence_reason": null,
+      "evidence_text": "TIET3 (ISIN BRTIETACNOR3)",
+      "rationale": "padrão estrutural de ISIN",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 477.8437,
+        "x1": 374.57091,
+        "y1": 487.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "TIET3 (ISIN BRTIETACNOR3)",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 477.8437,
+          "x1": 374.57091,
+          "y1": 487.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='BRTIETACNOR3'; text='BRTIETACNOR3'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Código de negociação TIET3 (ISIN BRTIETACNOR3)'; docling:vlm='Código de negociação TIET3 (ISIN BRTIETACNOR3)'",
+        "valor confirmado na base de referência"
+      ],
+      "audit": {
+        "field_class": "identity",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "confere",
+          "expected": null
+        }
+      }
+    },
+    "tax_rate": {
+      "name": "tax_rate",
+      "value_raw": null,
+      "value": null,
+      "absence_reason": "not_applicable",
+      "evidence_text": null,
+      "rationale": "A alíquota de 10% mencionada refere-se apenas ao excedente de R$50.000,00 mensais, condição específica de tributação, não sendo uma alíquota geral aplicável a este dividendo específico; dividendos em regra são isentos de IR, tornando o campo não aplicável ao valor líquido por ação.",
+      "page": null,
+      "bbox": null,
+      "snippet_path": null,
+      "reader_kind": null,
+      "corroborating_kinds": [],
+      "reading_level": "baixa",
+      "recovered": false,
+      "grounding": {
+        "status": "not_applicable",
+        "score": 0.0,
+        "matched_text": null,
+        "bbox": null
+      },
+      "repairs": [],
+      "notes": [],
+      "audit": {
+        "field_class": "contextual",
+        "critical": false,
+        "reading": {
+          "level": "baixa",
+          "corroborating_kinds": [],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "ticker": {
+      "name": "ticker",
+      "value_raw": "TIET3",
+      "value": "TIET3",
+      "absence_reason": null,
+      "evidence_text": "TIET3 (ISIN BRTIETACNOR3)",
+      "rationale": "padrão estrutural de TICKER",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 477.8437,
+        "x1": 374.57091,
+        "y1": 487.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "TIET3 (ISIN BRTIETACNOR3)",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 477.8437,
+          "x1": 374.57091,
+          "y1": 487.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='TIET3'; text='TIET3'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Código de negociação TIET3 (ISIN BRTIETACNOR3)'; docling:vlm='Código de negociação TIET3 (ISIN BRTIETACNOR3)'",
+        "valor confirmado na base de referência"
+      ],
+      "audit": {
+        "field_class": "identity",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "confere",
+          "expected": null
+        }
+      }
+    },
+    "net_per_share": {
+      "name": "net_per_share",
+      "value_raw": null,
+      "value": null,
+      "absence_reason": "not_applicable",
+      "evidence_text": null,
+      "rationale": "Dividendos são isentos de IR exceto na condição específica mencionada, não havendo valor líquido por ação divulgado no aviso.",
+      "page": null,
+      "bbox": null,
+      "snippet_path": null,
+      "reader_kind": null,
+      "corroborating_kinds": [],
+      "reading_level": "baixa",
+      "recovered": false,
+      "grounding": {
+        "status": "not_applicable",
+        "score": 0.0,
+        "matched_text": null,
+        "bbox": null
+      },
+      "repairs": [],
+      "notes": [],
+      "audit": {
+        "field_class": "financial_critical",
+        "critical": true,
+        "reading": {
+          "level": "baixa",
+          "corroborating_kinds": [],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "com_date": {
+      "name": "com_date",
+      "value_raw": "12/06/2026",
+      "value": "12/06/2026",
+      "absence_reason": null,
+      "evidence_text": "12/06/2026",
+      "rationale": "rótulo 'Data-base ('data com')'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 414.8437,
+        "x1": 288.48091,
+        "y1": 424.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "12/06/2026",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 414.8437,
+          "x1": 288.48091,
+          "y1": 424.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='12/06/2026'; text='12/06/2026'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Data-base (“data com”) 12/06/2026'; docling:vlm='Data-base (\"data com\") 12/06/2026'"
+      ],
+      "audit": {
+        "field_class": "financial_critical",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "currency": {
+      "name": "currency",
+      "value_raw": "BRL",
+      "value": "BRL",
+      "absence_reason": null,
+      "evidence_text": "R$ 0,4275000000",
+      "rationale": "valor grafado em R$",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 357.8437,
+        "x1": 317.94091000000003,
+        "y1": 367.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "R$ 0,4275000000",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 357.8437,
+          "x1": 317.94091000000003,
+          "y1": 367.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='BRL'; text='R$'",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Valor bruto por ação ordinária R$ 0,4275000000 (ON)'; docling:vlm='Valor bruto por ação ordinária  (ON) R$ 0,4275000000'",
+        "valor não aparece dentro do trecho citado como evidência — verificar"
+      ],
+      "audit": {
+        "field_class": "contextual",
+        "critical": false,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "event_type_label": {
+      "name": "event_type_label",
+      "value_raw": "Dividendo",
+      "value": "Dividendo",
+      "absence_reason": null,
+      "evidence_text": "Dividendo",
+      "rationale": "rótulo 'Tipo de evento'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 154.30229,
+        "y0": 134.12570000000005,
+        "x1": 440.97328999999985,
+        "y1": 144.30070000000012,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "Dividendo",
+        "bbox": {
+          "page": 1,
+          "x0": 154.30229,
+          "y0": 134.12570000000005,
+          "x1": 440.97328999999985,
+          "y1": 144.30070000000012,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='AVISO AOS ACIONISTAS — Pagamento de Dividendos'; docling:vlm='AVISO AOS ACIONISTAS - Pagamento de Dividendos'"
+      ],
+      "audit": {
+        "field_class": "default",
+        "critical": false,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "share_class": {
+      "name": "share_class",
+      "value_raw": "ON",
+      "value": "ON",
+      "absence_reason": null,
+      "evidence_text": "ON",
+      "rationale": "classe citada no texto",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 154.30229,
+        "y0": 134.12570000000005,
+        "x1": 440.97328999999985,
+        "y1": 144.30070000000012,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "ON",
+        "bbox": {
+          "page": 1,
+          "x0": 154.30229,
+          "y0": 134.12570000000005,
+          "x1": 440.97328999999985,
+          "y1": 144.30070000000012,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='ON'; text='ON'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='AVISO AOS ACIONISTAS — Pagamento de Dividendos'; docling:vlm='AVISO AOS ACIONISTAS - Pagamento de Dividendos'"
+      ],
+      "audit": {
+        "field_class": "contextual",
+        "critical": false,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "approval_date": {
+      "name": "approval_date",
+      "value_raw": "28/05/2026",
+      "value": "28/05/2026",
+      "absence_reason": null,
+      "evidence_text": "28/05/2026",
+      "rationale": "rótulo 'Data de aprovação (RCA)'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 393.8437,
+        "x1": 288.48091,
+        "y1": 403.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "28/05/2026",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 393.8437,
+          "x1": 288.48091,
+          "y1": 403.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='28/05/2026'; text='28/05/2026'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Data de aprovação (RCA) 28/05/2026'; docling:vlm='Data de aprovação (RCA) 28/05/2026'"
+      ],
+      "audit": {
+        "field_class": "contextual",
+        "critical": false,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "payment_date": {
+      "name": "payment_date",
+      "value_raw": "03/07/2026",
+      "value": "03/07/2026",
+      "absence_reason": null,
+      "evidence_text": "03/07/2026",
+      "rationale": "rótulo 'Data de pagamento'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 456.8437,
+        "x1": 288.48091,
+        "y1": 466.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "03/07/2026",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 456.8437,
+          "x1": 288.48091,
+          "y1": 466.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='03/07/2026'; text='03/07/2026'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Data de pagamento 03/07/2026'; docling:vlm='Data de pagamento 03/07/2026'"
+      ],
+      "audit": {
+        "field_class": "financial_critical",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "gross_per_share": {
+      "name": "gross_per_share",
+      "value_raw": "R$ 0,4275000000",
+      "value": "0,4275000000",
+      "absence_reason": null,
+      "evidence_text": "R$ 0,4275000000",
+      "rationale": "rótulo 'Valor bruto por ação ordinária (ON)'",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 357.8437,
+        "x1": 317.94091000000003,
+        "y1": 367.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "R$ 0,4275000000",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 357.8437,
+          "x1": 317.94091000000003,
+          "y1": 367.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [
+        {
+          "field": "gross_per_share",
+          "rule": "moeda_ptbr",
+          "value_from": "R$ 0,4275000000",
+          "value_to": "0,4275000000",
+          "candidates": []
+        }
+      ],
+      "notes": [
+        "leituras: rule='R$ 0,4275000000'; text='R$ 0,4275000000'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Valor bruto por ação ordinária R$ 0,4275000000 (ON)'; docling:vlm='Valor bruto por ação ordinária  (ON) R$ 0,4275000000'"
+      ],
+      "audit": {
+        "field_class": "financial_critical",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "ex_date": {
+      "name": "ex_date",
+      "value_raw": "15/06/2026",
+      "value": "15/06/2026",
+      "absence_reason": null,
+      "evidence_text": "15/06/2026",
+      "rationale": "rótulo 'Data 'ex-dividendos''",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 238.44090999999997,
+        "y0": 435.8437,
+        "x1": 288.48091,
+        "y1": 445.0937,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "15/06/2026",
+        "bbox": {
+          "page": 1,
+          "x0": 238.44090999999997,
+          "y0": 435.8437,
+          "x1": 288.48091,
+          "y1": 445.0937,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='15/06/2026'; text='15/06/2026'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='Data “ex-dividendos” 15/06/2026'; docling:vlm='Data \"ex-dividendos\" 15/06/2026'"
+      ],
+      "audit": {
+        "field_class": "financial_critical",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "nao_aplicavel",
+          "expected": null
+        }
+      }
+    },
+    "issuer": {
+      "name": "issuer",
+      "value_raw": "ENERGÉTICA VALE DO TIETÊ S.A.",
+      "value": "ENERGÉTICA VALE DO TIETÊ S.A.",
+      "absence_reason": null,
+      "evidence_text": "ENERGÉTICA VALE DO TIETÊ S.A.",
+      "rationale": "razão social no cabeçalho do aviso",
+      "page": 1,
+      "bbox": {
+        "page": 1,
+        "x0": 189.64681000000002,
+        "y0": 60.68970000000013,
+        "x1": 399.11580999999984,
+        "y1": 72.71470000000011,
+        "page_width": 0.0,
+        "page_height": 841.8897705078125
+      },
+      "snippet_path": null,
+      "reader_kind": "text_layer",
+      "corroborating_kinds": [
+        "text_layer",
+        "ocr_deterministic",
+        "ocr_generative"
+      ],
+      "reading_level": "muito_alta",
+      "recovered": false,
+      "grounding": {
+        "status": "exact",
+        "score": 1.0,
+        "matched_text": "ENERGÉTICA VALE DO TIETÊ S.A.",
+        "bbox": {
+          "page": 1,
+          "x0": 189.64681000000002,
+          "y0": 60.68970000000013,
+          "x1": 399.11580999999984,
+          "y1": 72.71470000000011,
+          "page_width": 0.0,
+          "page_height": 841.8897705078125
+        }
+      },
+      "repairs": [],
+      "notes": [
+        "leituras: rule='ENERGÉTICA VALE DO TIETÊ S.A.'; text='Energética Vale do Tietê S.A.'",
+        "extratores independentes concordam",
+        "evidência localizada com qualidade 1.00",
+        "leituras alternativas da região: docling:ocr='ENERGÉTICA VALE DO TIETÊ S.A.'; docling:vlm='ENERGÉTICA VALE DO TIETÊ S.A.'",
+        "valor confirmado na base de referência"
+      ],
+      "audit": {
+        "field_class": "identity",
+        "critical": true,
+        "reading": {
+          "level": "muito_alta",
+          "corroborating_kinds": [
+            "text_layer",
+            "ocr_deterministic",
+            "ocr_generative"
+          ],
+          "cut_by": []
+        },
+        "golden": {
+          "status": "confere",
+          "expected": null
+        }
+      }
+    }
+  },
+  "validations": [
+    {
+      "tool": "lookup_golden_record",
+      "args": {
+        "issuer": "ENERGÉTICA VALE DO TIETÊ S.A.",
+        "cnpj": "12.345.678/0001-90",
+        "isin": "BRTIETACNOR3",
+        "ticker": "TIET3",
+        "share_class": "ON"
+      },
+      "status": "pass",
+      "detail": {
+        "status": "MATCH",
+        "message": "identidade confirmada na base de referência",
+        "matched_row": {
+          "emissor": "Energética Vale do Tietê S.A.",
+          "cnpj": "12.345.678/0001-90",
+          "isin": "BRTIETACNOR3",
+          "ticker": "TIET3",
+          "classe": "ON",
+          "segmento_listagem": "Novo Mercado",
+          "status": "ativo"
+        },
+        "agreeing_keys": [
+          "isin",
+          "ticker",
+          "cnpj",
+          "issuer"
+        ],
+        "severity": "PASS"
+      },
+      "reason_codes": [],
+      "fields_affected": [
+        "issuer",
+        "cnpj",
+        "isin",
+        "ticker"
+      ],
+      "message": "identidade confirmada na base de referência"
+    },
+    {
+      "tool": "check_date_coherence",
+      "args": {
+        "approval_date": "28/05/2026",
+        "com_date": "12/06/2026",
+        "ex_date": "15/06/2026",
+        "payment_date": "03/07/2026",
+        "event_type": "dividendo"
+      },
+      "status": "pass",
+      "detail": {
+        "status": "PASS",
+        "reason_code": null,
+        "violations": [],
+        "message": "cronologia coerente",
+        "dates_checked": {
+          "approval_date": "28/05/2026",
+          "com_date": "12/06/2026",
+          "ex_date": "15/06/2026",
+          "payment_date": "03/07/2026"
+        }
+      },
+      "reason_codes": [],
+      "fields_affected": [
+        "approval_date",
+        "com_date",
+        "ex_date",
+        "payment_date"
+      ],
+      "message": "cronologia coerente"
+    },
+    {
+      "tool": "check_amount_coherence",
+      "args": {
+        "gross_per_share": "0,4275000000"
+      },
+      "status": "info",
+      "detail": {
+        "status": "INFO",
+        "message": "bruto ou líquido ausente; identidade não aplicável"
+      },
+      "reason_codes": [],
+      "fields_affected": [
+        "gross_per_share",
+        "net_per_share"
+      ],
+      "message": "bruto ou líquido ausente; identidade não aplicável"
+    },
+    {
+      "tool": "check_event_type_consistency",
+      "args": {
+        "declared_type": "dividendo",
+        "title_prior": "dividendo",
+        "body_prior": "dividendo",
+        "markers": "resultado do exercicio, distribuicao de dividendos"
+      },
+      "status": "pass",
+      "detail": {
+        "status": "PASS",
+        "reason_codes": [],
+        "declared_type": "dividendo",
+        "title_prior": "dividendo",
+        "body_prior": "dividendo",
+        "markers": "resultado do exercicio, distribuicao de dividendos",
+        "message": "tipo consistente com os marcadores do corpo"
+      },
+      "reason_codes": [],
+      "fields_affected": [
+        "event_type"
+      ],
+      "message": "tipo consistente com os marcadores do corpo"
+    },
+    {
+      "tool": "check_identifier_format",
+      "args": {
+        "isin": "BRTIETACNOR3",
+        "cnpj": "12.345.678/0001-90",
+        "ticker": "TIET3",
+        "share_class": "ON"
+      },
+      "status": "info",
+      "detail": {
+        "status": "INFO",
+        "findings": {
+          "isin_structure_ok": true,
+          "isin_checksum_ok": false,
+          "cnpj_checksum_ok": false,
+          "ticker_pattern_ok": true,
+          "ticker_class_consistent": true
+        },
+        "message": "checagens estruturais são informativas: a base de referência é a única autoridade sobre identidade"
+      },
+      "reason_codes": [],
+      "fields_affected": [
+        "isin",
+        "cnpj",
+        "ticker"
+      ],
+      "message": "checagens estruturais são informativas: a base de referência é a única autoridade sobre identidade"
+    },
+    {
+      "tool": "check_required_fields",
+      "args": {
+        "event_type": "dividendo",
+        "present": "cnpj,isin,ticker,com_date,currency,event_type_label,share_class,approval_date,payment_date,gross_per_share,ex_date,issuer",
+        "absent": "tax_rate,net_per_share"
+      },
+      "status": "pass",
+      "detail": {
+        "status": "PASS",
+        "reason_code": null,
+        "required": [
+          "issuer",
+          "isin",
+          "ticker",
+          "event_type_label",
+          "currency",
+          "gross_per_share",
+          "com_date",
+          "ex_date"
+        ],
+        "missing": [],
+        "excused_absences": [
+          "net_per_share",
+          "tax_rate"
+        ],
+        "fields_affected": [],
+        "message": "todos os campos obrigatórios do tipo vieram"
+      },
+      "reason_codes": [],
+      "fields_affected": [],
+      "message": "todos os campos obrigatórios do tipo vieram"
+    }
+  ],
+  "triage": {
+    "disposition": "auto",
+    "reasons": [],
+    "justification": "Identidade do ativo confirmada na base de referência, cronologia coerente e tipo de evento consistente com os marcadores do documento. Todos os campos obrigatórios do tipo dividendo foram extraídos. Fica pendente a checagem de coerência de valores, pois o valor bruto ou líquido não foi informado no documento, impossibilitando essa validação. As checagens estruturais de identificador são apenas informativas, já que a base de referência é a autoridade sobre identidade. Um humano deve confirmar o valor faltante (bruto ou líquido) diretamente na fonte antes da liberação final do registro.",
+    "weakest_level": "alta",
+    "fields_for_review": []
+  },
+  "extra_fields": {},
+  "error": null
+}
