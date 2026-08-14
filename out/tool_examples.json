@@ -1,0 +1,605 @@
+[
+ {
+  "layer": "Ingestão",
+  "tool": "docling:parser",
+  "why": "PDF nativo — os três saem no mesmo formato de Block",
+  "input": {
+   "page": "01_energetica_vale_tiete_dividendo.pdf",
+   "modo": "parser"
+  },
+  "output": {
+   "blocos": 24,
+   "células": 14,
+   "exemplo": {
+    "text": "Tipo de evento",
+    "bbox": [
+     63,
+     337,
+     133,
+     346
+    ],
+    "level": "baixa",
+    "reader_kind": "text_layer",
+    "role": "table_cell",
+    "row": 0,
+    "col": 0,
+    "alternatives": []
+   }
+  },
+  "logic": "def read(self, page: pymupdf.Page, clip: pymupdf.Rect | None = None) -> ReadResult:\n    path = page.parent.name\n    if not path:\n        return ReadResult(reader_name=self.name, caps=self.caps, note=\"documento sem caminho\")\n    try:\n        result = _convert(path, self.mode)\n    except Exception as exc:  # noqa: BLE001\n        # \"falhou:\" é o prefixo que o consenso procura. Um leitor que\n        # quebrou não é um leitor que se absteve, e tratar os dois como a\n        # mesma coisa deixa o campo com um leitor só sem dizer por quê.\n        return ReadResult(reader_name=self.name, caps=self.caps,\n                          note=f\"falhou: {type(exc).__name__}: {exc}\")\n\n    page_no = page.number + 1\n    height = float(page.rect.height)\n    kind = READER_KIND[self.mode]\n\n    blocks: list[Block] = []\n    for item, _level in result.document.iterate_items():\n        prov = getattr(item, \"prov\", None)\n        if not prov or prov[0].page_no != page_no:\n            continue\n        blocks.extend(self._blocks_for(item, prov[0], page_no, height, kind))\n\n    if clip is not None:\n        blocks = [\n            b for b in blocks\n            if pymupdf.Rect(b.bbox.x0, b.bbox.y0, b.bbox.x1, b.bbox.y1).intersects(clip)\n        ]\n    for order, block in enumerate(blocks):\n\n# … mais 2 linhas"
+ },
+ {
+  "layer": "Ingestão",
+  "tool": "docling:ocr",
+  "why": "mesma página nativa, lida por pixel — os três saem no mesmo formato de Block",
+  "input": {
+   "page": "01_energetica_vale_tiete_dividendo.pdf",
+   "modo": "ocr"
+  },
+  "output": {
+   "blocos": 21,
+   "células": 13,
+   "exemplo": {
+    "text": "Tipo de evento",
+    "bbox": [
+     60,
+     334,
+     135,
+     348
+    ],
+    "level": "baixa",
+    "reader_kind": "ocr_deterministic",
+    "role": "table_cell",
+    "row": 0,
+    "col": 0,
+    "alternatives": []
+   }
+  },
+  "logic": "def read(self, page: pymupdf.Page, clip: pymupdf.Rect | None = None) -> ReadResult:\n    path = page.parent.name\n    if not path:\n        return ReadResult(reader_name=self.name, caps=self.caps, note=\"documento sem caminho\")\n    try:\n        result = _convert(path, self.mode)\n    except Exception as exc:  # noqa: BLE001\n        # \"falhou:\" é o prefixo que o consenso procura. Um leitor que\n        # quebrou não é um leitor que se absteve, e tratar os dois como a\n        # mesma coisa deixa o campo com um leitor só sem dizer por quê.\n        return ReadResult(reader_name=self.name, caps=self.caps,\n                          note=f\"falhou: {type(exc).__name__}: {exc}\")\n\n    page_no = page.number + 1\n    height = float(page.rect.height)\n    kind = READER_KIND[self.mode]\n\n    blocks: list[Block] = []\n    for item, _level in result.document.iterate_items():\n        prov = getattr(item, \"prov\", None)\n        if not prov or prov[0].page_no != page_no:\n            continue\n        blocks.extend(self._blocks_for(item, prov[0], page_no, height, kind))\n\n    if clip is not None:\n        blocks = [\n            b for b in blocks\n            if pymupdf.Rect(b.bbox.x0, b.bbox.y0, b.bbox.x1, b.bbox.y1).intersects(clip)\n        ]\n    for order, block in enumerate(blocks):\n\n# … mais 2 linhas"
+ },
+ {
+  "layer": "Ingestão",
+  "tool": "docling:vlm",
+  "why": "mesma página nativa, gerada por tokens — os três saem no mesmo formato de Block",
+  "input": {
+   "page": "01_energetica_vale_tiete_dividendo.pdf",
+   "modo": "vlm"
+  },
+  "output": {
+   "blocos": 24,
+   "células": 14,
+   "exemplo": {
+    "text": "Tipo de evento",
+    "bbox": [
+     61,
+     333,
+     539,
+     492
+    ],
+    "level": "baixa",
+    "reader_kind": "ocr_generative",
+    "role": "table_cell",
+    "row": 0,
+    "col": 0,
+    "alternatives": []
+   }
+  },
+  "logic": "def read(self, page: pymupdf.Page, clip: pymupdf.Rect | None = None) -> ReadResult:\n    path = page.parent.name\n    if not path:\n        return ReadResult(reader_name=self.name, caps=self.caps, note=\"documento sem caminho\")\n    try:\n        result = _convert(path, self.mode)\n    except Exception as exc:  # noqa: BLE001\n        # \"falhou:\" é o prefixo que o consenso procura. Um leitor que\n        # quebrou não é um leitor que se absteve, e tratar os dois como a\n        # mesma coisa deixa o campo com um leitor só sem dizer por quê.\n        return ReadResult(reader_name=self.name, caps=self.caps,\n                          note=f\"falhou: {type(exc).__name__}: {exc}\")\n\n    page_no = page.number + 1\n    height = float(page.rect.height)\n    kind = READER_KIND[self.mode]\n\n    blocks: list[Block] = []\n    for item, _level in result.document.iterate_items():\n        prov = getattr(item, \"prov\", None)\n        if not prov or prov[0].page_no != page_no:\n            continue\n        blocks.extend(self._blocks_for(item, prov[0], page_no, height, kind))\n\n    if clip is not None:\n        blocks = [\n            b for b in blocks\n            if pymupdf.Rect(b.bbox.x0, b.bbox.y0, b.bbox.x1, b.bbox.y1).intersects(clip)\n        ]\n    for order, block in enumerate(blocks):\n\n# … mais 2 linhas"
+ },
+ {
+  "layer": "Ingestão",
+  "tool": "docling:parser (scan)",
+  "why": "abstenção: sem camada de texto não há o que ler, e zero bloco é a resposta certa — não rebaixa o degrau de ninguém",
+  "input": {
+   "page": "07_telecom_norte_jcp_SCAN.pdf",
+   "modo": "parser"
+  },
+  "output": {
+   "blocos": 0,
+   "nota": null
+  },
+  "logic": "def read(self, page: pymupdf.Page, clip: pymupdf.Rect | None = None) -> ReadResult:\n    path = page.parent.name\n    if not path:\n        return ReadResult(reader_name=self.name, caps=self.caps, note=\"documento sem caminho\")\n    try:\n        result = _convert(path, self.mode)\n    except Exception as exc:  # noqa: BLE001\n        # \"falhou:\" é o prefixo que o consenso procura. Um leitor que\n        # quebrou não é um leitor que se absteve, e tratar os dois como a\n        # mesma coisa deixa o campo com um leitor só sem dizer por quê.\n        return ReadResult(reader_name=self.name, caps=self.caps,\n                          note=f\"falhou: {type(exc).__name__}: {exc}\")\n\n    page_no = page.number + 1\n    height = float(page.rect.height)\n    kind = READER_KIND[self.mode]\n\n    blocks: list[Block] = []\n    for item, _level in result.document.iterate_items():\n        prov = getattr(item, \"prov\", None)\n        if not prov or prov[0].page_no != page_no:\n            continue\n        blocks.extend(self._blocks_for(item, prov[0], page_no, height, kind))\n\n    if clip is not None:\n        blocks = [\n            b for b in blocks\n            if pymupdf.Rect(b.bbox.x0, b.bbox.y0, b.bbox.x1, b.bbox.y1).intersects(clip)\n        ]\n    for order, block in enumerate(blocks):\n\n# … mais 2 linhas"
+ },
+ {
+  "layer": "Ingestão",
+  "tool": "consensus.read_page",
+  "why": "funde região a região por sobreposição sobre a MENOR área — um motor devolve a tabela inteira, outro devolve oito células",
+  "input": {
+   "page": "01_energetica_vale_tiete_dividendo.pdf",
+   "leitores": [
+    "docling:parser",
+    "docling:ocr",
+    "docling:vlm"
+   ]
+  },
+  "output": {
+   "regiões": 24,
+   "kinds": [
+    "text_layer",
+    "ocr_deterministic",
+    "ocr_generative"
+   ],
+   "notas": [
+    "docling:vlm: 14 célula(s) de tabela receberam a geometria medida por docling:parser",
+    "consenso de 3 leitura(s): 24 regiões, 24 com mais de um leitor"
+   ],
+   "exemplo": {
+    "text": "ENERGÉTICA VALE DO TIETÊ S.A.",
+    "bbox": [
+     190,
+     61,
+     399,
+     73
+    ],
+    "level": "muito_alta",
+    "reader_kind": "text_layer",
+    "role": "title",
+    "row": null,
+    "col": null,
+    "alternatives": [
+     [
+      "docling:ocr",
+      "ENERGÉTICA VALE DO TIETÊ S.A."
+     ],
+     [
+      "docling:vlm",
+      "ENERGÉTICA VALE DO TIETÊ S.A."
+     ]
+    ]
+   }
+  },
+  "logic": "def read_page_consensus(\n    page: pymupdf.Page, readers: list[Reader]\n) -> tuple[list[Block], list[str], list[ReaderKind], dict[ReaderKind, str]]:\n    results: list[tuple[Reader, ReadResult]] = []\n    notes: list[str] = []\n    kinds: list[ReaderKind] = []\n\n    for reader in readers:\n        if not reader.available():\n            notes.append(f\"{reader.name} indisponível — não vota\")\n            continue\n        result = reader.read(page)\n        results.append((reader, result))\n        if result.blocks:\n            for block in result.blocks:\n                if block.reader_kind not in kinds:\n                    kinds.append(block.reader_kind)\n        elif result.note and result.note.startswith(\"falhou\"):\n            # falha não é abstenção: o campo vai ficar com menos leitores e o\n            # registro tem de dizer que foi por quebra, não por ausência de\n            # conteúdo — senão degradação silenciosa vira \"consenso\"\n            notes.append(f\"{reader.name} FALHOU — {result.note[8:]}\")\n        else:\n            # abstenção não é discordância: o parser devolve zero bloco num\n            # scan, e isso não pode rebaixar o degrau de nada\n            notes.append(f\"{reader.name} não leu nada nesta página — abstém-se\")\n\n    if not results:\n        return [], notes + [\"nenhum leitor disponível\"], kinds, {}\n\n\n# … mais 81 linhas"
+ },
+ {
+  "layer": "Ingestão",
+  "tool": "consensus.resolve",
+  "why": "o degrau vem de QUEM concordou: a camada de texto não compartilha modo de falha com pixel; dois leitores dos mesmos pixels erram junto e valem menos",
+  "input": {
+   "leituras da região": [
+    "docling:ocr",
+    "docling:vlm"
+   ],
+   "parser": "abstido"
+  },
+  "output": {
+   "exemplo": {
+    "text": "TELECOM NORTE PARTICIPAÇÕES S.A.",
+    "bbox": [
+     202,
+     28,
+     609,
+     58
+    ],
+    "level": "media",
+    "reader_kind": "ocr_deterministic",
+    "role": "title",
+    "row": null,
+    "col": null,
+    "alternatives": [
+     [
+      "docling:vlm",
+      "TELECOM NORTE PARTICIPAÇÔES S.A."
+     ]
+    ]
+   },
+   "por que media": "OCR e VLM concordando — dois leitores dos mesmos pixels",
+   "notas": [
+    "docling:parser não leu nada nesta página — abstém-se",
+    "docling:vlm eliminado: ISIN BRTLNRACPR2 tem 11 caracteres, ISO 6166 exige 12",
+    "consenso de 3 leitura(s): 19 regiões, 19 com mais de um leitor"
+   ]
+  },
+  "logic": "def resolve(readings: list[Reading]) -> tuple[Block, list[str]]:\n    flaws = {id(r): structural_flaws(r.block.text) for r in readings}\n    clean = [r for r in readings if not flaws[id(r)]]\n    # se todas forem reprovadas não há o que eliminar: o valor sai no degrau\n    # mais baixo em vez de sair como se ninguém tivesse notado\n    all_flawed = not clean\n    survivors = readings if all_flawed else clean\n    eliminated = [r for r in readings if r not in survivors]\n\n    notes = []\n    for r in eliminated:\n        notes.append(f\"{r.reader} eliminado: {flaws[id(r)][0]}\")\n    if all_flawed:\n        notes.append(\n            f\"nenhuma leitura passou na estrutura ({flaws[id(readings[0])][0]}) — \"\n            \"valor mantido no degrau mais baixo\"\n        )\n\n    groups: dict[str, list[Reading]] = {}\n    for reading in survivors:\n        groups.setdefault(vote_key(reading.block.text), []).append(reading)\n\n    # vence o grupo com os mecanismos mais fortes, não o mais numeroso: dois\n    # leitores de pixel concordando valem menos que a camada de texto sozinha\n    best_key = max(groups, key=lambda k: -LEVELS.index(reading_level({r.kind for r in groups[k]})))\n    winners = groups[best_key]\n    kinds = {r.kind for r in winners}\n\n    winner = min(winners, key=lambda r: MECHANISM_ERROR[r.kind]).block\n    nivel = reading_level(kinds)\n\n# … mais 22 linhas"
+ },
+ {
+  "layer": "Extração",
+  "tool": "layout.enrich",
+  "why": "agrupamento geométrico por linha: estes avisos usam tabela sem borda, então linha é geometria, não marcação",
+  "input": {
+   "blocos": 24
+  },
+  "output": {
+   "exemplo": {
+    "text": "Tipo de evento",
+    "bbox": [
+     63,
+     337,
+     133,
+     346
+    ],
+    "level": "muito_alta",
+    "reader_kind": "text_layer",
+    "role": "table_cell",
+    "row": 6,
+    "col": 0,
+    "alternatives": [
+     [
+      "docling:ocr",
+      "Tipo de evento Dividendo"
+     ],
+     [
+      "docling:vlm",
+      "Tipo de evento Dividendo"
+     ]
+    ]
+   }
+  },
+  "logic": "def enrich(blocks: list[Block]) -> list[Block]:\n    blocks = _split_fused(blocks)\n    for row_index, row in enumerate(group_rows(blocks)):\n        # A lone block on a line is prose, not a cell.\n        if len(row) < 2:\n            continue\n        for col_index, block in enumerate(row):\n            block.role = \"table_cell\"\n            block.row = row_index\n            block.col = col_index\n    return blocks"
+ },
+ {
+  "layer": "Classificação",
+  "tool": "markers.pre_classify",
+  "why": "opinião determinística antes do modelo — prior fraco é resultado válido, não erro",
+  "input": {
+   "text": "ENERGÉTICA VALE DO TIETÊ S.A.\nCompanhia Aberta  |  CNPJ/ME nº 12.345.678/0001-90  |  NIRE 35.300.000.001\nAVISO AOS ACION…"
+  },
+  "output": {
+   "ranked": [
+    [
+     "dividendo",
+     3.4
+    ],
+    [
+     "jcp",
+     0.3
+    ]
+   ],
+   "hits": [
+    {
+     "event_type": "jcp",
+     "marker": "retencao de imposto de renda|irrf",
+     "weight": 0.3,
+     "definitional": false,
+     "matched_text": "retencao de imposto de renda"
+    },
+    {
+     "event_type": "dividendo",
+     "marker": "lucro do exercicio|resultado do exercicio",
+     "weight": 1.5,
+     "definitional": true,
+     "matched_text": "resultado do exercicio"
+    },
+    {
+     "event_type": "dividendo",
+     "marker": "distribuicao de dividendos",
+     "weight": 1.5,
+     "definitional": true,
+     "matched_text": "distribuicao de dividendos"
+    },
+    "… mais 1"
+   ],
+   "title_prior": "dividendo",
+   "body_prior": "dividendo"
+  },
+  "logic": "def pre_classify(text: str, config_dir: str | None = None) -> ClassificationPrior:\n    config = load_config(\"event_types\", config_dir)\n    title, body = split_title_body(text)\n\n    whole_scores, hits = _score_text(text, config)\n    title_scores, _ = _score_text(title, config)\n    body_scores, _ = _score_text(body, config)\n\n    ranked = sorted(whole_scores.items(), key=lambda kv: kv[1], reverse=True)\n    return ClassificationPrior(\n        ranked=[(t, round(s, 2)) for t, s in ranked],\n        hits=hits,\n        title_prior=max(title_scores, key=title_scores.get) if title_scores else None,\n        body_prior=max(body_scores, key=body_scores.get) if body_scores else None,\n    )"
+ },
+ {
+  "layer": "Extração",
+  "tool": "identifiers.find_identifiers",
+  "why": "camada 1 varre por estrutura (ISO 6166, ticker B3, CNPJ) sem depender de rótulo; camada 2 usa âncora como reforço",
+  "input": {
+   "text": "ENERGÉTICA VALE DO TIETÊ S.A.\nCompanhia Aberta  |  CNPJ/ME nº 12.345.678/0001-90  |  NIRE 35.300.000.001\nAVISO AOS ACION…"
+  },
+  "output": {
+   "isin": [
+    {
+     "value": "BRTIETACNOR3",
+     "anchored": true,
+     "context": ""
+    }
+   ],
+   "ticker": [
+    {
+     "value": "TIET3",
+     "anchored": false,
+     "context": ""
+    }
+   ],
+   "cnpj": [
+    {
+     "value": "12.345.678/0001-90",
+     "anchored": true,
+     "context": ""
+    }
+   ]
+  },
+  "logic": "def find_identifiers(text: str, config_dir: str | None = None) -> IdentifierCandidates:\n    anchors = load_config(\"anchors\", config_dir)\n    cleaned = _clean_for_ids(text)\n    normalized = normalize(text)\n    out = IdentifierCandidates()\n\n    for match in ISIN_ANCHORED.finditer(cleaned):\n        out.isin.append(Candidate(value=match.group(1), anchored=True))\n    seen = {c.value for c in out.isin}\n    for match in ISIN_STRUCTURAL.finditer(cleaned):\n        if match.group(1) not in seen:\n            out.isin.append(Candidate(value=match.group(1)))\n\n    # Layer 2 — label anchors. Best-effort: a hit raises confidence, an absence\n    # is not a failure, because layer 1 already swept the whole page.\n    ticker_anchor_present = any(\n        anchor in normalized for anchor in (anchors.get(\"ticker\") or [])\n    )\n    for match in TICKER_STRUCTURAL.finditer(cleaned):\n        value = match.group(1)\n        if value[:4] in TICKER_STOPWORDS:\n            continue\n        out.ticker.append(Candidate(value=value, anchored=ticker_anchor_present))\n\n    for match in CNPJ_STRUCTURAL.finditer(cleaned):\n        out.cnpj.append(Candidate(value=_format_cnpj(match.group(1)), anchored=True))\n\n    return out"
+ },
+ {
+  "layer": "Extração",
+  "tool": "provenance.locate",
+  "why": "o valor volta para a região da página de onde foi lido — sem isto o campo não é auditável",
+  "input": {
+   "evidence": "R$ 0,4275000000"
+  },
+  "output": {
+   "qualidade": 1.0,
+   "bloco": {
+    "text": "R$ 0,4275000000",
+    "bbox": [
+     238,
+     358,
+     318,
+     367
+    ],
+    "level": "muito_alta",
+    "reader_kind": "text_layer",
+    "role": "table_cell",
+    "row": 7,
+    "col": 1,
+    "alternatives": [
+     [
+      "docling:ocr",
+      "Valor bruto por ação ordinária R$ 0,4275"
+     ],
+     [
+      "docling:vlm",
+      "Valor bruto por ação ordinária  (ON) R$ "
+     ]
+    ]
+   }
+  },
+  "logic": "def locate(\n    evidence: str, blocks: list[Block], value: str | None = None\n) -> tuple[Block | None, float]:\n    if not evidence or not evidence.strip():\n        return None, 0.0\n\n    target, squashed = normalize(evidence), _squash(evidence)\n    if not squashed:\n        return None, 0.0\n    wanted = _squash(value) if value else \"\"\n\n    best: tuple[Block | None, float] = (None, 0.0)\n    for block in blocks:\n        block_norm = normalize(block.text)\n        if target and target in block_norm:\n            return block, 1.0\n        block_squashed = _squash(block.text)\n        if squashed and block_squashed and squashed in block_squashed:\n            if 0.85 > best[1]:\n                best = (block, 0.85)\n        elif block_squashed and squashed and block_squashed in squashed:\n            # The value straddles several OCR lines; a partial anchor is still\n            # a real anchor.\n            score = 0.6 * (len(block_squashed) / len(squashed))\n            if wanted and wanted in block_squashed:\n                score = max(score, _HOLDS_VALUE)\n            if score > best[1]:\n                best = (block, score)\n    return best"
+ },
+ {
+  "layer": "Validação",
+  "tool": "lookup_golden_record",
+  "why": "emissor conhecido: identidade confirmada contra a base de referência",
+  "input": {
+   "issuer": "Energética Vale do Tietê S.A.",
+   "isin": "BRTIETACNOR3"
+  },
+  "output": {
+   "status": "MATCH",
+   "message": "identidade confirmada na base de referência",
+   "matched_row": {
+    "emissor": "Energética Vale do Tietê S.A.",
+    "cnpj": "12.345.678/0001-90",
+    "isin": "BRTIETACNOR3",
+    "ticker": "TIET3",
+    "classe": "ON",
+    "segmento_listagem": "Novo Mercado",
+    "status": "ativo"
+   },
+   "agreeing_keys": [
+    "isin",
+    "issuer"
+   ],
+   "severity": "PASS"
+  },
+  "logic": "def _lookup(\n    self,\n    issuer: str | None = None,\n    cnpj: str | None = None,\n    isin: str | None = None,\n    ticker: str | None = None,\n    share_class: str | None = None,\n) -> dict:\n    keys = {\"isin\": isin, \"ticker\": ticker, \"cnpj\": cnpj, \"issuer\": issuer}\n    matches: dict[str, int] = {}\n    for key, value in keys.items():\n        if not value:\n            continue\n        for index, row in enumerate(self.golden):\n            if key == \"issuer\":\n                if normalize(row[\"emissor\"]) == normalize(value):\n                    matches[key] = index\n                    break\n            elif normalize(row[_column(key)]) == normalize(value):\n                matches[key] = index\n                break\n\n    if not matches:\n        return {\n            \"status\": \"NOT_FOUND\",\n            \"reason_code\": ReasonCode.ISSUER_NOT_IN_GOLDEN.value,\n            \"message\": \"nenhum identificador do aviso consta na base de referência\",\n            \"keys_tried\": {k: v for k, v in keys.items() if v},\n        }\n\n\n# … mais 61 linhas"
+ },
+ {
+  "layer": "Validação",
+  "tool": "lookup_golden_record (ausente)",
+  "why": "ler certo e não existir no registro são coisas diferentes — o doc 08 foi lido corretamente e o emissor não está na base",
+  "input": {
+   "issuer": "Construtora Horizonte S.A.",
+   "isin": "BRCNHZACNOR5"
+  },
+  "output": {
+   "status": "NOT_FOUND",
+   "reason_code": "ISSUER_NOT_IN_GOLDEN",
+   "message": "nenhum identificador do aviso consta na base de referência",
+   "keys_tried": {
+    "isin": "BRCNHZACNOR5",
+    "issuer": "Construtora Horizonte S.A."
+   },
+   "severity": "INFO"
+  },
+  "logic": "def _lookup(\n    self,\n    issuer: str | None = None,\n    cnpj: str | None = None,\n    isin: str | None = None,\n    ticker: str | None = None,\n    share_class: str | None = None,\n) -> dict:\n    keys = {\"isin\": isin, \"ticker\": ticker, \"cnpj\": cnpj, \"issuer\": issuer}\n    matches: dict[str, int] = {}\n    for key, value in keys.items():\n        if not value:\n            continue\n        for index, row in enumerate(self.golden):\n            if key == \"issuer\":\n                if normalize(row[\"emissor\"]) == normalize(value):\n                    matches[key] = index\n                    break\n            elif normalize(row[_column(key)]) == normalize(value):\n                matches[key] = index\n                break\n\n    if not matches:\n        return {\n            \"status\": \"NOT_FOUND\",\n            \"reason_code\": ReasonCode.ISSUER_NOT_IN_GOLDEN.value,\n            \"message\": \"nenhum identificador do aviso consta na base de referência\",\n            \"keys_tried\": {k: v for k, v in keys.items() if v},\n        }\n\n\n# … mais 61 linhas"
+ },
+ {
+  "layer": "Validação",
+  "tool": "check_date_coherence",
+  "why": "cronologia que qualquer evento respeita: direito fixa na data com, a ação negocia ex no pregão seguinte, ninguém recebe antes",
+  "input": {
+   "approval_date": "28/05/2026",
+   "com_date": "12/06/2026",
+   "ex_date": "15/06/2026",
+   "payment_date": "03/07/2026",
+   "event_type": "dividendo"
+  },
+  "output": {
+   "status": "PASS",
+   "reason_code": null,
+   "violations": [],
+   "message": "cronologia coerente",
+   "dates_checked": {
+    "approval_date": "28/05/2026",
+    "com_date": "12/06/2026",
+    "ex_date": "15/06/2026",
+    "payment_date": "03/07/2026"
+   }
+  },
+  "logic": "def check_date_coherence(\n    self,\n    approval_date: str | None = None,\n    com_date: str | None = None,\n    ex_date: str | None = None,\n    payment_date: str | None = None,\n    event_type: str | None = None,\n) -> dict:\n    parsed = {\n        \"approval_date\": _as_date(approval_date),\n        \"com_date\": _as_date(com_date),\n        \"ex_date\": _as_date(ex_date),\n        \"payment_date\": _as_date(payment_date),\n    }\n    violations: list[dict] = []\n\n    def compare(earlier: str, later: str, strict: bool, rule: str) -> None:\n        a, b = parsed[earlier], parsed[later]\n        if a is None or b is None:\n            return\n        ok = a < b if strict else a <= b\n        if not ok:\n            violations.append(\n                {\"rule\": rule, earlier: format_date(a), later: format_date(b)}\n            )\n\n    compare(\"approval_date\", \"com_date\", False, \"aprovação deve preceder ou igualar a data com\")\n    compare(\"com_date\", \"ex_date\", True, \"data ex deve ser posterior à data com\")\n    compare(\"ex_date\", \"payment_date\", False, \"pagamento não pode anteceder a data ex\")\n    compare(\"com_date\", \"payment_date\", False, \"pagamento não pode anteceder a data com\")\n\n# … mais 30 linhas"
+ },
+ {
+  "layer": "Validação",
+  "tool": "check_date_coherence (violação)",
+  "why": "o caso que bloqueia o doc 05: pagamento antes da data com",
+  "input": {
+   "approval_date": "01/06/2026",
+   "com_date": "15/07/2026",
+   "ex_date": "16/07/2026",
+   "payment_date": "10/07/2026",
+   "event_type": "dividendo"
+  },
+  "output": {
+   "status": "FAIL",
+   "reason_code": "DATE_INCOHERENCE",
+   "violations": [
+    {
+     "rule": "pagamento não pode anteceder a data ex",
+     "ex_date": "16/07/2026",
+     "payment_date": "10/07/2026"
+    },
+    {
+     "rule": "pagamento não pode anteceder a data com",
+     "com_date": "15/07/2026",
+     "payment_date": "10/07/2026"
+    }
+   ],
+   "message": "cronologia impossível: pagamento não pode anteceder a data ex (ex_date=16/07/2026, payment_date=10/07/2026); pagamento não pode anteceder a data com (com_date=15/07/2026, payment_date=10/07/2026)",
+   "dates_checked": {
+    "approval_date": "01/06/2026",
+    "com_date": "15/07/2026",
+    "ex_date": "16/07/2026",
+    "payment_date": "10/07/2026"
+   }
+  },
+  "logic": "def check_date_coherence(\n    self,\n    approval_date: str | None = None,\n    com_date: str | None = None,\n    ex_date: str | None = None,\n    payment_date: str | None = None,\n    event_type: str | None = None,\n) -> dict:\n    parsed = {\n        \"approval_date\": _as_date(approval_date),\n        \"com_date\": _as_date(com_date),\n        \"ex_date\": _as_date(ex_date),\n        \"payment_date\": _as_date(payment_date),\n    }\n    violations: list[dict] = []\n\n    def compare(earlier: str, later: str, strict: bool, rule: str) -> None:\n        a, b = parsed[earlier], parsed[later]\n        if a is None or b is None:\n            return\n        ok = a < b if strict else a <= b\n        if not ok:\n            violations.append(\n                {\"rule\": rule, earlier: format_date(a), later: format_date(b)}\n            )\n\n    compare(\"approval_date\", \"com_date\", False, \"aprovação deve preceder ou igualar a data com\")\n    compare(\"com_date\", \"ex_date\", True, \"data ex deve ser posterior à data com\")\n    compare(\"ex_date\", \"payment_date\", False, \"pagamento não pode anteceder a data ex\")\n    compare(\"com_date\", \"payment_date\", False, \"pagamento não pode anteceder a data com\")\n\n# … mais 30 linhas"
+ },
+ {
+  "layer": "Validação",
+  "tool": "check_date_coherence (legado ISO)",
+  "why": "MESMAS datas em ISO: liberal ao ler, estrito ao escrever. Registro antigo continua sendo lido e a violação continua disparando — o que sai padronizado é sempre pt-BR",
+  "input": {
+   "com_date": "2026-07-15",
+   "ex_date": "2026-07-16",
+   "payment_date": "2026-07-10",
+   "event_type": "dividendo"
+  },
+  "output": {
+   "status": "FAIL",
+   "reason_code": "DATE_INCOHERENCE",
+   "violations": [
+    {
+     "rule": "pagamento não pode anteceder a data ex",
+     "ex_date": "16/07/2026",
+     "payment_date": "10/07/2026"
+    },
+    {
+     "rule": "pagamento não pode anteceder a data com",
+     "com_date": "15/07/2026",
+     "payment_date": "10/07/2026"
+    }
+   ],
+   "message": "cronologia impossível: pagamento não pode anteceder a data ex (ex_date=16/07/2026, payment_date=10/07/2026); pagamento não pode anteceder a data com (com_date=15/07/2026, payment_date=10/07/2026)",
+   "dates_checked": {
+    "com_date": "15/07/2026",
+    "ex_date": "16/07/2026",
+    "payment_date": "10/07/2026"
+   }
+  },
+  "logic": "def check_date_coherence(\n    self,\n    approval_date: str | None = None,\n    com_date: str | None = None,\n    ex_date: str | None = None,\n    payment_date: str | None = None,\n    event_type: str | None = None,\n) -> dict:\n    parsed = {\n        \"approval_date\": _as_date(approval_date),\n        \"com_date\": _as_date(com_date),\n        \"ex_date\": _as_date(ex_date),\n        \"payment_date\": _as_date(payment_date),\n    }\n    violations: list[dict] = []\n\n    def compare(earlier: str, later: str, strict: bool, rule: str) -> None:\n        a, b = parsed[earlier], parsed[later]\n        if a is None or b is None:\n            return\n        ok = a < b if strict else a <= b\n        if not ok:\n            violations.append(\n                {\"rule\": rule, earlier: format_date(a), later: format_date(b)}\n            )\n\n    compare(\"approval_date\", \"com_date\", False, \"aprovação deve preceder ou igualar a data com\")\n    compare(\"com_date\", \"ex_date\", True, \"data ex deve ser posterior à data com\")\n    compare(\"ex_date\", \"payment_date\", False, \"pagamento não pode anteceder a data ex\")\n    compare(\"com_date\", \"payment_date\", False, \"pagamento não pode anteceder a data com\")\n\n# … mais 30 linhas"
+ },
+ {
+  "layer": "Validação",
+  "tool": "check_amount_coherence",
+  "why": "bruto × (1 − alíquota) = líquido — três campos que se confirmam entre si valem mais que três leitores concordando sobre um",
+  "input": {
+   "gross_per_share": "0,1124300000",
+   "tax_rate": "0,175",
+   "net_per_share": "0,0927547500"
+  },
+  "output": {
+   "status": "PASS",
+   "reason_code": null,
+   "gross": "0.1124300000",
+   "rate": "0.175",
+   "net_declared": "0.0927547500",
+   "net_expected": "0.0927547500000",
+   "delta": "0E-13",
+   "tolerance": "0.000001"
+  },
+  "logic": "def check_amount_coherence(\n    self,\n    gross_per_share: str | None = None,\n    tax_rate: str | None = None,\n    net_per_share: str | None = None,\n) -> dict:\n    gross, rate, net = (_as_decimal(v) for v in (gross_per_share, tax_rate, net_per_share))\n    if gross is None or net is None:\n        return {\"status\": \"INFO\", \"message\": \"bruto ou líquido ausente; identidade não aplicável\"}\n    if rate is None:\n        return {\"status\": \"INFO\", \"message\": \"alíquota ausente; identidade não verificável\"}\n\n    expected = gross * (Decimal(1) - rate)\n    delta = abs(expected - net)\n    tolerance = Decimal(str(self.thresholds.get(\"amount_tolerance\", 1e-6)))\n    ok = delta <= tolerance\n    return {\n        \"status\": \"PASS\" if ok else \"FAIL\",\n        \"reason_code\": None if ok else ReasonCode.AMOUNT_MISMATCH.value,\n        \"gross\": str(gross),\n        \"rate\": str(rate),\n        \"net_declared\": str(net),\n        \"net_expected\": str(expected),\n        \"delta\": str(delta),\n        \"tolerance\": str(tolerance),\n    }"
+ },
+ {
+  "layer": "Validação",
+  "tool": "check_event_type_consistency",
+  "why": "o doc 03 é titulado 'proventos' e é JCP na substância — o conflito vira reason code, não decisão silenciosa",
+  "input": {
+   "declared_type": "jcp",
+   "title_prior": "dividendo",
+   "body_prior": "jcp"
+  },
+  "output": {
+   "status": "WARN",
+   "reason_codes": [
+    "EVENT_TYPE_TITLE_CONFLICT"
+   ],
+   "declared_type": "jcp",
+   "title_prior": "dividendo",
+   "body_prior": "jcp",
+   "markers": null,
+   "message": "cabeçalho e corpo do aviso indicam tipos diferentes; a substância prevalece"
+  },
+  "logic": "def check_event_type_consistency(\n    self,\n    declared_type: str | None = None,\n    title_prior: str | None = None,\n    body_prior: str | None = None,\n    markers: str | None = None,\n) -> dict:\n    conflict = bool(title_prior and body_prior and title_prior != body_prior)\n    disagrees = bool(body_prior and declared_type and body_prior != declared_type)\n    codes = []\n    if conflict:\n        codes.append(ReasonCode.EVENT_TYPE_TITLE_CONFLICT.value)\n    if disagrees:\n        codes.append(ReasonCode.CLASSIFIER_DISAGREEMENT.value)\n    return {\n        \"status\": \"WARN\" if codes else \"PASS\",\n        \"reason_codes\": codes,\n        \"declared_type\": declared_type,\n        \"title_prior\": title_prior,\n        \"body_prior\": body_prior,\n        \"markers\": markers,\n        \"message\": (\n            \"cabeçalho e corpo do aviso indicam tipos diferentes; a substância prevalece\"\n            if conflict\n            else \"tipo consistente com os marcadores do corpo\"\n        ),\n    }"
+ },
+ {
+  "layer": "Validação",
+  "tool": "check_identifier_format",
+  "why": "SEMPRE INFO: os identificadores do lote são sintéticos e quase nenhum fecha o dígito verificador; vetar por checksum reprovaria a base toda",
+  "input": {
+   "isin": "BRTIETACNOR3",
+   "cnpj": "12.345.678/0001-90",
+   "ticker": "TIET3"
+  },
+  "output": {
+   "status": "INFO",
+   "findings": {
+    "isin_structure_ok": true,
+    "isin_checksum_ok": false,
+    "cnpj_checksum_ok": false,
+    "ticker_pattern_ok": true
+   },
+   "message": "checagens estruturais são informativas: a base de referência é a única autoridade sobre identidade"
+  },
+  "logic": "def check_identifier_format(\n    self,\n    isin: str | None = None,\n    cnpj: str | None = None,\n    ticker: str | None = None,\n    share_class: str | None = None,\n) -> dict:\n    findings = {\n        \"isin_structure_ok\": bool(isin and re.fullmatch(r\"[A-Z]{2}[A-Z0-9]{9}\\d\", isin)),\n        \"isin_checksum_ok\": isin_checksum_ok(isin) if isin else None,\n        \"cnpj_checksum_ok\": cnpj_checksum_ok(cnpj) if cnpj else None,\n        \"ticker_pattern_ok\": bool(ticker and re.fullmatch(r\"[A-Z]{4}\\d{1,2}\", ticker)),\n    }\n    if ticker and share_class:\n        suffix = re.sub(r\"^[A-Z]{4}\", \"\", ticker)\n        implied = TICKER_CLASS.get(suffix)\n        findings[\"ticker_class_consistent\"] = (\n            None if implied is None else implied == share_class.upper()\n        )\n    return {\n        \"status\": \"INFO\",\n        \"findings\": findings,\n        \"message\": (\n            \"checagens estruturais são informativas: a base de referência é a \"\n            \"única autoridade sobre identidade\"\n        ),\n    }"
+ },
+ {
+  "layer": "Validação",
+  "tool": "check_required_fields",
+  "why": "distingue TIPOS de ausência: adiada pelo emissor, inaplicável ao evento, ou faltando de verdade",
+  "input": {
+   "event_type": "dividendo",
+   "present": "issuer,isin,gross_per_share,com_date,ex_date",
+   "absent": "payment_date"
+  },
+  "output": {
+   "status": "FAIL",
+   "reason_code": "MISSING_REQUIRED_FIELD",
+   "required": [
+    "issuer",
+    "isin",
+    "ticker",
+    "… mais 5"
+   ],
+   "missing": [
+    "ticker",
+    "event_type_label",
+    "currency"
+   ],
+   "excused_absences": [
+    "payment_date"
+   ],
+   "fields_affected": [
+    "ticker",
+    "event_type_label",
+    "currency"
+   ],
+   "message": "campo(s) obrigatório(s) para dividendo ausente(s): ticker, event_type_label, currency"
+  },
+  "logic": "def check_required_fields(self, event_type: str, present: str, absent: str = \"\") -> dict:\n    from ..models import EventType, spec_for\n\n    try:\n        spec = spec_for(EventType(event_type))\n    except ValueError:\n        spec = spec_for(EventType.OUTRO)\n\n    present_set = {f.strip() for f in (present or \"\").split(\",\") if f.strip()}\n    excused = {f.strip() for f in (absent or \"\").split(\",\") if f.strip()}\n    missing = [f for f in spec.required if f not in present_set and f not in excused]\n    return {\n        \"status\": \"FAIL\" if missing else \"PASS\",\n        \"reason_code\": ReasonCode.MISSING_REQUIRED_FIELD.value if missing else None,\n        \"required\": spec.required,\n        \"missing\": missing,\n        \"excused_absences\": sorted(excused),\n        # Quais campos o achado atinge só se sabe depois de rodar — é o\n        # resultado, não a chamada. As outras validações declaram os campos\n        # que examinam de antemão; esta declara aqui, e sem isso o achado\n        # saía sem alvo: o doc 03 dizia \"campo obrigatório não veio\" numa\n        # tabela e, duas tabelas adiante, \"Tipo declarado no aviso ·\n        # ausente\", as duas metades do mesmo fato sem nada ligando uma à\n        # outra.\n        \"fields_affected\": missing,\n        \"message\": (\n            f\"campo(s) obrigatório(s) para {event_type} ausente(s): {', '.join(missing)}\"\n            if missing\n            else \"todos os campos obrigatórios do tipo vieram\"\n        ),\n\n# … mais 1 linhas"
+ },
+ {
+  "layer": "Reporter",
+  "tool": "provenance.crop",
+  "why": "o recorte do pixel de origem entra no relatório — o operador não precisa reabrir o PDF para conferir",
+  "input": {
+   "bbox": [
+    238,
+    358,
+    318,
+    367
+   ],
+   "pdf": "01_energetica_vale_tiete_dividendo.pdf"
+  },
+  "output": {
+   "arquivo": "out/tool_examples_snippet.png",
+   "dpi": 200
+  },
+  "logic": "def crop(pdf_path: str | Path, bbox: BBox, out_path: str | Path, dpi: int = CROP_DPI) -> str | None:\n    out_path = Path(out_path)\n    out_path.parent.mkdir(parents=True, exist_ok=True)\n    try:\n        with pymupdf.open(pdf_path) as pdf:\n            page = pdf[bbox.page - 1]\n            rect = pymupdf.Rect(\n                max(page.rect.x0, bbox.x0 - CROP_PAD),\n                max(page.rect.y0, bbox.y0 - CROP_PAD),\n                min(page.rect.x1, bbox.x1 + CROP_PAD),\n                min(page.rect.y1, bbox.y1 + CROP_PAD),\n            )\n            if rect.is_empty or rect.width < 1 or rect.height < 1:\n                return None\n            page.get_pixmap(dpi=dpi, clip=rect).save(out_path)\n        return str(out_path)\n    except Exception:\n        # A missing snippet must never cost us the record it belongs to.\n        return None"
+ }
+]

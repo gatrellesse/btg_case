@@ -1,0 +1,135 @@
+# Âncoras de rótulo — camada 2 da extração.
+#
+# São REFORÇO, nunca requisito. A camada 1 (estrutura: ISO 6166, convenção de
+# ticker B3, formato de CNPJ) varre o documento inteiro sem depender de rótulo.
+# Uma âncora que casa eleva a confiança do campo; nenhuma âncora casando não é
+# falha. A ordem inversa amarraria a extração ao vocabulário de quem escreveu
+# a amostra.
+#
+# Sem acento e em minúsculas: o texto é normalizado antes do casamento.
+# O casamento é por substring, e ganha a âncora MAIS LONGA — sem isso
+# "valor bruto por acao" e "valor liquido por acao" colidiriam em "valor".
+
+identifiers:
+  ticker:
+    - codigo de negociacao
+    - codigo b3
+    - codigo do papel
+    - ticker
+    - negociadas sob o codigo
+  isin:
+    - isin
+    - codigo isin
+  cnpj:
+    - cnpj
+    - cnpj/me
+    - cnpj/mf
+
+# Rótulo → campo do registro. Usado pelo extrator determinístico (modo
+# --offline) e como reforço de confiança quando o LLM extrai o mesmo campo.
+fields:
+  event_type_label:
+    - tipo de evento
+    - natureza do provento
+    - especie do provento
+    - natureza do provento (conforme corpo do aviso)
+
+  gross_per_share:
+    - valor bruto por acao ordinaria
+    - valor bruto por acao preferencial
+    - valor bruto por acao on
+    - valor bruto por acao pn
+    - valor bruto por acao
+    - valor bruto
+    - provento bruto por acao
+
+  net_per_share:
+    - valor liquido por acao ordinaria
+    - valor liquido por acao preferencial
+    - valor liquido por acao on
+    - valor liquido por acao pn
+    - valor liquido por acao
+    - valor liquido
+
+  tax_rate:
+    - imposto de renda retido na fonte
+    - irrf na fonte
+    - irrf
+    - aliquota de irrf
+
+  ratio:
+    - proporcao
+    - fator de grupamento
+    - fator de desdobramento
+
+  cost_basis:
+    - custo atribuido (base fiscal)
+    - custo unitario atribuido
+    - custo atribuido
+
+  approval_date:
+    - data de aprovacao (rca)
+    - data de aprovacao
+    - data da rca
+    - data da assembleia
+
+  com_date:
+    - data-base do grupamento
+    - data-base do desdobramento
+    - data-base ("data com")
+    - data-base (data com)
+    - data-base
+    - data base
+    - data com
+    - ultimo dia com
+
+  ex_date:
+    - data "ex-dividendos"
+    - data (ex-dividendos)
+    - data ex-dividendos
+    - data ex-bonificacao
+    - data ex-jcp
+    - data "ex"
+    - data ex
+
+  payment_date:
+    - data de pagamento
+    - data do pagamento
+    - data do credito
+
+  trading_start:
+    - inicio da negociacao grupada
+    - inicio da negociacao desdobrada
+    - inicio da negociacao
+
+  credit_date:
+    - credito das acoes bonificadas
+    - credito aos acionistas
+    - credito das acoes
+
+  fraction_period:
+    - periodo de ajuste de fracoes
+    - periodo para ajuste de fracoes
+    - tratamento de fracoes
+
+# Padrões em prosa: nem todo aviso põe a data de aprovação na tabela.
+# Genéricos por construção — ancoram no ato societário (RCA/AGE), não no
+# fraseado de nenhum emissor.
+prose:
+  approval_date:
+    - "reuniao realizada em (DATE)"
+    - "reuniao de (DATE)"
+    - "assembleia geral extraordinaria(?: de| realizada em) (DATE)"
+    - "assembleia geral extraordinaria de (DATE)"
+  com_date:
+    - "ao final do dia (DATE)"
+    - "final do pregao de (DATE)"
+    - "posicao acionaria final do dia (DATE)"
+    - "inscritos nos registros da companhia ao final do dia (DATE)"
+  # Sem um padrão genérico de "a partir de": ele casaria com qualquer data do
+  # aviso e acertaria por sorte. Onde a data ex não é rotulada, ela é DERIVADA
+  # do início de negociação pela regra do tipo de evento (ver repair.derive).
+  ex_date:
+    - "negociadas \"?ex[^\"]{0,20}\"? a partir de (DATE)"
+    - "negociando-se as acoes \"?ex\"? a partir de (DATE)"
+    - "passarao a ser negociadas \"?ex[^\"]{0,20}\"? a partir de (DATE)"

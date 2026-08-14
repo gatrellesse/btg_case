@@ -1,0 +1,54 @@
+# Classes de campo — PREMISSAS, não verdades.
+#
+# Um campo errado não custa o mesmo que outro: um ISIN trocado quebra a
+# custódia, um `segmento_listagem` trocado não. A classe é o que separa os dois,
+# e ela governa quem bloqueia por falta de respaldo no documento e quem levanta
+# divergência entre extratores.
+#
+# Cada classe tinha um limiar de confiança: 0,95 · 0,90 · 0,80 · 0,85. Saíram.
+# Os quatro números, cruzados com os quatro degraus de leitura possíveis,
+# produziam uma única decisão — leitura `baixa` reprova em campo crítico e de
+# identidade, todo o resto passa —, e essa decisão já estava dita, sem número,
+# pela lista de quais mecanismos leram a região. Uma tabela de dezesseis células
+# para repetir a informação que estava ao lado.
+
+field_classes:
+  financial_critical:
+    fields:
+      - gross_per_share
+      - net_per_share
+      - ratio_from
+      - ratio_to
+      - cost_basis
+      - com_date
+      - ex_date
+      - payment_date
+  identity:
+    fields:
+      - isin
+      - ticker
+      - cnpj
+      - issuer
+  contextual:
+    fields:
+      - share_class
+      - approval_date
+      - currency
+      - tax_rate
+      - trading_start
+      - credit_date
+      - fraction_period
+
+# Tolerância de bruto × (1 − alíquota) = líquido. Frouxa o bastante para
+# arredondamento de centavo por ação, apertada o bastante para pegar um dígito
+# trocado.
+amount_tolerance: 0.000001
+
+# Datas fora desta janela em torno de hoje são implausíveis para um aviso.
+date_window_years: 2
+
+grounding:
+  # Abaixo disto o casamento aproximado não conta como evidência. É qualidade de
+  # casamento de string — mede se *este* texto é aquele texto —, não confiança
+  # no valor: nada aqui entra em conta com leitura nem com validação.
+  fuzzy_min: 0.85

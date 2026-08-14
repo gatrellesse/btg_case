@@ -1,0 +1,24 @@
+# --- core pipeline (CPU only, tiers 0 and 1) ---
+pymupdf>=1.24            # PDF text layer, table detection, page rendering, region crops
+# tier 0 OCR: PP-OCRv6 via onnxruntime, sem PaddlePaddle e sem GPU.
+# O leitor cai para rapidocr-onnxruntime (PP-OCRv4) se só ele estiver presente,
+# mas v6 é sensivelmente melhor no lote escaneado — ver README.
+rapidocr>=3.9
+pydantic>=2.7            # record schemas and structured-output contracts
+rapidfuzz>=3.9           # fuzzy matching for grounding and issuer name lookup
+PyYAML>=6.0              # config: event markers, label anchors, thresholds
+numpy>=1.26
+
+# --- orquestração e agentes ---
+langgraph>=1.2           # estado, fan-out/fan-in, arestas condicionais, ciclos limitados
+pydantic-ai-slim[anthropic,google,openai]>=2.27  # agentes tipados: saída validada, tools, retry
+
+# --- providers ---
+google-genai>=0.3        # cliente Gemini usado pelo motor linear (v1)
+
+# --- dev ---
+pytest>=8.0
+
+# Ingestão por consenso (--ingest consensus). Opcional: sem isto a cascata
+# roda igual, e é ela o padrão. Pesado — puxa torch e ~500MB de modelos.
+docling>=2.119

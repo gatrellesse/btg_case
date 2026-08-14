@@ -1,0 +1,396 @@
+[
+ {
+  "layer": "Grafo",
+  "tool": "ingest",
+  "why": "lê a página pelas três modalidades e funde região a região",
+  "input": {
+   "documento": "01_energetica_vale_tiete_dividendo.pdf",
+   "blocos": 0
+  },
+  "logic": "def ingest_node(state: AgentState) -> dict:\n    doc = ingest.load(state.path, cfg=ctx.ingest_cfg)\n    return {\"document\": doc, \"file_name\": doc.file_name}",
+  "output": {
+   "document": "SourceDocument",
+   "file_name": "01_energetica_vale_tiete_dividendo.pdf"
+  }
+ },
+ {
+  "layer": "Grafo",
+  "tool": "rule_classifier",
+  "why": "opinião determinística sobre o tipo, sem modelo — prior fraco é resultado válido",
+  "input": {
+   "documento": "01_energetica_vale_tiete_dividendo.pdf",
+   "blocos": 24
+  },
+  "logic": "def rule_classifier_node(state: AgentState) -> dict:\n    prior = markers.pre_classify(state.document.raw_text, ctx.config_dir)\n    vote = ClassifierVote(\n        modality=\"rule\",\n        event_type=prior.top,\n        rationale=(\n            \"marcadores definitórios: \"\n            + \", \".join(h.matched_text for h in prior.hits if h.definitional)[:200]\n        )\n        if prior.hits\n        else \"nenhum marcador definitório casou\",\n        evidence=[h.matched_text for h in prior.hits if h.definitional][:8],\n    )\n    return {\"votes\": [vote]}",
+  "output": {
+   "votes": {
+    "n": 1,
+    "primeiro": {
+     "n": 5,
+     "chaves": [
+      "modality",
+      "event_type",
+      "rationale",
+      "available"
+     ],
+     "modality": "…"
+    }
+   }
+  }
+ },
+ {
+  "layer": "Grafo",
+  "tool": "text_classifier",
+  "why": "a mesma pergunta ao LLM, sobre o texto extraído",
+  "input": {
+   "documento": "01_energetica_vale_tiete_dividendo.pdf",
+   "blocos": 24
+  },
+  "logic": "def text_classifier_node(state: AgentState) -> dict:\n    if not ctx.use_model:\n        return {\"votes\": [ClassifierVote(modality=\"text\", available=False)]}\n    try:\n        agent = agents.build_text_classifier(ctx.model)\n        result = agent.run_sync(\n            f\"Classifique o evento corporativo do aviso abaixo.\\n\\n--- AVISO ---\\n\"\n            f\"{state.document.raw_text}\"\n        )\n        return {\"votes\": [_vote_from_output(\"text\", result.output)]}\n    except Exception as exc:  # noqa: BLE001\n        return {\n            \"votes\": [ClassifierVote(modality=\"text\", available=False, rationale=str(exc)[:200])],\n            \"errors\": [NodeError(node=\"text_classifier\", error=f\"{type(exc).__name__}: {exc}\")],\n        }",
+  "output": {
+   "votes": {
+    "n": 1,
+    "primeiro": {
+     "n": 5,
+     "chaves": [
+      "modality",
+      "event_type",
+      "rationale",
+      "available"
+     ],
+     "modality": "…"
+    }
+   }
+  }
+ },
+ {
+  "layer": "Grafo",
+  "tool": "consensus",
+  "why": "unanimidade ou nada: qualquer divergência vai para revisão, porque errar o tipo muda o tratamento tributário",
+  "input": {
+   "documento": "01_energetica_vale_tiete_dividendo.pdf",
+   "blocos": 24,
+   "votos": [
+    "rule=dividendo",
+    "text=dividendo"
+   ]
+  },
+  "logic": "def consensus_node(state: AgentState) -> dict:\n    usable = [v for v in state.votes if v.available and v.event_type is not None]\n    if not usable:\n        return {\n            \"classification\": Classification(event_type=EventType.OUTRO, unanimous=False),\n            \"unanimous\": False,\n        }\n\n    prior = markers.pre_classify(state.document.raw_text, ctx.config_dir)\n    counts = Counter(v.event_type for v in usable)\n    winner, _ = counts.most_common(1)[0]\n    empatados = [t for t, n in counts.items() if n == counts[winner]]\n    if len(empatados) > 1:\n        # Empate em contagem. Era resolvido pela confiança que a modalidade\n        # declarava de si mesma — um número que ninguém mediu decidindo o\n        # tipo do evento. Decide o prior determinístico, que é auditável:\n        # ele leu os marcadores definitórios do aviso. Se nem ele estiver\n        # entre os empatados, vale a ordem declarada das modalidades.\n        ordem = {\"rule\": 0, \"text\": 1}\n        winner = (\n            prior.top\n            if prior.top in empatados\n            else min(\n                (v for v in usable if v.event_type in empatados),\n                key=lambda v: ordem.get(v.modality, 9),\n            ).event_type\n        )\n\n    unanimous = len(counts) == 1\n    detail = \", \".join(\n\n# … mais 15 linhas",
+  "output": {
+   "classification": {
+    "n": 6,
+    "chaves": [
+     "event_type",
+     "subtype",
+     "rationale",
+     "prior"
+    ],
+    "event_type": "dividendo"
+   },
+   "unanimous": true
+  }
+ },
+ {
+  "layer": "Grafo",
+  "tool": "rule_extractor",
+  "why": "âncoras de rótulo do config, offline — o segundo par de olhos que o LLM enfrenta",
+  "input": {
+   "documento": "01_energetica_vale_tiete_dividendo.pdf",
+   "blocos": 24,
+   "votos": [
+    "rule=dividendo",
+    "text=dividendo"
+   ],
+   "tipo": "dividendo"
+  },
+  "logic": "def rule_extractor_node(state: AgentState) -> dict:\n    event_type = state.classification.event_type if state.classification else EventType.OUTRO\n    found = rules.extract(state.document, event_type, ctx.config_dir)\n    return {\n        \"candidates\": [\n            (\n                name,\n                FieldCandidate(\n                    extractor=\"rule\",\n                    value_raw=raw.value_raw,\n                    evidence_text=raw.evidence_text,\n                    rationale=raw.rationale,\n                ),\n            )\n            for name, raw in found.items()\n        ]\n    }",
+  "output": {
+   "candidates": {
+    "n": 12,
+    "primeiro": {
+     "n": 2,
+     "primeiro": "event_type_label"
+    }
+   }
+  }
+ },
+ {
+  "layer": "Grafo",
+  "tool": "text_extractor",
+  "why": "extração tipada por schema do tipo de evento",
+  "input": {
+   "documento": "01_energetica_vale_tiete_dividendo.pdf",
+   "blocos": 24,
+   "votos": [
+    "rule=dividendo",
+    "text=dividendo"
+   ],
+   "tipo": "dividendo"
+  },
+  "logic": "def text_extractor_node(state: AgentState) -> dict:\n    if not ctx.use_model:\n        return {}\n    event_type = state.classification.event_type if state.classification else EventType.OUTRO\n    prompt = (\n        f\"Tipo de evento já classificado: {event_type.value}.\\n\"\n        f\"Campos obrigatórios: {', '.join(spec_for(event_type).required)}.\\n\\n\"\n        f\"--- AVISO ---\\n{state.document.raw_text}\"\n    )\n    if state.reprompt_count:\n        # The retry is only justified because the prompt gained information\n        # the first attempt did not have.\n        prompt += (\n            \"\\n\\nATENÇÃO: na tentativa anterior algum trecho citado como evidência não \"\n            \"foi encontrado no documento. Cite APENAS trechos copiados literalmente.\"\n        )\n    try:\n        agent = agents.build_extractor(event_type, ctx.model)\n        parsed = agent.run_sync(prompt).output\n    except Exception as exc:  # noqa: BLE001\n        return {\"errors\": [NodeError(node=\"text_extractor\", error=f\"{type(exc).__name__}: {exc}\")]}\n\n    out = []\n    for name in parsed.model_dump():\n        if name == \"extra_fields\":\n            continue\n        raw = getattr(parsed, name)\n        if isinstance(raw, LLMField):\n            out.append(_candidate_from_llm(name, raw, \"text\"))\n    return {\"candidates\": out}",
+  "output": {
+   "candidates": {
+    "n": 13,
+    "primeiro": {
+     "n": 2,
+     "primeiro": "issuer"
+    }
+   }
+  }
+ },
+ {
+  "layer": "Grafo",
+  "tool": "merge",
+  "why": "reúne candidatos por campo; não vota, guarda — divergência entre extratores não se resolve por maioria",
+  "input": {
+   "documento": "01_energetica_vale_tiete_dividendo.pdf",
+   "blocos": 24,
+   "votos": [
+    "rule=dividendo",
+    "text=dividendo"
+   ],
+   "tipo": "dividendo",
+   "candidatos": 25
+  },
+  "logic": "def merge_node(state: AgentState) -> dict:\n    names = {name for name, _ in state.candidates}\n    event_type = state.classification.event_type if state.classification else EventType.OUTRO\n    fields: dict[str, ExtractedField] = {}\n    disagreements: list[str] = []\n\n    for name in names:\n        candidates = [c for c in state.candidates_for(name) if c.value_raw is not None]\n        absent = [c for c in state.candidates_for(name) if c.value_raw is None]\n\n        if not candidates:\n            stated = next((c for c in absent if c.absence_reason), None)\n            fields[name] = ExtractedField(\n                name=name,\n                absence_reason=stated.absence_reason if stated else AbsenceReason.NOT_FOUND,\n                rationale=(stated.rationale if stated else \"nenhum extrator encontrou o campo\"),\n            )\n            continue\n\n        best = _winning_candidate(name, candidates)\n        field = ExtractedField(\n            name=name,\n            value_raw=best.value_raw,\n            evidence_text=best.evidence_text,\n            rationale=best.rationale,\n        )\n\n        if len(candidates) > 1:\n            readings = {typed(name, c.value_raw) for c in candidates}\n            field.notes.append(\n\n# … mais 26 linhas",
+  "output": {
+   "fields": {
+    "n": 14,
+    "chaves": [
+     "approval_date",
+     "issuer",
+     "ex_date",
+     "currency"
+    ],
+    "approval_date": {
+     "n": 17,
+     "chaves": [
+      "name",
+      "value_raw",
+      "value",
+      "absence_reason"
+     ],
+     "name": "…"
+    }
+   },
+   "disagreements": []
+  }
+ },
+ {
+  "layer": "Grafo",
+  "tool": "grounding",
+  "why": "confere cada evidência contra o texto CRU, antes de qualquer normalização",
+  "input": {
+   "documento": "01_energetica_vale_tiete_dividendo.pdf",
+   "blocos": 24,
+   "votos": [
+    "rule=dividendo",
+    "text=dividendo"
+   ],
+   "tipo": "dividendo",
+   "candidatos": 25,
+   "campos": 14
+  },
+  "logic": "def grounding_node(state: AgentState) -> dict:\n    fuzzy_min = float((ctx.thresholds.get(\"grounding\") or {}).get(\"fuzzy_min\", 0.85))\n    grounding.ground(state.fields, state.document.raw_text, fuzzy_min)\n    return {\"fields\": state.fields}",
+  "output": {
+   "fields": {
+    "n": 14,
+    "chaves": [
+     "approval_date",
+     "issuer",
+     "ex_date",
+     "currency"
+    ],
+    "approval_date": {
+     "n": 17,
+     "chaves": [
+      "name",
+      "value_raw",
+      "value",
+      "absence_reason"
+     ],
+     "name": "…"
+    }
+   }
+  }
+ },
+ {
+  "layer": "Grafo",
+  "tool": "repair",
+  "why": "normaliza para a convenção pt-BR e deriva o que a regra do evento permite",
+  "input": {
+   "documento": "01_energetica_vale_tiete_dividendo.pdf",
+   "blocos": 24,
+   "votos": [
+    "rule=dividendo",
+    "text=dividendo"
+   ],
+   "tipo": "dividendo",
+   "candidatos": 25,
+   "campos": 14
+  },
+  "logic": "def repair_node(state: AgentState) -> dict:\n    event_type = state.classification.event_type if state.classification else EventType.OUTRO\n    repair.repair(state.fields)\n    repair.order_ratio(state.fields, event_type)\n    repair.derive(state.fields, event_type)\n    return {\"fields\": state.fields}",
+  "output": {
+   "fields": {
+    "n": 14,
+    "chaves": [
+     "approval_date",
+     "issuer",
+     "ex_date",
+     "currency"
+    ],
+    "approval_date": {
+     "n": 17,
+     "chaves": [
+      "name",
+      "value_raw",
+      "value",
+      "absence_reason"
+     ],
+     "name": "…"
+    }
+   }
+  }
+ },
+ {
+  "layer": "Grafo",
+  "tool": "sweep",
+  "why": "relê as três leituras inteiras atrás do que faltou e do que um mecanismo só sustentava; três guardas em código decidem o que entra",
+  "input": {
+   "documento": "01_energetica_vale_tiete_dividendo.pdf",
+   "blocos": 24,
+   "votos": [
+    "rule=dividendo",
+    "text=dividendo"
+   ],
+   "tipo": "dividendo",
+   "candidatos": 25,
+   "campos": 14
+  },
+  "logic": "def sweep_node(state: AgentState) -> dict:\n    event_type = state.classification.event_type if state.classification else EventType.OUTRO\n    faltando = sweep.missing_fields(state.fields, event_type)\n    # Duas perguntas sobre o mesmo material: onde está o que falta, e o que\n    # um mecanismo só sustenta aparece em mais alguma leitura.\n    sozinhos = sweep.uncorroborated_fields(state.fields)\n    conferir = {\n        name: state.fields[name].value_raw or str(state.fields[name].value)\n        for name in sozinhos\n    }\n    if (not faltando and not conferir) or not ctx.use_model:\n        return {}\n\n    reads = state.document.reads\n    if not reads:\n        return {}\n\n    try:\n        agent = agents.build_field_sweeper(ctx.model)\n        result = agent.run_sync(sweep.build_prompt(reads, faltando, conferir))\n        devolvidos = dict(result.output.found or {})\n    except Exception as exc:  # noqa: BLE001\n        # Uma varredura que não roda deixa o registro exatamente como estava:\n        # ela só acrescenta, nunca é pré-requisito de nada.\n        return {\"errors\": [NodeError(node=\"sweep\", error=f\"{type(exc).__name__}: {exc}\")]}\n\n    fields = dict(state.fields)\n    # Confirmação primeiro: ela mexe em campo que já existe, e o que sobra\n    # do dicionário é candidato a preencher ausência.\n    notas = sweep.confirm(devolvidos, fields, sozinhos, reads)\n\n# … mais 20 linhas",
+  "output": {
+   "fields": {
+    "n": 14,
+    "chaves": [
+     "approval_date",
+     "issuer",
+     "ex_date",
+     "currency"
+    ],
+    "approval_date": {
+     "n": 17,
+     "chaves": [
+      "name",
+      "value_raw",
+      "value",
+      "absence_reason"
+     ],
+     "name": "…"
+    }
+   }
+  }
+ },
+ {
+  "layer": "Grafo",
+  "tool": "validate",
+  "why": "as seis tools determinísticas, sempre todas, com args e retorno no registro",
+  "input": {
+   "documento": "01_energetica_vale_tiete_dividendo.pdf",
+   "blocos": 24,
+   "votos": [
+    "rule=dividendo",
+    "text=dividendo"
+   ],
+   "tipo": "dividendo",
+   "candidatos": 25,
+   "campos": 14
+  },
+  "logic": "def validate_node(state: AgentState) -> dict:\n    record = _as_record(state)\n    return {\"validations\": verify.run_validators(record, ctx.validators)}",
+  "output": {
+   "validations": {
+    "n": 6,
+    "primeiro": {
+     "n": 7,
+     "chaves": [
+      "tool",
+      "args",
+      "status",
+      "detail"
+     ],
+     "tool": "…"
+    }
+   }
+  }
+ },
+ {
+  "layer": "Grafo",
+  "tool": "triage",
+  "why": "o veredito em código: severidade dos reason codes decide AUTO, REVIEW ou BLOCKED",
+  "input": {
+   "documento": "01_energetica_vale_tiete_dividendo.pdf",
+   "blocos": 24,
+   "votos": [
+    "rule=dividendo",
+    "text=dividendo"
+   ],
+   "tipo": "dividendo",
+   "candidatos": 25,
+   "campos": 14,
+   "validações": 6
+  },
+  "logic": "def triage_node(state: AgentState) -> dict:\n    record = _as_record(state)\n    evidence.note_reference_matches(record.fields, record.validations)\n    audit.annotate(record, ctx.thresholds)\n    result = run_triage(record, ctx.thresholds)\n\n    # Findings the graph produced that no single validator owns.\n    from .models import TriageReason\n\n    extra = []\n    if not state.unanimous:\n        extra.append(\n            TriageReason.of(\n                ReasonCode.CLASSIFIER_DISAGREEMENT,\n                field=\"event_type\",\n                message=state.classification.rationale if state.classification else \"\",\n            )\n        )\n    for name in state.disagreements:\n        extra.append(\n            TriageReason.of(\n                ReasonCode.EXTRACTOR_DISAGREEMENT,\n                field=name,\n                message=f\"extratores independentes leram '{name}' de formas diferentes\",\n            )\n        )\n    if extra:\n        existing = {(r.code, r.field) for r in result.reasons}\n        result.reasons.extend(r for r in extra if (r.code, r.field) not in existing)\n        result.fields_for_review = sorted(\n\n# … mais 10 linhas",
+  "output": {
+   "fields": {
+    "n": 14,
+    "chaves": [
+     "approval_date",
+     "issuer",
+     "ex_date",
+     "currency"
+    ],
+    "approval_date": {
+     "n": 17,
+     "chaves": [
+      "name",
+      "value_raw",
+      "value",
+      "absence_reason"
+     ],
+     "name": "…"
+    }
+   },
+   "triage": {
+    "n": 5,
+    "chaves": [
+     "disposition",
+     "reasons",
+     "justification",
+     "weakest_level"
+    ],
+    "disposition": "review"
+   }
+  }
+ },
+ {
+  "layer": "Grafo",
+  "tool": "reporter",
+  "why": "escreve a narrativa; a disposição já está calculada e ele não a toca",
+  "input": {
+   "documento": "01_energetica_vale_tiete_dividendo.pdf",
+   "blocos": 24,
+   "votos": [
+    "rule=dividendo",
+    "text=dividendo"
+   ],
+   "tipo": "dividendo",
+   "candidatos": 25,
+   "campos": 14,
+   "validações": 6,
+   "disposição": "review"
+  },
+  "logic": "def reporter_node(state: AgentState) -> dict:\n    record = _as_record(state)\n    if not ctx.use_model:\n        return {\"justification\": verify._fallback_justification(record)}\n    allowed = {r.code.value for r in state.triage.reasons} if state.triage else set()\n    # tudo que o registro realmente afirma, nas duas grafias: o relator pode\n    # citar o valor lido ou o padronizado, mas não um terceiro\n    figures = {\n        str(v)\n        for f in state.fields.values()\n        for v in (f.value, f.value_raw)\n        if v not in (None, \"\")\n    }\n    try:\n        agent = agents.build_reporter(ctx.model)\n        result = agent.run_sync(\n            _reporter_prompt(state),\n            deps=agents.ReporterDeps(allowed_codes=allowed, allowed_figures=figures),\n        )\n        return {\"justification\": result.output.justification.strip()}\n    except Exception as exc:  # noqa: BLE001\n        return {\n            \"justification\": verify._fallback_justification(record),\n            \"errors\": [NodeError(node=\"reporter\", error=f\"{type(exc).__name__}: {exc}\")],\n        }",
+  "output": {
+   "justification": "Identidade confirmada na base de referência, cronologia coerente, tipo de evento consistente e todos os campos"
+  }
+ }
+]

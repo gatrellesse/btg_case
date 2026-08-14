@@ -1,0 +1,78 @@
+# Marcadores de classificação por tipo de evento.
+#
+# REGRA DE AUTORIA: um marcador `definitional` descreve uma propriedade que
+# define o ato societário na lei ou no regulamento — base legal, natureza da
+# conta usada, efeito sobre o capital. Um marcador `corroborating` apenas
+# acompanha o ato com frequência, e por isso pesa pouco.
+#
+# Alíquotas NUNCA são definitórias. `IRRF 17,5%` identifica JCP hoje; muda com
+# a lei e quebra em silêncio. O que é estável é a *existência* de uma retenção
+# coerente com bruto↔líquido — isso se verifica na aritmética, não no texto.
+#
+# Os padrões são escritos sem acento e em minúsculas: o texto é normalizado
+# antes do casamento, e cada espaço vira `\s*` para sobreviver ao OCR, que
+# perde espaços o tempo todo ("Jurossobreo.CapitalProprio").
+
+jcp:
+  label: Juros sobre o Capital Próprio
+  definitional:
+    - {pattern: "juros sobre o capital proprio", weight: 3.0}
+    - {pattern: "\\bjcp\\b", weight: 2.5}
+    - {pattern: "remuneracao do capital proprio", weight: 3.0}
+    - {pattern: "lei n?[º°o]?\\s*9\\.?249", weight: 3.0}
+    - {pattern: "taxa de juros de longo prazo|\\btjlp\\b", weight: 3.0}
+    # Imputação ao dividendo obrigatório é mecanismo do JCP (art. 9º, §7º).
+    # Cuidado: o texto contém a palavra "dividendo" e ainda assim é JCP.
+    - {pattern: "imputad[oa]s? ao[s]? dividendo", weight: 2.5}
+    - {pattern: "patrimonio liquido", weight: 1.5}
+    - {pattern: "art(?:igo)?\\.? ?9[º°o]?\\b", weight: 1.0}
+  corroborating:
+    - {pattern: "retencao de imposto de renda|irrf", weight: 0.3}
+
+dividendo:
+  label: Dividendo
+  definitional:
+    - {pattern: "dividendos? intercalar", weight: 3.0}
+    - {pattern: "dividendos? intermediari", weight: 3.0}
+    - {pattern: "reservas? de lucros", weight: 2.0}
+    - {pattern: "lucro do exercicio|resultado do exercicio", weight: 1.5}
+    - {pattern: "distribuicao de dividendos", weight: 1.5}
+  corroborating:
+    # Fraco de propósito: avisos de JCP também dizem "dividendo".
+    - {pattern: "\\bdividendos?\\b", weight: 0.4}
+
+bonificacao:
+  label: Bonificação em ações
+  definitional:
+    - {pattern: "bonificacao em acoes", weight: 3.0}
+    - {pattern: "capitalizacao de reservas", weight: 3.0}
+    - {pattern: "acao nova para cada", weight: 3.0}
+    - {pattern: "aumento do capital social mediante capitalizacao", weight: 2.5}
+  corroborating:
+    - {pattern: "custo atribuido", weight: 1.0}
+
+grupamento:
+  label: Grupamento (inplit)
+  definitional:
+    - {pattern: "grupamento", weight: 3.0}
+    - {pattern: "\\binplit\\b", weight: 3.0}
+    - {pattern: "acoes existentes para", weight: 2.5}
+    - {pattern: "sem modificacao do valor do capital social|sem alteracao do capital social", weight: 1.5}
+  corroborating:
+    - {pattern: "fracoes de acoes|ajustar suas posicoes em lotes", weight: 0.8}
+
+desdobramento:
+  label: Desdobramento (split)
+  definitional:
+    - {pattern: "desdobramento", weight: 3.0}
+    - {pattern: "\\bsplit\\b", weight: 2.5}
+    - {pattern: "acao existente para .{0,20} acoes", weight: 2.0}
+  corroborating: []
+
+subscricao:
+  label: Subscrição
+  definitional:
+    - {pattern: "direito de subscricao", weight: 3.0}
+    - {pattern: "bonus de subscricao", weight: 3.0}
+    - {pattern: "preco de emissao", weight: 1.5}
+  corroborating: []

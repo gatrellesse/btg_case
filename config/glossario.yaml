@@ -1,0 +1,138 @@
+# O vocabulário do relatório — o ÚNICO mapeamento entre código e português.
+#
+# O relatório é lido por um operador de Asset Servicing, não por quem escreveu
+# o pipeline. `com_date`, `CRITICAL_FIELD_LOW_CONFIDENCE` e `text_layer` são
+# identificadores internos; deixá-los vazar para a apresentação obriga o leitor
+# a conhecer a implementação para auditar um valor.
+#
+# Fica em YAML pelo mesmo motivo que anchors.yaml e thresholds.yaml: config.py
+# declara que "the YAML is the only place a vocabulary appears". Um termo sem
+# entrada aqui levanta erro em labels.py — falta de tradução quebra o build em
+# vez de vazar código para o operador.
+#
+# Os identificadores permanecem no JSON por documento, que é a camada de
+# máquina. A correspondência entre as duas é gerada deste arquivo.
+
+campos:
+  issuer: Emissor
+  cnpj: CNPJ
+  isin: ISIN
+  ticker: Código de negociação
+  share_class: Classe da ação
+  approval_date: Data de aprovação
+  com_date: Data-base (com)
+  ex_date: Data ex
+  payment_date: Data de pagamento
+  gross_per_share: Valor bruto por ação
+  net_per_share: Valor líquido por ação
+  tax_rate: Alíquota de IR
+  currency: Moeda
+  event_type_label: Tipo declarado no aviso
+  event_type: Tipo do evento
+  ratio_from: Proporção — de
+  ratio_to: Proporção — para
+  ratio_text: Proporção (como escrita no aviso)
+  trading_start: Início da negociação
+  credit_date: Data de crédito
+  fraction_period: Período de frações
+  cost_basis: Custo unitário atribuído
+
+# A camada que originou o achado. Ordenar por camada mostra a causa antes da
+# consequência. Havia uma quinta, `score`, que era só derivada — os códigos de
+# limiar viviam lá — e saiu com eles.
+camadas:
+  consenso: Consenso de leitura
+  classificacao: Classificação
+  extracao: Extração
+  validacao: Validação
+
+tipos_de_erro:
+  divergencia: Divergência entre fontes
+  incoerencia: Incoerência interna
+  identidade: Identidade do ativo
+  ausencia: Ausência
+  legibilidade: Legibilidade
+  fabricacao: Sem respaldo no documento
+  processo: Falha de processo
+
+ferramentas:
+  lookup_golden_record: Base de referência
+  check_date_coherence: Coerência de datas
+  check_amount_coherence: Coerência de valores
+  check_event_type_consistency: Consistência do tipo de evento
+  check_identifier_format: Formato dos identificadores
+  check_required_fields: Campos obrigatórios
+
+leitores:
+  text_layer: camada de texto
+  ocr_deterministic: OCR
+  ocr_generative: VLM
+
+# Aparecem dentro das notas, onde o código vaza mais: a nota crua diz
+# "leituras: rule='15/07/2026'(0.97); text='15/07/2026'(0.98)".
+extratores:
+  rule: regras
+  text: modelo
+  docling:parser: camada de texto
+  docling:ocr: OCR
+  docling:vlm: VLM
+
+evidencia:
+  exact: exata
+  normalized: normalizada
+  fuzzy: aproximada
+  absent: ausente
+  not_applicable: não aplicável
+
+disposicoes:
+  auto: Liberado automaticamente
+  review: Revisão humana
+  blocked: Bloqueado
+  failed: Falha de processamento
+
+eventos:
+  dividendo: Dividendo
+  jcp: Juros sobre capital próprio
+  bonificacao: Bonificação
+  grupamento: Grupamento
+  desdobramento: Desdobramento
+  subscricao: Subscrição
+  outro: Outro
+
+# O que o operador precisa entender do achado, sem precisar do código.
+motivos:
+  DATE_INCOHERENCE: cronologia impossível entre as datas do evento
+  UNGROUNDED_CRITICAL_FIELD: o valor não foi encontrado no texto do documento
+  ISSUER_INACTIVE: emissor consta como inativo na base de referência
+  MISSING_REQUIRED_FIELD: campo obrigatório para este tipo de evento não veio
+  ISSUER_NOT_IN_GOLDEN: emissor não consta na base de referência
+  IDENTIFIER_MISMATCH: identificador diverge do que a base de referência registra
+  IDENTIFIER_KEY_CONFLICT: os identificadores do aviso apontam para ativos diferentes
+  IDENTIFIER_WEAK_MATCH: só um identificador corrobora — a regra pede dois
+  EVENT_TYPE_TITLE_CONFLICT: título e corpo do aviso indicam tipos diferentes
+  CLASSIFIER_DISAGREEMENT: as duas classificações independentes discordaram
+  UNKNOWN_EVENT_TYPE: tipo de evento fora do catálogo
+  EXTRACTOR_DISAGREEMENT: os dois extratores leram valores diferentes
+  NO_CORROBORATION: um único mecanismo de pixel leu o valor; nada o confirma
+  AMBIGUOUS_DATE_PARSE: a data admite mais de uma leitura
+  FIELD_STATED_UNDEFINED: o próprio emissor declarou o valor indefinido
+  AMOUNT_MISMATCH: bruto, alíquota e líquido não fecham entre si
+  FIELD_NOT_FOUND: nenhuma das três leituras do documento traz este campo
+
+# Como o campo se saiu contra a base de referência.
+base_de_referencia:
+  confere: confere com a base
+  diverge: diverge da base
+  ausente: não localizado na base
+  nao_aplicavel: não é chave de identidade
+
+# A força da leitura, por quem corroborou. Categórico e sem número por trás: a
+# diferença entre dois degraus não é percentual, é "a camada de texto confirmou"
+# contra "só os pixels leram". Houve pesos aqui (0,99 · 0,98 · 0,95 · 0,85) e um
+# limiar por classe de campo para compará-los; a tabela inteira só decidia uma
+# coisa, que a lista de quem leu já decidia sozinha.
+niveis_de_leitura:
+  muito_alta: muito alta — camada de texto e mais um leitor
+  alta: alta — camada de texto
+  media: média — OCR e VLM, ambos sobre os mesmos pixels
+  baixa: baixa — um único leitor de pixel, sem confirmação

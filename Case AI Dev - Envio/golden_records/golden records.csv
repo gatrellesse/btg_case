@@ -1,0 +1,13 @@
+emissor,cnpj,isin,ticker,classe,segmento_listagem,status
+Energética Vale do Tietê S.A.,12.345.678/0001-90,BRTIETACNOR3,TIET3,ON,Novo Mercado,ativo
+Banco Meridional do Brasil S.A.,60.111.222/0001-55,BRBMRDACNPR7,BMRD4,PN,Nível 1,ativo
+Companhia Siderúrgica Paranaense S.A.,76.543.210/0001-12,BRCSPRACNOR1,CSPR3,ON,Novo Mercado,ativo
+Rede Varejo Brasil S.A.,08.777.666/0001-33,BRRVBRACNOR9,RVBR3,ON,Novo Mercado,ativo
+Aurora Saneamento S.A.,22.333.444/0001-77,BRAURSACNOR4,AURS3,ON,Novo Mercado,ativo
+Petroquímica Litoral S.A.,55.666.777/0001-08,BRPQLTACNOR8,PQLT3,ON,Nível 2,ativo
+Telecom Norte Participações S.A.,33.222.111/0001-44,BRTLNRACNPR2,TLNR4,PN,Tradicional,ativo
+Companhia Agro Cerrado S.A.,44.555.666/0001-19,BRAGCRACNOR2,AGCR3,ON,Novo Mercado,ativo
+Logística Atlântico S.A.,77.888.999/0001-46,BRLGATACNOR6,LGAT3,ON,Novo Mercado,ativo
+Seguradora Pampa S.A.,11.222.333/0001-81,BRSGPMACNPR4,SGPM4,PN,Nível 1,ativo
+Mineração Serra Azul S.A.,99.000.111/0001-63,BRMSAZACNOR7,MSAZ3,ON,Nível 2,ativo
+Águas do Planalto S.A.,33.444.555/0001-28,BRAGPLACNOR0,AGPL3,ON,Novo Mercado,ativo

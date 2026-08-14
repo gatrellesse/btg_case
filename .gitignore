@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Segredos — nunca versionar
+.env
+.env.*
+*.key
+
+# Cache de respostas do modelo: conteúdo de API, e regenerável
+out/cache/
+
+out/*
+# Em reescrita — volta ao repositório depois
+docs/

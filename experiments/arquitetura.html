@@ -1,0 +1,482 @@
+<title>Arquitetura do agente — LangGraph + Pydantic AI</title>
+<style>
+  :root {
+    --ground:#F7F8FA; --surface:#FFFFFF; --sunk:#EDEFF3; --rule:#D8DDE5;
+    --ink:#11151B; --ink-soft:#454D59; --ink-faint:#7C8593;
+    --accent:#1B4B73; --accent-soft:#E4EBF2;
+    --m-rule:#3F5F7E; --m-text:#6A4E86; --m-image:#1F6F68;
+    --auto:#2C6A45; --review:#8C6114; --block:#94382B;
+    --band:#EFF2F6;
+    --mono: ui-monospace,'SF Mono','Cascadia Mono','Roboto Mono',Menlo,Consolas,monospace;
+    --sans: ui-sans-serif,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:#0E1218; --surface:#161C24; --sunk:#1C232D; --rule:#2C3542;
+      --ink:#E7EBF1; --ink-soft:#A8B2BF; --ink-faint:#77828F;
+      --accent:#7FB2DC; --accent-soft:#1B2836;
+      --m-rule:#8FB2D2; --m-text:#B197D6; --m-image:#63BDB2;
+      --auto:#6FBF8E; --review:#D9A94A; --block:#E08272;
+      --band:#141A22;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground:#0E1218; --surface:#161C24; --sunk:#1C232D; --rule:#2C3542;
+    --ink:#E7EBF1; --ink-soft:#A8B2BF; --ink-faint:#77828F;
+    --accent:#7FB2DC; --accent-soft:#1B2836;
+    --m-rule:#8FB2D2; --m-text:#B197D6; --m-image:#63BDB2;
+    --auto:#6FBF8E; --review:#D9A94A; --block:#E08272;
+    --band:#141A22;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--ground); color:var(--ink);
+    font-family:var(--sans); line-height:1.6;
+    margin:0; padding:56px 24px 96px; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px; margin:0 auto; display:flex; flex-direction:column; gap:52px}
+
+  .eyebrow{font-family:var(--mono); font-size:11px; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--accent); margin:0 0 10px}
+  h1{font-size:clamp(28px,4.4vw,40px); line-height:1.14; letter-spacing:-.022em;
+    font-weight:650; margin:0 0 14px; text-wrap:balance}
+  h2{font-size:21px; letter-spacing:-.014em; font-weight:650; margin:0 0 6px; text-wrap:balance}
+  h3{font-size:14px; font-weight:650; margin:0 0 4px; letter-spacing:-.005em}
+  p{margin:0 0 14px; max-width:68ch; color:var(--ink-soft)}
+  strong{color:var(--ink); font-weight:620}
+  code{font-family:var(--mono); font-size:.88em; background:var(--sunk);
+       padding:.12em .4em; border-radius:4px; color:var(--ink)}
+
+  section{display:flex; flex-direction:column; gap:16px}
+  .sec-head{border-top:1px solid var(--rule); padding-top:20px}
+  /* nada de prosa segue os títulos: o espaçamento passa a ser do grid, não da margem */
+  .sec-head h2{margin-bottom:0}
+  header h1{margin-bottom:0}
+
+  figure{margin:0; background:var(--surface); border:1px solid var(--rule);
+         border-radius:10px; padding:20px 16px 14px; overflow-x:auto}
+  figure svg{display:block; width:100%; min-width:740px; height:auto}
+  /* sem legenda em prosa: o que fica é o endereço do código que desenha a figura */
+  figcaption{font-family:var(--mono); font-size:11px; color:var(--ink-faint);
+             margin-top:16px; padding-top:12px; border-top:1px solid var(--rule);
+             overflow-x:auto; white-space:nowrap}
+
+  pre{background:var(--surface); border:1px solid var(--rule); border-radius:8px;
+      padding:16px 18px; overflow-x:auto; margin:0;
+      font-family:var(--mono); font-size:12.5px; line-height:1.66; color:var(--ink)}
+  pre .c{color:var(--ink-faint)}
+  pre .k{color:var(--accent)}
+
+  table{width:100%; border-collapse:collapse; font-size:13.5px}
+  .tw{overflow-x:auto; border:1px solid var(--rule); border-radius:8px; background:var(--surface)}
+  th{text-align:left; font-family:var(--mono); font-size:10.5px; letter-spacing:.1em;
+     text-transform:uppercase; color:var(--ink-faint); font-weight:500;
+     padding:11px 14px; border-bottom:1px solid var(--rule); white-space:nowrap}
+  td{padding:11px 14px; border-bottom:1px solid var(--rule); vertical-align:top; color:var(--ink-soft)}
+  tr:last-child td{border-bottom:none}
+  td code{white-space:nowrap}
+  td:first-child{color:var(--ink)}
+
+  /* nós de saída clicáveis ------------------------------------------- */
+  .outnode { cursor: zoom-in; }
+  .outnode rect { fill: var(--sunk); stroke: var(--rule); stroke-width: 1.1; }
+  .outnode text { font-family: var(--mono); font-size: 10.5px; fill: var(--ink-soft); }
+  .outnode:hover rect, .outnode:focus rect { stroke: var(--accent); fill: var(--accent-soft); }
+  .outnode:hover text, .outnode:focus text { fill: var(--accent); }
+  .outnode:focus { outline: none; }
+  .outnode.accent rect { border-color: var(--accent); }
+
+  .nodebtn { cursor: zoom-in; }
+  .nodebtn text { font-family: var(--mono); font-size: 11px; fill: var(--ink-faint); }
+  .nodebtn:hover rect, .nodebtn:focus rect { stroke: var(--accent); stroke-width: 2; }
+  .nodebtn:hover text, .nodebtn:focus text { fill: var(--accent); }
+  .nodebtn:focus { outline: none; }
+
+  .exbtn { font-family: var(--mono); font-size: 10.5px; cursor: zoom-in;
+           background: var(--sunk); color: var(--ink-soft); border: 1px solid var(--rule);
+           border-radius: 4px; padding: 2px 8px; white-space: nowrap; }
+  .exbtn:hover, .exbtn:focus { border-color: var(--accent); color: var(--accent);
+                               background: var(--accent-soft); outline: none; }
+
+  /* modal ------------------------------------------------------------- */
+  .exdim { position: fixed; inset: 0; background: rgba(8,12,18,.62);
+           display: none; align-items: center; justify-content: center;
+           padding: 24px; z-index: 50; }
+  .exdim[open] { display: flex; }
+  .exwin { background: var(--surface); border: 1px solid var(--rule); border-radius: 12px;
+           max-width: 900px; width: 100%; max-height: 86vh; overflow: auto;
+           padding: 22px 24px 26px; box-shadow: 0 24px 60px rgba(0,0,0,.32); }
+  .exwin h3 { font-family: var(--mono); font-size: 15px; margin: 0 0 2px; }
+  .exwin .lay { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em;
+                text-transform: uppercase; color: var(--accent); }
+  .exwin .why { font-size: 13.5px; color: var(--ink-soft); margin: 10px 0 18px;
+                max-width: 72ch; }
+  .exwin h4 { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em;
+              text-transform: uppercase; color: var(--ink-faint); margin: 0 0 6px;
+              font-weight: 500; }
+  .exio { display: grid; gap: 16px; grid-template-columns: 1fr 1fr; }
+  .exio.tri { grid-template-columns: 1fr 1.25fr 1fr; }
+  @media (max-width: 72rem) { .exio.tri { grid-template-columns: 1fr; } }
+  @media (max-width: 60rem) { .exio { grid-template-columns: 1fr; } }
+  /* o painel do meio é código, não dado: fundo próprio para não ser lido como
+     mais um JSON de entrada ou saída */
+  .exlogic pre { background: var(--band); border-color: var(--accent);
+                 font-size: 11.5px; }
+  .exlogic h4 { color: var(--accent); }
+  .exclose { float: right; font-family: var(--mono); font-size: 12px; cursor: pointer;
+             background: none; border: 1px solid var(--rule); border-radius: 4px;
+             color: var(--ink-soft); padding: 3px 9px; }
+  .exclose:hover { border-color: var(--accent); color: var(--accent); }
+</style>
+
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">Case AI Dev · Asset Servicing</p>
+    <h1>Agente de eventos corporativos, orquestrado em LangGraph</h1>
+  </header>
+
+  <section>
+    <div class="sec-head">
+      <p class="eyebrow">Figura 1 · Ingestão</p>
+      <h2>Três leituras da mesma região</h2>
+    </div>
+<script type="application/json" id="exdata">[{"layer": "Ingestão", "tool": "docling:parser", "why": "PDF nativo — os três saem no mesmo formato de Block", "input": {"page": "01_energetica_vale_tiete_dividendo.pdf", "modo": "parser"}, "output": {"blocos": 24, "células": 14, "exemplo": {"text": "Tipo de evento", "bbox": [63, 337, 133, 346], "level": "baixa", "reader_kind": "text_layer", "role": "table_cell", "row": 0, "col": 0, "alternatives": []}}, "logic": "def read(self, page: pymupdf.Page, clip: pymupdf.Rect | None = None) -> ReadResult:\n    path = page.parent.name\n    if not path:\n        return ReadResult(reader_name=self.name, caps=self.caps, note=\"documento sem caminho\")\n    try:\n        result = _convert(path, self.mode)\n    except Exception as exc:  # noqa: BLE001\n        # \"falhou:\" é o prefixo que o consenso procura. Um leitor que\n        # quebrou não é um leitor que se absteve, e tratar os dois como a\n        # mesma coisa deixa o campo com um leitor só sem dizer por quê.\n        return ReadResult(reader_name=self.name, caps=self.caps,\n                          note=f\"falhou: {type(exc).__name__}: {exc}\")\n\n    page_no = page.number + 1\n    height = float(page.rect.height)\n    kind = READER_KIND[self.mode]\n\n    blocks: list[Block] = []\n    for item, _level in result.document.iterate_items():\n        prov = getattr(item, \"prov\", None)\n        if not prov or prov[0].page_no != page_no:\n            continue\n        blocks.extend(self._blocks_for(item, prov[0], page_no, height, kind))\n\n    if clip is not None:\n        blocks = [\n            b for b in blocks\n            if pymupdf.Rect(b.bbox.x0, b.bbox.y0, b.bbox.x1, b.bbox.y1).intersects(clip)\n        ]\n    for order, block in enumerate(blocks):\n\n# … mais 2 linhas"}, {"layer": "Ingestão", "tool": "docling:ocr", "why": "mesma página nativa, lida por pixel — os três saem no mesmo formato de Block", "input": {"page": "01_energetica_vale_tiete_dividendo.pdf", "modo": "ocr"}, "output": {"blocos": 21, "células": 13, "exemplo": {"text": "Tipo de evento", "bbox": [60, 334, 135, 348], "level": "baixa", "reader_kind": "ocr_deterministic", "role": "table_cell", "row": 0, "col": 0, "alternatives": []}}, "logic": "def read(self, page: pymupdf.Page, clip: pymupdf.Rect | None = None) -> ReadResult:\n    path = page.parent.name\n    if not path:\n        return ReadResult(reader_name=self.name, caps=self.caps, note=\"documento sem caminho\")\n    try:\n        result = _convert(path, self.mode)\n    except Exception as exc:  # noqa: BLE001\n        # \"falhou:\" é o prefixo que o consenso procura. Um leitor que\n        # quebrou não é um leitor que se absteve, e tratar os dois como a\n        # mesma coisa deixa o campo com um leitor só sem dizer por quê.\n        return ReadResult(reader_name=self.name, caps=self.caps,\n                          note=f\"falhou: {type(exc).__name__}: {exc}\")\n\n    page_no = page.number + 1\n    height = float(page.rect.height)\n    kind = READER_KIND[self.mode]\n\n    blocks: list[Block] = []\n    for item, _level in result.document.iterate_items():\n        prov = getattr(item, \"prov\", None)\n        if not prov or prov[0].page_no != page_no:\n            continue\n        blocks.extend(self._blocks_for(item, prov[0], page_no, height, kind))\n\n    if clip is not None:\n        blocks = [\n            b for b in blocks\n            if pymupdf.Rect(b.bbox.x0, b.bbox.y0, b.bbox.x1, b.bbox.y1).intersects(clip)\n        ]\n    for order, block in enumerate(blocks):\n\n# … mais 2 linhas"}, {"layer": "Ingestão", "tool": "docling:vlm", "why": "mesma página nativa, gerada por tokens — os três saem no mesmo formato de Block", "input": {"page": "01_energetica_vale_tiete_dividendo.pdf", "modo": "vlm"}, "output": {"blocos": 24, "células": 14, "exemplo": {"text": "Tipo de evento", "bbox": [61, 333, 539, 492], "level": "baixa", "reader_kind": "ocr_generative", "role": "table_cell", "row": 0, "col": 0, "alternatives": []}}, "logic": "def read(self, page: pymupdf.Page, clip: pymupdf.Rect | None = None) -> ReadResult:\n    path = page.parent.name\n    if not path:\n        return ReadResult(reader_name=self.name, caps=self.caps, note=\"documento sem caminho\")\n    try:\n        result = _convert(path, self.mode)\n    except Exception as exc:  # noqa: BLE001\n        # \"falhou:\" é o prefixo que o consenso procura. Um leitor que\n        # quebrou não é um leitor que se absteve, e tratar os dois como a\n        # mesma coisa deixa o campo com um leitor só sem dizer por quê.\n        return ReadResult(reader_name=self.name, caps=self.caps,\n                          note=f\"falhou: {type(exc).__name__}: {exc}\")\n\n    page_no = page.number + 1\n    height = float(page.rect.height)\n    kind = READER_KIND[self.mode]\n\n    blocks: list[Block] = []\n    for item, _level in result.document.iterate_items():\n        prov = getattr(item, \"prov\", None)\n        if not prov or prov[0].page_no != page_no:\n            continue\n        blocks.extend(self._blocks_for(item, prov[0], page_no, height, kind))\n\n    if clip is not None:\n        blocks = [\n            b for b in blocks\n            if pymupdf.Rect(b.bbox.x0, b.bbox.y0, b.bbox.x1, b.bbox.y1).intersects(clip)\n        ]\n    for order, block in enumerate(blocks):\n\n# … mais 2 linhas"}, {"layer": "Ingestão", "tool": "docling:parser (scan)", "why": "abstenção: sem camada de texto não há o que ler, e zero bloco é a resposta certa — não rebaixa o degrau de ninguém", "input": {"page": "07_telecom_norte_jcp_SCAN.pdf", "modo": "parser"}, "output": {"blocos": 0, "nota": null}, "logic": "def read(self, page: pymupdf.Page, clip: pymupdf.Rect | None = None) -> ReadResult:\n    path = page.parent.name\n    if not path:\n        return ReadResult(reader_name=self.name, caps=self.caps, note=\"documento sem caminho\")\n    try:\n        result = _convert(path, self.mode)\n    except Exception as exc:  # noqa: BLE001\n        # \"falhou:\" é o prefixo que o consenso procura. Um leitor que\n        # quebrou não é um leitor que se absteve, e tratar os dois como a\n        # mesma coisa deixa o campo com um leitor só sem dizer por quê.\n        return ReadResult(reader_name=self.name, caps=self.caps,\n                          note=f\"falhou: {type(exc).__name__}: {exc}\")\n\n    page_no = page.number + 1\n    height = float(page.rect.height)\n    kind = READER_KIND[self.mode]\n\n    blocks: list[Block] = []\n    for item, _level in result.document.iterate_items():\n        prov = getattr(item, \"prov\", None)\n        if not prov or prov[0].page_no != page_no:\n            continue\n        blocks.extend(self._blocks_for(item, prov[0], page_no, height, kind))\n\n    if clip is not None:\n        blocks = [\n            b for b in blocks\n            if pymupdf.Rect(b.bbox.x0, b.bbox.y0, b.bbox.x1, b.bbox.y1).intersects(clip)\n        ]\n    for order, block in enumerate(blocks):\n\n# … mais 2 linhas"}, {"layer": "Ingestão", "tool": "consensus.read_page", "why": "funde região a região por sobreposição sobre a MENOR área — um motor devolve a tabela inteira, outro devolve oito células", "input": {"page": "01_energetica_vale_tiete_dividendo.pdf", "leitores": ["docling:parser", "docling:ocr", "docling:vlm"]}, "output": {"regiões": 24, "kinds": ["text_layer", "ocr_deterministic", "ocr_generative"], "notas": ["docling:vlm: 14 célula(s) de tabela receberam a geometria medida por docling:parser", "consenso de 3 leitura(s): 24 regiões, 24 com mais de um leitor"], "exemplo": {"text": "ENERGÉTICA VALE DO TIETÊ S.A.", "bbox": [190, 61, 399, 73], "level": "muito_alta", "reader_kind": "text_layer", "role": "title", "row": null, "col": null, "alternatives": [["docling:ocr", "ENERGÉTICA VALE DO TIETÊ S.A."], ["docling:vlm", "ENERGÉTICA VALE DO TIETÊ S.A."]]}}, "logic": "def read_page_consensus(\n    page: pymupdf.Page, readers: list[Reader]\n) -> tuple[list[Block], list[str], list[ReaderKind], dict[ReaderKind, str]]:\n    results: list[tuple[Reader, ReadResult]] = []\n    notes: list[str] = []\n    kinds: list[ReaderKind] = []\n\n    for reader in readers:\n        if not reader.available():\n            notes.append(f\"{reader.name} indisponível — não vota\")\n            continue\n        result = reader.read(page)\n        results.append((reader, result))\n        if result.blocks:\n            for block in result.blocks:\n                if block.reader_kind not in kinds:\n                    kinds.append(block.reader_kind)\n        elif result.note and result.note.startswith(\"falhou\"):\n            # falha não é abstenção: o campo vai ficar com menos leitores e o\n            # registro tem de dizer que foi por quebra, não por ausência de\n            # conteúdo — senão degradação silenciosa vira \"consenso\"\n            notes.append(f\"{reader.name} FALHOU — {result.note[8:]}\")\n        else:\n            # abstenção não é discordância: o parser devolve zero bloco num\n            # scan, e isso não pode rebaixar o degrau de nada\n            notes.append(f\"{reader.name} não leu nada nesta página — abstém-se\")\n\n    if not results:\n        return [], notes + [\"nenhum leitor disponível\"], kinds, {}\n\n\n# … mais 81 linhas"}, {"layer": "Ingestão", "tool": "consensus.resolve", "why": "o degrau vem de QUEM concordou: a camada de texto não compartilha modo de falha com pixel; dois leitores dos mesmos pixels erram junto e valem menos", "input": {"leituras da região": ["docling:ocr", "docling:vlm"], "parser": "abstido"}, "output": {"exemplo": {"text": "TELECOM NORTE PARTICIPAÇÕES S.A.", "bbox": [202, 28, 609, 58], "level": "media", "reader_kind": "ocr_deterministic", "role": "title", "row": null, "col": null, "alternatives": [["docling:vlm", "TELECOM NORTE PARTICIPAÇÔES S.A."]]}, "por que media": "OCR e VLM concordando — dois leitores dos mesmos pixels", "notas": ["docling:parser não leu nada nesta página — abstém-se", "docling:vlm eliminado: ISIN BRTLNRACPR2 tem 11 caracteres, ISO 6166 exige 12", "consenso de 3 leitura(s): 19 regiões, 19 com mais de um leitor"]}, "logic": "def resolve(readings: list[Reading]) -> tuple[Block, list[str]]:\n    flaws = {id(r): structural_flaws(r.block.text) for r in readings}\n    clean = [r for r in readings if not flaws[id(r)]]\n    # se todas forem reprovadas não há o que eliminar: o valor sai no degrau\n    # mais baixo em vez de sair como se ninguém tivesse notado\n    all_flawed = not clean\n    survivors = readings if all_flawed else clean\n    eliminated = [r for r in readings if r not in survivors]\n\n    notes = []\n    for r in eliminated:\n        notes.append(f\"{r.reader} eliminado: {flaws[id(r)][0]}\")\n    if all_flawed:\n        notes.append(\n            f\"nenhuma leitura passou na estrutura ({flaws[id(readings[0])][0]}) — \"\n            \"valor mantido no degrau mais baixo\"\n        )\n\n    groups: dict[str, list[Reading]] = {}\n    for reading in survivors:\n        groups.setdefault(vote_key(reading.block.text), []).append(reading)\n\n    # vence o grupo com os mecanismos mais fortes, não o mais numeroso: dois\n    # leitores de pixel concordando valem menos que a camada de texto sozinha\n    best_key = max(groups, key=lambda k: -LEVELS.index(reading_level({r.kind for r in groups[k]})))\n    winners = groups[best_key]\n    kinds = {r.kind for r in winners}\n\n    winner = min(winners, key=lambda r: MECHANISM_ERROR[r.kind]).block\n    nivel = reading_level(kinds)\n\n# … mais 22 linhas"}, {"layer": "Extração", "tool": "layout.enrich", "why": "agrupamento geométrico por linha: estes avisos usam tabela sem borda, então linha é geometria, não marcação", "input": {"blocos": 24}, "output": {"exemplo": {"text": "Tipo de evento", "bbox": [63, 337, 133, 346], "level": "muito_alta", "reader_kind": "text_layer", "role": "table_cell", "row": 6, "col": 0, "alternatives": [["docling:ocr", "Tipo de evento Dividendo"], ["docling:vlm", "Tipo de evento Dividendo"]]}}, "logic": "def enrich(blocks: list[Block]) -> list[Block]:\n    blocks = _split_fused(blocks)\n    for row_index, row in enumerate(group_rows(blocks)):\n        # A lone block on a line is prose, not a cell.\n        if len(row) < 2:\n            continue\n        for col_index, block in enumerate(row):\n            block.role = \"table_cell\"\n            block.row = row_index\n            block.col = col_index\n    return blocks"}, {"layer": "Classificação", "tool": "markers.pre_classify", "why": "opinião determinística antes do modelo — prior fraco é resultado válido, não erro", "input": {"text": "ENERGÉTICA VALE DO TIETÊ S.A.\nCompanhia Aberta  |  CNPJ/ME nº 12.345.678/0001-90  |  NIRE 35.300.000.001\nAVISO AOS ACION…"}, "output": {"ranked": [["dividendo", 3.4], ["jcp", 0.3]], "hits": [{"event_type": "jcp", "marker": "retencao de imposto de renda|irrf", "weight": 0.3, "definitional": false, "matched_text": "retencao de imposto de renda"}, {"event_type": "dividendo", "marker": "lucro do exercicio|resultado do exercicio", "weight": 1.5, "definitional": true, "matched_text": "resultado do exercicio"}, {"event_type": "dividendo", "marker": "distribuicao de dividendos", "weight": 1.5, "definitional": true, "matched_text": "distribuicao de dividendos"}, "… mais 1"], "title_prior": "dividendo", "body_prior": "dividendo"}, "logic": "def pre_classify(text: str, config_dir: str | None = None) -> ClassificationPrior:\n    config = load_config(\"event_types\", config_dir)\n    title, body = split_title_body(text)\n\n    whole_scores, hits = _score_text(text, config)\n    title_scores, _ = _score_text(title, config)\n    body_scores, _ = _score_text(body, config)\n\n    ranked = sorted(whole_scores.items(), key=lambda kv: kv[1], reverse=True)\n    return ClassificationPrior(\n        ranked=[(t, round(s, 2)) for t, s in ranked],\n        hits=hits,\n        title_prior=max(title_scores, key=title_scores.get) if title_scores else None,\n        body_prior=max(body_scores, key=body_scores.get) if body_scores else None,\n    )"}, {"layer": "Extração", "tool": "identifiers.find_identifiers", "why": "camada 1 varre por estrutura (ISO 6166, ticker B3, CNPJ) sem depender de rótulo; camada 2 usa âncora como reforço", "input": {"text": "ENERGÉTICA VALE DO TIETÊ S.A.\nCompanhia Aberta  |  CNPJ/ME nº 12.345.678/0001-90  |  NIRE 35.300.000.001\nAVISO AOS ACION…"}, "output": {"isin": [{"value": "BRTIETACNOR3", "anchored": true, "context": ""}], "ticker": [{"value": "TIET3", "anchored": false, "context": ""}], "cnpj": [{"value": "12.345.678/0001-90", "anchored": true, "context": ""}]}, "logic": "def find_identifiers(text: str, config_dir: str | None = None) -> IdentifierCandidates:\n    anchors = load_config(\"anchors\", config_dir)\n    cleaned = _clean_for_ids(text)\n    normalized = normalize(text)\n    out = IdentifierCandidates()\n\n    for match in ISIN_ANCHORED.finditer(cleaned):\n        out.isin.append(Candidate(value=match.group(1), anchored=True))\n    seen = {c.value for c in out.isin}\n    for match in ISIN_STRUCTURAL.finditer(cleaned):\n        if match.group(1) not in seen:\n            out.isin.append(Candidate(value=match.group(1)))\n\n    # Layer 2 — label anchors. Best-effort: a hit raises confidence, an absence\n    # is not a failure, because layer 1 already swept the whole page.\n    ticker_anchor_present = any(\n        anchor in normalized for anchor in (anchors.get(\"ticker\") or [])\n    )\n    for match in TICKER_STRUCTURAL.finditer(cleaned):\n        value = match.group(1)\n        if value[:4] in TICKER_STOPWORDS:\n            continue\n        out.ticker.append(Candidate(value=value, anchored=ticker_anchor_present))\n\n    for match in CNPJ_STRUCTURAL.finditer(cleaned):\n        out.cnpj.append(Candidate(value=_format_cnpj(match.group(1)), anchored=True))\n\n    return out"}, {"layer": "Extração", "tool": "provenance.locate", "why": "o valor volta para a região da página de onde foi lido — sem isto o campo não é auditável", "input": {"evidence": "R$ 0,4275000000"}, "output": {"qualidade": 1.0, "bloco": {"text": "R$ 0,4275000000", "bbox": [238, 358, 318, 367], "level": "muito_alta", "reader_kind": "text_layer", "role": "table_cell", "row": 7, "col": 1, "alternatives": [["docling:ocr", "Valor bruto por ação ordinária R$ 0,4275"], ["docling:vlm", "Valor bruto por ação ordinária  (ON) R$ "]]}}, "logic": "def locate(\n    evidence: str, blocks: list[Block], value: str | None = None\n) -> tuple[Block | None, float]:\n    if not evidence or not evidence.strip():\n        return None, 0.0\n\n    target, squashed = normalize(evidence), _squash(evidence)\n    if not squashed:\n        return None, 0.0\n    wanted = _squash(value) if value else \"\"\n\n    best: tuple[Block | None, float] = (None, 0.0)\n    for block in blocks:\n        block_norm = normalize(block.text)\n        if target and target in block_norm:\n            return block, 1.0\n        block_squashed = _squash(block.text)\n        if squashed and block_squashed and squashed in block_squashed:\n            if 0.85 > best[1]:\n                best = (block, 0.85)\n        elif block_squashed and squashed and block_squashed in squashed:\n            # The value straddles several OCR lines; a partial anchor is still\n            # a real anchor.\n            score = 0.6 * (len(block_squashed) / len(squashed))\n            if wanted and wanted in block_squashed:\n                score = max(score, _HOLDS_VALUE)\n            if score > best[1]:\n                best = (block, score)\n    return best"}, {"layer": "Validação", "tool": "lookup_golden_record", "why": "emissor conhecido: identidade confirmada contra a base de referência", "input": {"issuer": "Energética Vale do Tietê S.A.", "isin": "BRTIETACNOR3"}, "output": {"status": "MATCH", "message": "identidade confirmada na base de referência", "matched_row": {"emissor": "Energética Vale do Tietê S.A.", "cnpj": "12.345.678/0001-90", "isin": "BRTIETACNOR3", "ticker": "TIET3", "classe": "ON", "segmento_listagem": "Novo Mercado", "status": "ativo"}, "agreeing_keys": ["isin", "issuer"], "severity": "PASS"}, "logic": "def _lookup(\n    self,\n    issuer: str | None = None,\n    cnpj: str | None = None,\n    isin: str | None = None,\n    ticker: str | None = None,\n    share_class: str | None = None,\n) -> dict:\n    keys = {\"isin\": isin, \"ticker\": ticker, \"cnpj\": cnpj, \"issuer\": issuer}\n    matches: dict[str, int] = {}\n    for key, value in keys.items():\n        if not value:\n            continue\n        for index, row in enumerate(self.golden):\n            if key == \"issuer\":\n                if normalize(row[\"emissor\"]) == normalize(value):\n                    matches[key] = index\n                    break\n            elif normalize(row[_column(key)]) == normalize(value):\n                matches[key] = index\n                break\n\n    if not matches:\n        return {\n            \"status\": \"NOT_FOUND\",\n            \"reason_code\": ReasonCode.ISSUER_NOT_IN_GOLDEN.value,\n            \"message\": \"nenhum identificador do aviso consta na base de referência\",\n            \"keys_tried\": {k: v for k, v in keys.items() if v},\n        }\n\n\n# … mais 61 linhas"}, {"layer": "Validação", "tool": "lookup_golden_record (ausente)", "why": "ler certo e não existir no registro são coisas diferentes — o doc 08 foi lido corretamente e o emissor não está na base", "input": {"issuer": "Construtora Horizonte S.A.", "isin": "BRCNHZACNOR5"}, "output": {"status": "NOT_FOUND", "reason_code": "ISSUER_NOT_IN_GOLDEN", "message": "nenhum identificador do aviso consta na base de referência", "keys_tried": {"isin": "BRCNHZACNOR5", "issuer": "Construtora Horizonte S.A."}, "severity": "INFO"}, "logic": "def _lookup(\n    self,\n    issuer: str | None = None,\n    cnpj: str | None = None,\n    isin: str | None = None,\n    ticker: str | None = None,\n    share_class: str | None = None,\n) -> dict:\n    keys = {\"isin\": isin, \"ticker\": ticker, \"cnpj\": cnpj, \"issuer\": issuer}\n    matches: dict[str, int] = {}\n    for key, value in keys.items():\n        if not value:\n            continue\n        for index, row in enumerate(self.golden):\n            if key == \"issuer\":\n                if normalize(row[\"emissor\"]) == normalize(value):\n                    matches[key] = index\n                    break\n            elif normalize(row[_column(key)]) == normalize(value):\n                matches[key] = index\n                break\n\n    if not matches:\n        return {\n            \"status\": \"NOT_FOUND\",\n            \"reason_code\": ReasonCode.ISSUER_NOT_IN_GOLDEN.value,\n            \"message\": \"nenhum identificador do aviso consta na base de referência\",\n            \"keys_tried\": {k: v for k, v in keys.items() if v},\n        }\n\n\n# … mais 61 linhas"}, {"layer": "Validação", "tool": "check_date_coherence", "why": "cronologia que qualquer evento respeita: direito fixa na data com, a ação negocia ex no pregão seguinte, ninguém recebe antes", "input": {"approval_date": "28/05/2026", "com_date": "12/06/2026", "ex_date": "15/06/2026", "payment_date": "03/07/2026", "event_type": "dividendo"}, "output": {"status": "PASS", "reason_code": null, "violations": [], "message": "cronologia coerente", "dates_checked": {"approval_date": "28/05/2026", "com_date": "12/06/2026", "ex_date": "15/06/2026", "payment_date": "03/07/2026"}}, "logic": "def check_date_coherence(\n    self,\n    approval_date: str | None = None,\n    com_date: str | None = None,\n    ex_date: str | None = None,\n    payment_date: str | None = None,\n    event_type: str | None = None,\n) -> dict:\n    parsed = {\n        \"approval_date\": _as_date(approval_date),\n        \"com_date\": _as_date(com_date),\n        \"ex_date\": _as_date(ex_date),\n        \"payment_date\": _as_date(payment_date),\n    }\n    violations: list[dict] = []\n\n    def compare(earlier: str, later: str, strict: bool, rule: str) -> None:\n        a, b = parsed[earlier], parsed[later]\n        if a is None or b is None:\n            return\n        ok = a < b if strict else a <= b\n        if not ok:\n            violations.append(\n                {\"rule\": rule, earlier: format_date(a), later: format_date(b)}\n            )\n\n    compare(\"approval_date\", \"com_date\", False, \"aprovação deve preceder ou igualar a data com\")\n    compare(\"com_date\", \"ex_date\", True, \"data ex deve ser posterior à data com\")\n    compare(\"ex_date\", \"payment_date\", False, \"pagamento não pode anteceder a data ex\")\n    compare(\"com_date\", \"payment_date\", False, \"pagamento não pode anteceder a data com\")\n\n# … mais 30 linhas"}, {"layer": "Validação", "tool": "check_date_coherence (violação)", "why": "o caso que bloqueia o doc 05: pagamento antes da data com", "input": {"approval_date": "01/06/2026", "com_date": "15/07/2026", "ex_date": "16/07/2026", "payment_date": "10/07/2026", "event_type": "dividendo"}, "output": {"status": "FAIL", "reason_code": "DATE_INCOHERENCE", "violations": [{"rule": "pagamento não pode anteceder a data ex", "ex_date": "16/07/2026", "payment_date": "10/07/2026"}, {"rule": "pagamento não pode anteceder a data com", "com_date": "15/07/2026", "payment_date": "10/07/2026"}], "message": "cronologia impossível: pagamento não pode anteceder a data ex (ex_date=16/07/2026, payment_date=10/07/2026); pagamento não pode anteceder a data com (com_date=15/07/2026, payment_date=10/07/2026)", "dates_checked": {"approval_date": "01/06/2026", "com_date": "15/07/2026", "ex_date": "16/07/2026", "payment_date": "10/07/2026"}}, "logic": "def check_date_coherence(\n    self,\n    approval_date: str | None = None,\n    com_date: str | None = None,\n    ex_date: str | None = None,\n    payment_date: str | None = None,\n    event_type: str | None = None,\n) -> dict:\n    parsed = {\n        \"approval_date\": _as_date(approval_date),\n        \"com_date\": _as_date(com_date),\n        \"ex_date\": _as_date(ex_date),\n        \"payment_date\": _as_date(payment_date),\n    }\n    violations: list[dict] = []\n\n    def compare(earlier: str, later: str, strict: bool, rule: str) -> None:\n        a, b = parsed[earlier], parsed[later]\n        if a is None or b is None:\n            return\n        ok = a < b if strict else a <= b\n        if not ok:\n            violations.append(\n                {\"rule\": rule, earlier: format_date(a), later: format_date(b)}\n            )\n\n    compare(\"approval_date\", \"com_date\", False, \"aprovação deve preceder ou igualar a data com\")\n    compare(\"com_date\", \"ex_date\", True, \"data ex deve ser posterior à data com\")\n    compare(\"ex_date\", \"payment_date\", False, \"pagamento não pode anteceder a data ex\")\n    compare(\"com_date\", \"payment_date\", False, \"pagamento não pode anteceder a data com\")\n\n# … mais 30 linhas"}, {"layer": "Validação", "tool": "check_date_coherence (legado ISO)", "why": "MESMAS datas em ISO: liberal ao ler, estrito ao escrever. Registro antigo continua sendo lido e a violação continua disparando — o que sai padronizado é sempre pt-BR", "input": {"com_date": "2026-07-15", "ex_date": "2026-07-16", "payment_date": "2026-07-10", "event_type": "dividendo"}, "output": {"status": "FAIL", "reason_code": "DATE_INCOHERENCE", "violations": [{"rule": "pagamento não pode anteceder a data ex", "ex_date": "16/07/2026", "payment_date": "10/07/2026"}, {"rule": "pagamento não pode anteceder a data com", "com_date": "15/07/2026", "payment_date": "10/07/2026"}], "message": "cronologia impossível: pagamento não pode anteceder a data ex (ex_date=16/07/2026, payment_date=10/07/2026); pagamento não pode anteceder a data com (com_date=15/07/2026, payment_date=10/07/2026)", "dates_checked": {"com_date": "15/07/2026", "ex_date": "16/07/2026", "payment_date": "10/07/2026"}}, "logic": "def check_date_coherence(\n    self,\n    approval_date: str | None = None,\n    com_date: str | None = None,\n    ex_date: str | None = None,\n    payment_date: str | None = None,\n    event_type: str | None = None,\n) -> dict:\n    parsed = {\n        \"approval_date\": _as_date(approval_date),\n        \"com_date\": _as_date(com_date),\n        \"ex_date\": _as_date(ex_date),\n        \"payment_date\": _as_date(payment_date),\n    }\n    violations: list[dict] = []\n\n    def compare(earlier: str, later: str, strict: bool, rule: str) -> None:\n        a, b = parsed[earlier], parsed[later]\n        if a is None or b is None:\n            return\n        ok = a < b if strict else a <= b\n        if not ok:\n            violations.append(\n                {\"rule\": rule, earlier: format_date(a), later: format_date(b)}\n            )\n\n    compare(\"approval_date\", \"com_date\", False, \"aprovação deve preceder ou igualar a data com\")\n    compare(\"com_date\", \"ex_date\", True, \"data ex deve ser posterior à data com\")\n    compare(\"ex_date\", \"payment_date\", False, \"pagamento não pode anteceder a data ex\")\n    compare(\"com_date\", \"payment_date\", False, \"pagamento não pode anteceder a data com\")\n\n# … mais 30 linhas"}, {"layer": "Validação", "tool": "check_amount_coherence", "why": "bruto × (1 − alíquota) = líquido — três campos que se confirmam entre si valem mais que três leitores concordando sobre um", "input": {"gross_per_share": "0,1124300000", "tax_rate": "0,175", "net_per_share": "0,0927547500"}, "output": {"status": "PASS", "reason_code": null, "gross": "0.1124300000", "rate": "0.175", "net_declared": "0.0927547500", "net_expected": "0.0927547500000", "delta": "0E-13", "tolerance": "0.000001"}, "logic": "def check_amount_coherence(\n    self,\n    gross_per_share: str | None = None,\n    tax_rate: str | None = None,\n    net_per_share: str | None = None,\n) -> dict:\n    gross, rate, net = (_as_decimal(v) for v in (gross_per_share, tax_rate, net_per_share))\n    if gross is None or net is None:\n        return {\"status\": \"INFO\", \"message\": \"bruto ou líquido ausente; identidade não aplicável\"}\n    if rate is None:\n        return {\"status\": \"INFO\", \"message\": \"alíquota ausente; identidade não verificável\"}\n\n    expected = gross * (Decimal(1) - rate)\n    delta = abs(expected - net)\n    tolerance = Decimal(str(self.thresholds.get(\"amount_tolerance\", 1e-6)))\n    ok = delta <= tolerance\n    return {\n        \"status\": \"PASS\" if ok else \"FAIL\",\n        \"reason_code\": None if ok else ReasonCode.AMOUNT_MISMATCH.value,\n        \"gross\": str(gross),\n        \"rate\": str(rate),\n        \"net_declared\": str(net),\n        \"net_expected\": str(expected),\n        \"delta\": str(delta),\n        \"tolerance\": str(tolerance),\n    }"}, {"layer": "Validação", "tool": "check_event_type_consistency", "why": "o doc 03 é titulado 'proventos' e é JCP na substância — o conflito vira reason code, não decisão silenciosa", "input": {"declared_type": "jcp", "title_prior": "dividendo", "body_prior": "jcp"}, "output": {"status": "WARN", "reason_codes": ["EVENT_TYPE_TITLE_CONFLICT"], "declared_type": "jcp", "title_prior": "dividendo", "body_prior": "jcp", "markers": null, "message": "cabeçalho e corpo do aviso indicam tipos diferentes; a substância prevalece"}, "logic": "def check_event_type_consistency(\n    self,\n    declared_type: str | None = None,\n    title_prior: str | None = None,\n    body_prior: str | None = None,\n    markers: str | None = None,\n) -> dict:\n    conflict = bool(title_prior and body_prior and title_prior != body_prior)\n    disagrees = bool(body_prior and declared_type and body_prior != declared_type)\n    codes = []\n    if conflict:\n        codes.append(ReasonCode.EVENT_TYPE_TITLE_CONFLICT.value)\n    if disagrees:\n        codes.append(ReasonCode.CLASSIFIER_DISAGREEMENT.value)\n    return {\n        \"status\": \"WARN\" if codes else \"PASS\",\n        \"reason_codes\": codes,\n        \"declared_type\": declared_type,\n        \"title_prior\": title_prior,\n        \"body_prior\": body_prior,\n        \"markers\": markers,\n        \"message\": (\n            \"cabeçalho e corpo do aviso indicam tipos diferentes; a substância prevalece\"\n            if conflict\n            else \"tipo consistente com os marcadores do corpo\"\n        ),\n    }"}, {"layer": "Validação", "tool": "check_identifier_format", "why": "SEMPRE INFO: os identificadores do lote são sintéticos e quase nenhum fecha o dígito verificador; vetar por checksum reprovaria a base toda", "input": {"isin": "BRTIETACNOR3", "cnpj": "12.345.678/0001-90", "ticker": "TIET3"}, "output": {"status": "INFO", "findings": {"isin_structure_ok": true, "isin_checksum_ok": false, "cnpj_checksum_ok": false, "ticker_pattern_ok": true}, "message": "checagens estruturais são informativas: a base de referência é a única autoridade sobre identidade"}, "logic": "def check_identifier_format(\n    self,\n    isin: str | None = None,\n    cnpj: str | None = None,\n    ticker: str | None = None,\n    share_class: str | None = None,\n) -> dict:\n    findings = {\n        \"isin_structure_ok\": bool(isin and re.fullmatch(r\"[A-Z]{2}[A-Z0-9]{9}\\d\", isin)),\n        \"isin_checksum_ok\": isin_checksum_ok(isin) if isin else None,\n        \"cnpj_checksum_ok\": cnpj_checksum_ok(cnpj) if cnpj else None,\n        \"ticker_pattern_ok\": bool(ticker and re.fullmatch(r\"[A-Z]{4}\\d{1,2}\", ticker)),\n    }\n    if ticker and share_class:\n        suffix = re.sub(r\"^[A-Z]{4}\", \"\", ticker)\n        implied = TICKER_CLASS.get(suffix)\n        findings[\"ticker_class_consistent\"] = (\n            None if implied is None else implied == share_class.upper()\n        )\n    return {\n        \"status\": \"INFO\",\n        \"findings\": findings,\n        \"message\": (\n            \"checagens estruturais são informativas: a base de referência é a \"\n            \"única autoridade sobre identidade\"\n        ),\n    }"}, {"layer": "Validação", "tool": "check_required_fields", "why": "distingue TIPOS de ausência: adiada pelo emissor, inaplicável ao evento, ou faltando de verdade", "input": {"event_type": "dividendo", "present": "issuer,isin,gross_per_share,com_date,ex_date", "absent": "payment_date"}, "output": {"status": "FAIL", "reason_code": "MISSING_REQUIRED_FIELD", "required": ["issuer", "isin", "ticker", "… mais 5"], "missing": ["ticker", "event_type_label", "currency"], "excused_absences": ["payment_date"], "fields_affected": ["ticker", "event_type_label", "currency"], "message": "campo(s) obrigatório(s) para dividendo ausente(s): ticker, event_type_label, currency"}, "logic": "def check_required_fields(self, event_type: str, present: str, absent: str = \"\") -> dict:\n    from ..models import EventType, spec_for\n\n    try:\n        spec = spec_for(EventType(event_type))\n    except ValueError:\n        spec = spec_for(EventType.OUTRO)\n\n    present_set = {f.strip() for f in (present or \"\").split(\",\") if f.strip()}\n    excused = {f.strip() for f in (absent or \"\").split(\",\") if f.strip()}\n    missing = [f for f in spec.required if f not in present_set and f not in excused]\n    return {\n        \"status\": \"FAIL\" if missing else \"PASS\",\n        \"reason_code\": ReasonCode.MISSING_REQUIRED_FIELD.value if missing else None,\n        \"required\": spec.required,\n        \"missing\": missing,\n        \"excused_absences\": sorted(excused),\n        # Quais campos o achado atinge só se sabe depois de rodar — é o\n        # resultado, não a chamada. As outras validações declaram os campos\n        # que examinam de antemão; esta declara aqui, e sem isso o achado\n        # saía sem alvo: o doc 03 dizia \"campo obrigatório não veio\" numa\n        # tabela e, duas tabelas adiante, \"Tipo declarado no aviso ·\n        # ausente\", as duas metades do mesmo fato sem nada ligando uma à\n        # outra.\n        \"fields_affected\": missing,\n        \"message\": (\n            f\"campo(s) obrigatório(s) para {event_type} ausente(s): {', '.join(missing)}\"\n            if missing\n            else \"todos os campos obrigatórios do tipo vieram\"\n        ),\n\n# … mais 1 linhas"}, {"layer": "Reporter", "tool": "provenance.crop", "why": "o recorte do pixel de origem entra no relatório — o operador não precisa reabrir o PDF para conferir", "input": {"bbox": [238, 358, 318, 367], "pdf": "01_energetica_vale_tiete_dividendo.pdf"}, "output": {"arquivo": "out/tool_examples_snippet.png", "dpi": 200}, "logic": "def crop(pdf_path: str | Path, bbox: BBox, out_path: str | Path, dpi: int = CROP_DPI) -> str | None:\n    out_path = Path(out_path)\n    out_path.parent.mkdir(parents=True, exist_ok=True)\n    try:\n        with pymupdf.open(pdf_path) as pdf:\n            page = pdf[bbox.page - 1]\n            rect = pymupdf.Rect(\n                max(page.rect.x0, bbox.x0 - CROP_PAD),\n                max(page.rect.y0, bbox.y0 - CROP_PAD),\n                min(page.rect.x1, bbox.x1 + CROP_PAD),\n                min(page.rect.y1, bbox.y1 + CROP_PAD),\n            )\n            if rect.is_empty or rect.width < 1 or rect.height < 1:\n                return None\n            page.get_pixmap(dpi=dpi, clip=rect).save(out_path)\n        return str(out_path)\n    except Exception:\n        # A missing snippet must never cost us the record it belongs to.\n        return None"}, {"layer": "Grafo", "tool": "ingest", "why": "lê a página pelas três modalidades e funde região a região", "input": {"documento": "01_energetica_vale_tiete_dividendo.pdf", "blocos": 0}, "logic": "def ingest_node(state: AgentState) -> dict:\n    doc = ingest.load(state.path, cfg=ctx.ingest_cfg)\n    return {\"document\": doc, \"file_name\": doc.file_name}", "output": {"document": "SourceDocument", "file_name": "01_energetica_vale_tiete_dividendo.pdf"}}, {"layer": "Grafo", "tool": "rule_classifier", "why": "opinião determinística sobre o tipo, sem modelo — prior fraco é resultado válido", "input": {"documento": "01_energetica_vale_tiete_dividendo.pdf", "blocos": 24}, "logic": "def rule_classifier_node(state: AgentState) -> dict:\n    prior = markers.pre_classify(state.document.raw_text, ctx.config_dir)\n    vote = ClassifierVote(\n        modality=\"rule\",\n        event_type=prior.top,\n        rationale=(\n            \"marcadores definitórios: \"\n            + \", \".join(h.matched_text for h in prior.hits if h.definitional)[:200]\n        )\n        if prior.hits\n        else \"nenhum marcador definitório casou\",\n        evidence=[h.matched_text for h in prior.hits if h.definitional][:8],\n    )\n    return {\"votes\": [vote]}", "output": {"votes": {"n": 1, "primeiro": {"n": 5, "chaves": ["modality", "event_type", "rationale", "available"], "modality": "…"}}}}, {"layer": "Grafo", "tool": "text_classifier", "why": "a mesma pergunta ao LLM, sobre o texto extraído", "input": {"documento": "01_energetica_vale_tiete_dividendo.pdf", "blocos": 24}, "logic": "def text_classifier_node(state: AgentState) -> dict:\n    if not ctx.use_model:\n        return {\"votes\": [ClassifierVote(modality=\"text\", available=False)]}\n    try:\n        agent = agents.build_text_classifier(ctx.model)\n        result = agent.run_sync(\n            f\"Classifique o evento corporativo do aviso abaixo.\\n\\n--- AVISO ---\\n\"\n            f\"{state.document.raw_text}\"\n        )\n        return {\"votes\": [_vote_from_output(\"text\", result.output)]}\n    except Exception as exc:  # noqa: BLE001\n        return {\n            \"votes\": [ClassifierVote(modality=\"text\", available=False, rationale=str(exc)[:200])],\n            \"errors\": [NodeError(node=\"text_classifier\", error=f\"{type(exc).__name__}: {exc}\")],\n        }", "output": {"votes": {"n": 1, "primeiro": {"n": 5, "chaves": ["modality", "event_type", "rationale", "available"], "modality": "…"}}}}, {"layer": "Grafo", "tool": "consensus", "why": "unanimidade ou nada: qualquer divergência vai para revisão, porque errar o tipo muda o tratamento tributário", "input": {"documento": "01_energetica_vale_tiete_dividendo.pdf", "blocos": 24, "votos": ["rule=dividendo", "text=dividendo"]}, "logic": "def consensus_node(state: AgentState) -> dict:\n    usable = [v for v in state.votes if v.available and v.event_type is not None]\n    if not usable:\n        return {\n            \"classification\": Classification(event_type=EventType.OUTRO, unanimous=False),\n            \"unanimous\": False,\n        }\n\n    prior = markers.pre_classify(state.document.raw_text, ctx.config_dir)\n    counts = Counter(v.event_type for v in usable)\n    winner, _ = counts.most_common(1)[0]\n    empatados = [t for t, n in counts.items() if n == counts[winner]]\n    if len(empatados) > 1:\n        # Empate em contagem. Era resolvido pela confiança que a modalidade\n        # declarava de si mesma — um número que ninguém mediu decidindo o\n        # tipo do evento. Decide o prior determinístico, que é auditável:\n        # ele leu os marcadores definitórios do aviso. Se nem ele estiver\n        # entre os empatados, vale a ordem declarada das modalidades.\n        ordem = {\"rule\": 0, \"text\": 1}\n        winner = (\n            prior.top\n            if prior.top in empatados\n            else min(\n                (v for v in usable if v.event_type in empatados),\n                key=lambda v: ordem.get(v.modality, 9),\n            ).event_type\n        )\n\n    unanimous = len(counts) == 1\n    detail = \", \".join(\n\n# … mais 15 linhas", "output": {"classification": {"n": 6, "chaves": ["event_type", "subtype", "rationale", "prior"], "event_type": "dividendo"}, "unanimous": true}}, {"layer": "Grafo", "tool": "rule_extractor", "why": "âncoras de rótulo do config, offline — o segundo par de olhos que o LLM enfrenta", "input": {"documento": "01_energetica_vale_tiete_dividendo.pdf", "blocos": 24, "votos": ["rule=dividendo", "text=dividendo"], "tipo": "dividendo"}, "logic": "def rule_extractor_node(state: AgentState) -> dict:\n    event_type = state.classification.event_type if state.classification else EventType.OUTRO\n    found = rules.extract(state.document, event_type, ctx.config_dir)\n    return {\n        \"candidates\": [\n            (\n                name,\n                FieldCandidate(\n                    extractor=\"rule\",\n                    value_raw=raw.value_raw,\n                    evidence_text=raw.evidence_text,\n                    rationale=raw.rationale,\n                ),\n            )\n            for name, raw in found.items()\n        ]\n    }", "output": {"candidates": {"n": 12, "primeiro": {"n": 2, "primeiro": "event_type_label"}}}}, {"layer": "Grafo", "tool": "text_extractor", "why": "extração tipada por schema do tipo de evento", "input": {"documento": "01_energetica_vale_tiete_dividendo.pdf", "blocos": 24, "votos": ["rule=dividendo", "text=dividendo"], "tipo": "dividendo"}, "logic": "def text_extractor_node(state: AgentState) -> dict:\n    if not ctx.use_model:\n        return {}\n    event_type = state.classification.event_type if state.classification else EventType.OUTRO\n    prompt = (\n        f\"Tipo de evento já classificado: {event_type.value}.\\n\"\n        f\"Campos obrigatórios: {', '.join(spec_for(event_type).required)}.\\n\\n\"\n        f\"--- AVISO ---\\n{state.document.raw_text}\"\n    )\n    if state.reprompt_count:\n        # The retry is only justified because the prompt gained information\n        # the first attempt did not have.\n        prompt += (\n            \"\\n\\nATENÇÃO: na tentativa anterior algum trecho citado como evidência não \"\n            \"foi encontrado no documento. Cite APENAS trechos copiados literalmente.\"\n        )\n    try:\n        agent = agents.build_extractor(event_type, ctx.model)\n        parsed = agent.run_sync(prompt).output\n    except Exception as exc:  # noqa: BLE001\n        return {\"errors\": [NodeError(node=\"text_extractor\", error=f\"{type(exc).__name__}: {exc}\")]}\n\n    out = []\n    for name in parsed.model_dump():\n        if name == \"extra_fields\":\n            continue\n        raw = getattr(parsed, name)\n        if isinstance(raw, LLMField):\n            out.append(_candidate_from_llm(name, raw, \"text\"))\n    return {\"candidates\": out}", "output": {"candidates": {"n": 13, "primeiro": {"n": 2, "primeiro": "issuer"}}}}, {"layer": "Grafo", "tool": "merge", "why": "reúne candidatos por campo; não vota, guarda — divergência entre extratores não se resolve por maioria", "input": {"documento": "01_energetica_vale_tiete_dividendo.pdf", "blocos": 24, "votos": ["rule=dividendo", "text=dividendo"], "tipo": "dividendo", "candidatos": 25}, "logic": "def merge_node(state: AgentState) -> dict:\n    names = {name for name, _ in state.candidates}\n    event_type = state.classification.event_type if state.classification else EventType.OUTRO\n    fields: dict[str, ExtractedField] = {}\n    disagreements: list[str] = []\n\n    for name in names:\n        candidates = [c for c in state.candidates_for(name) if c.value_raw is not None]\n        absent = [c for c in state.candidates_for(name) if c.value_raw is None]\n\n        if not candidates:\n            stated = next((c for c in absent if c.absence_reason), None)\n            fields[name] = ExtractedField(\n                name=name,\n                absence_reason=stated.absence_reason if stated else AbsenceReason.NOT_FOUND,\n                rationale=(stated.rationale if stated else \"nenhum extrator encontrou o campo\"),\n            )\n            continue\n\n        best = _winning_candidate(name, candidates)\n        field = ExtractedField(\n            name=name,\n            value_raw=best.value_raw,\n            evidence_text=best.evidence_text,\n            rationale=best.rationale,\n        )\n\n        if len(candidates) > 1:\n            readings = {typed(name, c.value_raw) for c in candidates}\n            field.notes.append(\n\n# … mais 26 linhas", "output": {"fields": {"n": 14, "chaves": ["approval_date", "issuer", "ex_date", "currency"], "approval_date": {"n": 17, "chaves": ["name", "value_raw", "value", "absence_reason"], "name": "…"}}, "disagreements": []}}, {"layer": "Grafo", "tool": "grounding", "why": "confere cada evidência contra o texto CRU, antes de qualquer normalização", "input": {"documento": "01_energetica_vale_tiete_dividendo.pdf", "blocos": 24, "votos": ["rule=dividendo", "text=dividendo"], "tipo": "dividendo", "candidatos": 25, "campos": 14}, "logic": "def grounding_node(state: AgentState) -> dict:\n    fuzzy_min = float((ctx.thresholds.get(\"grounding\") or {}).get(\"fuzzy_min\", 0.85))\n    grounding.ground(state.fields, state.document.raw_text, fuzzy_min)\n    return {\"fields\": state.fields}", "output": {"fields": {"n": 14, "chaves": ["approval_date", "issuer", "ex_date", "currency"], "approval_date": {"n": 17, "chaves": ["name", "value_raw", "value", "absence_reason"], "name": "…"}}}}, {"layer": "Grafo", "tool": "repair", "why": "normaliza para a convenção pt-BR e deriva o que a regra do evento permite", "input": {"documento": "01_energetica_vale_tiete_dividendo.pdf", "blocos": 24, "votos": ["rule=dividendo", "text=dividendo"], "tipo": "dividendo", "candidatos": 25, "campos": 14}, "logic": "def repair_node(state: AgentState) -> dict:\n    event_type = state.classification.event_type if state.classification else EventType.OUTRO\n    repair.repair(state.fields)\n    repair.order_ratio(state.fields, event_type)\n    repair.derive(state.fields, event_type)\n    return {\"fields\": state.fields}", "output": {"fields": {"n": 14, "chaves": ["approval_date", "issuer", "ex_date", "currency"], "approval_date": {"n": 17, "chaves": ["name", "value_raw", "value", "absence_reason"], "name": "…"}}}}, {"layer": "Grafo", "tool": "sweep", "why": "relê as três leituras inteiras atrás do que faltou e do que um mecanismo só sustentava; três guardas em código decidem o que entra", "input": {"documento": "01_energetica_vale_tiete_dividendo.pdf", "blocos": 24, "votos": ["rule=dividendo", "text=dividendo"], "tipo": "dividendo", "candidatos": 25, "campos": 14}, "logic": "def sweep_node(state: AgentState) -> dict:\n    event_type = state.classification.event_type if state.classification else EventType.OUTRO\n    faltando = sweep.missing_fields(state.fields, event_type)\n    # Duas perguntas sobre o mesmo material: onde está o que falta, e o que\n    # um mecanismo só sustenta aparece em mais alguma leitura.\n    sozinhos = sweep.uncorroborated_fields(state.fields)\n    conferir = {\n        name: state.fields[name].value_raw or str(state.fields[name].value)\n        for name in sozinhos\n    }\n    if (not faltando and not conferir) or not ctx.use_model:\n        return {}\n\n    reads = state.document.reads\n    if not reads:\n        return {}\n\n    try:\n        agent = agents.build_field_sweeper(ctx.model)\n        result = agent.run_sync(sweep.build_prompt(reads, faltando, conferir))\n        devolvidos = dict(result.output.found or {})\n    except Exception as exc:  # noqa: BLE001\n        # Uma varredura que não roda deixa o registro exatamente como estava:\n        # ela só acrescenta, nunca é pré-requisito de nada.\n        return {\"errors\": [NodeError(node=\"sweep\", error=f\"{type(exc).__name__}: {exc}\")]}\n\n    fields = dict(state.fields)\n    # Confirmação primeiro: ela mexe em campo que já existe, e o que sobra\n    # do dicionário é candidato a preencher ausência.\n    notas = sweep.confirm(devolvidos, fields, sozinhos, reads)\n\n# … mais 20 linhas", "output": {"fields": {"n": 14, "chaves": ["approval_date", "issuer", "ex_date", "currency"], "approval_date": {"n": 17, "chaves": ["name", "value_raw", "value", "absence_reason"], "name": "…"}}}}, {"layer": "Grafo", "tool": "validate", "why": "as seis tools determinísticas, sempre todas, com args e retorno no registro", "input": {"documento": "01_energetica_vale_tiete_dividendo.pdf", "blocos": 24, "votos": ["rule=dividendo", "text=dividendo"], "tipo": "dividendo", "candidatos": 25, "campos": 14}, "logic": "def validate_node(state: AgentState) -> dict:\n    record = _as_record(state)\n    return {\"validations\": verify.run_validators(record, ctx.validators)}", "output": {"validations": {"n": 6, "primeiro": {"n": 7, "chaves": ["tool", "args", "status", "detail"], "tool": "…"}}}}, {"layer": "Grafo", "tool": "triage", "why": "o veredito em código: severidade dos reason codes decide AUTO, REVIEW ou BLOCKED", "input": {"documento": "01_energetica_vale_tiete_dividendo.pdf", "blocos": 24, "votos": ["rule=dividendo", "text=dividendo"], "tipo": "dividendo", "candidatos": 25, "campos": 14, "validações": 6}, "logic": "def triage_node(state: AgentState) -> dict:\n    record = _as_record(state)\n    evidence.note_reference_matches(record.fields, record.validations)\n    audit.annotate(record, ctx.thresholds)\n    result = run_triage(record, ctx.thresholds)\n\n    # Findings the graph produced that no single validator owns.\n    from .models import TriageReason\n\n    extra = []\n    if not state.unanimous:\n        extra.append(\n            TriageReason.of(\n                ReasonCode.CLASSIFIER_DISAGREEMENT,\n                field=\"event_type\",\n                message=state.classification.rationale if state.classification else \"\",\n            )\n        )\n    for name in state.disagreements:\n        extra.append(\n            TriageReason.of(\n                ReasonCode.EXTRACTOR_DISAGREEMENT,\n                field=name,\n                message=f\"extratores independentes leram '{name}' de formas diferentes\",\n            )\n        )\n    if extra:\n        existing = {(r.code, r.field) for r in result.reasons}\n        result.reasons.extend(r for r in extra if (r.code, r.field) not in existing)\n        result.fields_for_review = sorted(\n\n# … mais 10 linhas", "output": {"fields": {"n": 14, "chaves": ["approval_date", "issuer", "ex_date", "currency"], "approval_date": {"n": 17, "chaves": ["name", "value_raw", "value", "absence_reason"], "name": "…"}}, "triage": {"n": 5, "chaves": ["disposition", "reasons", "justification", "weakest_level"], "disposition": "review"}}}, {"layer": "Grafo", "tool": "reporter", "why": "escreve a narrativa; a disposição já está calculada e ele não a toca", "input": {"documento": "01_energetica_vale_tiete_dividendo.pdf", "blocos": 24, "votos": ["rule=dividendo", "text=dividendo"], "tipo": "dividendo", "candidatos": 25, "campos": 14, "validações": 6, "disposição": "review"}, "logic": "def reporter_node(state: AgentState) -> dict:\n    record = _as_record(state)\n    if not ctx.use_model:\n        return {\"justification\": verify._fallback_justification(record)}\n    allowed = {r.code.value for r in state.triage.reasons} if state.triage else set()\n    # tudo que o registro realmente afirma, nas duas grafias: o relator pode\n    # citar o valor lido ou o padronizado, mas não um terceiro\n    figures = {\n        str(v)\n        for f in state.fields.values()\n        for v in (f.value, f.value_raw)\n        if v not in (None, \"\")\n    }\n    try:\n        agent = agents.build_reporter(ctx.model)\n        result = agent.run_sync(\n            _reporter_prompt(state),\n            deps=agents.ReporterDeps(allowed_codes=allowed, allowed_figures=figures),\n        )\n        return {\"justification\": result.output.justification.strip()}\n    except Exception as exc:  # noqa: BLE001\n        return {\n            \"justification\": verify._fallback_justification(record),\n            \"errors\": [NodeError(node=\"reporter\", error=f\"{type(exc).__name__}: {exc}\")],\n        }", "output": {"justification": "Identidade confirmada na base de referência, cronologia coerente, tipo de evento consistente e todos os campos"}}]</script>
+
+<div class="exdim" id="exdim" role="dialog" aria-modal="true" aria-labelledby="extitle">
+  <div class="exwin">
+    <button class="exclose" id="exclose" aria-label="Fechar">esc ✕</button>
+    <p class="lay" id="exlayer"></p>
+    <h3 id="extitle"></h3>
+    <p class="why" id="exwhy"></p>
+    <div class="exio" id="exio">
+      <div><h4>entrada</h4><pre id="exin"></pre></div>
+      <div class="exlogic" id="exmid"><h4>o que o código faz</h4><pre id="exlogic"></pre></div>
+      <div><h4>saída</h4><pre id="exout"></pre></div>
+    </div>
+  </div>
+</div>
+<script>
+(function () {
+  var data = JSON.parse(document.getElementById('exdata').textContent);
+  var byTool = {};
+  data.forEach(function (e) { byTool[e.tool] = e; });
+
+  var dim = document.getElementById('exdim');
+  var last = null;
+
+  function open(tool) {
+    var e = byTool[tool];
+    if (!e) return;
+    document.getElementById('exlayer').textContent = e.layer;
+    document.getElementById('extitle').textContent = e.tool;
+    document.getElementById('exwhy').textContent = e.why;
+    document.getElementById('exin').textContent = JSON.stringify(e.input, null, 2);
+    document.getElementById('exout').textContent = JSON.stringify(e.output, null, 2);
+    // sem código capturado o painel do meio some, em vez de abrir vazio
+    var mid = document.getElementById('exmid');
+    var io = document.getElementById('exio');
+    if (e.logic) {
+      document.getElementById('exlogic').textContent = e.logic;
+      mid.style.display = '';
+      io.classList.add('tri');
+    } else {
+      mid.style.display = 'none';
+      io.classList.remove('tri');
+    }
+    dim.setAttribute('open', '');
+    document.getElementById('exclose').focus();
+  }
+  function close() {
+    dim.removeAttribute('open');
+    if (last) { last.focus(); last = null; }
+  }
+
+  document.addEventListener('click', function (ev) {
+    var t = ev.target.closest('[data-ex]');
+    if (t) { last = t; open(t.getAttribute('data-ex')); return; }
+    if (ev.target.id === 'exclose' || ev.target === dim) close();
+  });
+  document.addEventListener('keydown', function (ev) {
+    if (ev.key === 'Escape') close();
+    if ((ev.key === 'Enter' || ev.key === ' ') && document.activeElement &&
+        document.activeElement.hasAttribute('data-ex')) {
+      ev.preventDefault();
+      last = document.activeElement;
+      open(document.activeElement.getAttribute('data-ex'));
+    }
+  });
+})();
+</script>
+
+
+    <figure>
+      <svg viewBox="0 0 900 540" role="img"
+           aria-label="Ingestão por consenso: o mesmo PDF passa por três leituras isoladas — camada de texto, OCR de página inteira e VLM. Cada uma tem um nó de saída clicável que abre o formato real que produz. As três são comparadas região a região por tipagem, validação e voto, produzindo blocos que carregam quais leitores concordaram.">
+        <defs>
+          <marker id="c3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="currentColor"/>
+          </marker>
+        </defs>
+
+        <rect x="400" y="12" width="100" height="28" rx="14" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.2"/>
+        <text x="450" y="30" font-family="ui-monospace,monospace" font-size="11" font-weight="600" fill="var(--accent)" text-anchor="middle">PDF</text>
+
+        <rect x="40"  y="96" width="200" height="60" rx="6" fill="var(--surface)" stroke="var(--m-rule)"  stroke-width="1.6"/>
+        <rect x="350" y="96" width="200" height="60" rx="6" fill="var(--surface)" stroke="var(--m-text)"  stroke-width="1.6"/>
+        <rect x="660" y="96" width="200" height="60" rx="6" fill="var(--surface)" stroke="var(--m-image)" stroke-width="1.6"/>
+
+        <g font-family="ui-monospace,monospace" text-anchor="middle">
+          <g font-size="12" font-weight="600" fill="var(--ink)">
+            <text x="140" y="120">parser</text>
+            <text x="450" y="120">ocr</text>
+            <text x="760" y="120">vlm</text>
+          </g>
+          <g font-size="9.5" fill="var(--ink-faint)">
+            <text x="140" y="135">do_ocr=False</text>
+            <text x="450" y="135">OcrMode.FULL_PAGE</text>
+            <text x="760" y="135">granite-docling 258M</text>
+            <text x="140" y="148">abstém-se em scan</text>
+            <text x="450" y="148">descarta as células do PDF</text>
+            <text x="760" y="148">gera tokens da imagem</text>
+          </g>
+        </g>
+
+        <g stroke="currentColor" stroke-width="1.4" fill="none" marker-end="url(#c3)" color="var(--ink-soft)">
+          <path d="M140 76 V 96"/><path d="M450 76 V 96"/><path d="M760 76 V 96"/>
+          <path d="M140 156 V 176"/><path d="M450 156 V 176"/><path d="M760 156 V 176"/>
+        </g>
+        <g stroke="var(--ink-soft)" stroke-width="1.4" fill="none">
+          <path d="M450 40 V 62 M140 62 H 760 M140 62 V 76 M760 62 V 76"/>
+        </g>
+
+        <g class="outnode" data-ex="docling:parser" tabindex="0" role="button"
+           aria-label="Ver a saída real de docling:parser">
+          <rect x="40" y="176" width="200" height="30" rx="5"/>
+          <text x="140" y="195" text-anchor="middle">▣ 24 blocos · 14 células</text>
+        </g>
+        <g class="outnode" data-ex="docling:ocr" tabindex="0" role="button"
+           aria-label="Ver a saída real de docling:ocr">
+          <rect x="350" y="176" width="200" height="30" rx="5"/>
+          <text x="450" y="195" text-anchor="middle">▣ 21 blocos · 13 células</text>
+        </g>
+        <g class="outnode" data-ex="docling:vlm" tabindex="0" role="button"
+           aria-label="Ver a saída real de docling:vlm">
+          <rect x="660" y="176" width="200" height="30" rx="5"/>
+          <text x="760" y="195" text-anchor="middle">▣ 10 blocos · 0 células</text>
+        </g>
+
+        <g font-family="ui-monospace,monospace" font-size="9.5" font-weight="600" text-anchor="middle">
+          <text x="140" y="224" fill="var(--m-rule)">erro 0,02</text>
+          <text x="450" y="224" fill="var(--m-text)">erro 0,10</text>
+          <text x="760" y="224" fill="var(--m-image)">erro 0,25</text>
+        </g>
+
+        <g stroke="currentColor" stroke-width="1.4" fill="none" marker-end="url(#c3)" color="var(--ink-soft)">
+          <path d="M140 234 V 258 M450 234 V 258 M760 234 V 258"/>
+        </g>
+        <path d="M140 258 H 760" stroke="var(--ink-soft)" stroke-width="1.4" fill="none"/>
+        <path d="M450 258 V 286" stroke="currentColor" stroke-width="1.4" fill="none" marker-end="url(#c3)" color="var(--ink-soft)"/>
+
+        <rect x="250" y="286" width="400" height="86" rx="8" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.6"/>
+        <text x="450" y="310" font-family="ui-monospace,monospace" font-size="12" font-weight="600" fill="var(--ink)" text-anchor="middle">tipar → validar → votar</text>
+        <g font-family="ui-monospace,monospace" font-size="9.5" fill="var(--ink-faint)" text-anchor="middle">
+          <text x="450" y="328">estrito, não conserta · estrutura elimina · sobreviventes votam</text>
+          <text x="450" y="344">mecanismos disjuntos multiplicam · derivados de pixel, não</text>
+          <text x="450" y="360">abstenção não é discordância · eliminado sai do voto, não do placar</text>
+        </g>
+
+        <g font-family="ui-monospace,monospace" font-size="9.5" fill="var(--accent)">
+          <text x="662" y="308">0,1124300000 = 0,112430000</text>
+          <text x="662" y="319">mesmo Decimal, nunca foi conflito</text>
+          <text x="662" y="342">BRTLNRACPR2 → 11 ≠ 12</text>
+          <text x="662" y="353">ISO 6166 decide sem humano</text>
+        </g>
+
+        <path d="M450 372 V 396" stroke="currentColor" stroke-width="1.4" fill="none" marker-end="url(#c3)" color="var(--ink-soft)"/>
+
+        <g class="outnode accent" data-ex="consensus.resolve" tabindex="0" role="button"
+           aria-label="Ver a saída real do consenso">
+          <rect x="250" y="396" width="400" height="30" rx="5"/>
+          <text x="450" y="415" text-anchor="middle">▣ Block fundido · alternatives[] com quem divergiu</text>
+        </g>
+
+        <path d="M450 426 V 448" stroke="currentColor" stroke-width="1.4" fill="none" marker-end="url(#c3)" color="var(--ink-soft)"/>
+        <rect x="250" y="448" width="400" height="46" rx="8" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.4"/>
+        <text x="450" y="468" font-family="ui-monospace,monospace" font-size="11.5" font-weight="600" fill="var(--accent)" text-anchor="middle">blocks[] · readers[] · grau</text>
+        <text x="450" y="484" font-family="ui-monospace,monospace" font-size="9.5" fill="var(--accent)" text-anchor="middle">quantos mecanismos independentes concordaram</text>
+
+        <g font-family="ui-monospace,monospace" font-size="10" text-anchor="middle" font-weight="600">
+          <text x="300" y="518" fill="var(--auto)">10 alta</text>
+          <text x="400" y="518" fill="var(--review)">6 média</text>
+          <text x="520" y="518" fill="var(--ink-faint)">11 leitor único</text>
+          <text x="640" y="518" fill="var(--auto)">0 revisões</text>
+        </g>
+      </svg>
+      <figcaption>src/asset_servicing/extraction/ · readers/docling_reader.py · consensus.py</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="eyebrow">Figura 2 · O grafo</p>
+      <h2>De blocos a registro auditado</h2>
+    </div>
+    <figure>
+      <svg viewBox="0 0 900 1082" role="img"
+           aria-label="Grafo do agente, gerado a partir das arestas reais: classificação em duas modalidades, extração em três nós paralelos reunidos no merge, uma varredura final que relê as três leituras atrás do que faltou, e dois ciclos laterais — grounding com reprompt_extract, validate com disambiguate.">
+        <defs><marker id="c2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="currentColor"/></marker></defs>
+        <g fill="var(--band)">
+          <rect x="16" y="52" width="868" height="214" rx="8"/>
+          <rect x="16" y="286" width="868" height="198" rx="8"/>
+          <rect x="16" y="504" width="868" height="156" rx="8"/>
+          <rect x="16" y="676" width="868" height="92" rx="8"/>
+          <rect x="16" y="776" width="868" height="148" rx="8"/>
+          <rect x="16" y="942" width="868" height="72" rx="8"/>
+        </g>
+        <g font-family="ui-monospace,monospace" font-size="10.5" letter-spacing="1.4" fill="var(--ink-faint)">
+          <text x="30" y="71">CLASSIFICAÇÃO · fan-out sobre o texto extraído</text>
+          <text x="30" y="305">EXTRAÇÃO · fan-out, fan-in no merge</text>
+          <text x="30" y="523">GROUNDING E REPARO · ciclo lateral, limitado</text>
+          <text x="30" y="695">VARREDURA FINAL · o que faltou e o que ninguém corroborou</text>
+          <text x="30" y="795">VALIDAÇÃO · ciclo lateral, limitado</text>
+          <text x="30" y="961">REPORTER</text>
+        </g>
+        <rect x="300" y="10" width="300" height="30" rx="8" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.3"/>
+        <text x="450" y="30" font-family="ui-monospace,monospace" font-size="11" font-weight="600" fill="var(--accent)" text-anchor="middle">blocks[] · bbox · degrau · readers[]</text>
+        <g class="nodebtn" data-ex="rule_classifier" tabindex="0" role="button" aria-label="Ver entrada e saída reais de rule_classifier"><rect x="216" y="96" width="168" height="46" rx="6" fill="var(--surface)" stroke="var(--m-rule)" stroke-width="1.6"/><text x="375" y="110" text-anchor="end">▣</text></g>
+        <g class="nodebtn" data-ex="text_classifier" tabindex="0" role="button" aria-label="Ver entrada e saída reais de text_classifier"><rect x="516" y="96" width="168" height="46" rx="6" fill="var(--surface)" stroke="var(--m-text)" stroke-width="1.6"/><text x="675" y="110" text-anchor="end">▣</text></g>
+        <g class="nodebtn" data-ex="consensus" tabindex="0" role="button" aria-label="Ver entrada e saída reais de consensus"><rect x="366" y="200" width="168" height="46" rx="6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1.2"/><text x="525" y="214" text-anchor="end">▣</text></g>
+        <g class="nodebtn" data-ex="rule_extractor" tabindex="0" role="button" aria-label="Ver entrada e saída reais de rule_extractor"><rect x="76" y="330" width="168" height="46" rx="6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1.2"/><text x="235" y="344" text-anchor="end">▣</text></g>
+        <g class="nodebtn" data-ex="text_extractor" tabindex="0" role="button" aria-label="Ver entrada e saída reais de text_extractor"><rect x="366" y="330" width="168" height="46" rx="6" fill="var(--surface)" stroke="var(--m-text)" stroke-width="1.6"/><text x="525" y="344" text-anchor="end">▣</text></g>
+        <g class="nodebtn" data-ex="merge" tabindex="0" role="button" aria-label="Ver entrada e saída reais de merge"><rect x="366" y="418" width="168" height="46" rx="6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1.2"/><text x="525" y="432" text-anchor="end">▣</text></g>
+        <g class="nodebtn" data-ex="grounding" tabindex="0" role="button" aria-label="Ver entrada e saída reais de grounding"><rect x="366" y="540" width="168" height="46" rx="6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1.2"/><text x="525" y="554" text-anchor="end">▣</text></g>
+        <rect x="656" y="540" width="168" height="46" rx="6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1.2"/>
+        <g class="nodebtn" data-ex="repair" tabindex="0" role="button" aria-label="Ver entrada e saída reais de repair"><rect x="366" y="618" width="168" height="46" rx="6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1.2"/><text x="525" y="632" text-anchor="end">▣</text></g>
+        <g class="nodebtn" data-ex="sweep" tabindex="0" role="button" aria-label="Ver entrada e saída reais de sweep"><rect x="366" y="696" width="168" height="46" rx="6" fill="var(--surface)" stroke="var(--m-text)" stroke-width="1.6"/><text x="525" y="710" text-anchor="end">▣</text></g>
+        <g class="nodebtn" data-ex="validate" tabindex="0" role="button" aria-label="Ver entrada e saída reais de validate"><rect x="366" y="794" width="168" height="46" rx="6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1.2"/><text x="525" y="808" text-anchor="end">▣</text></g>
+        <rect x="656" y="794" width="168" height="46" rx="6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1.2"/>
+        <g class="nodebtn" data-ex="triage" tabindex="0" role="button" aria-label="Ver entrada e saída reais de triage"><rect x="366" y="868" width="168" height="46" rx="6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1.2"/><text x="525" y="882" text-anchor="end">▣</text></g>
+        <g class="nodebtn" data-ex="reporter" tabindex="0" role="button" aria-label="Ver entrada e saída reais de reporter"><rect x="366" y="956" width="168" height="46" rx="6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1.2"/><text x="525" y="970" text-anchor="end">▣</text></g>
+        <g font-family="ui-monospace,monospace" text-anchor="middle">
+          <g font-size="12" font-weight="600" fill="var(--ink)">
+            <text x="300" y="118">rule_classifier</text>
+            <text x="600" y="118">text_classifier</text>
+            <text x="450" y="222">consensus</text>
+            <text x="160" y="352">rule_extractor</text>
+            <text x="450" y="352">text_extractor</text>
+            <text x="450" y="440">merge</text>
+            <text x="450" y="562">grounding</text>
+            <text x="740" y="562">reprompt_extract</text>
+            <text x="450" y="640">repair</text>
+            <text x="450" y="718">sweep</text>
+            <text x="450" y="816">validate</text>
+            <text x="740" y="816">disambiguate</text>
+            <text x="450" y="890">triage</text>
+            <text x="450" y="978">reporter</text>
+          </g>
+          <g font-size="9.5" fill="var(--ink-faint)">
+            <text x="300" y="133">regex · marcadores da lei</text>
+            <text x="600" y="133">LLM · texto extraído</text>
+            <text x="450" y="237">2/2 para AUTO · peso igual</text>
+            <text x="160" y="367">âncoras · offline</text>
+            <text x="450" y="367">LLM · schema por tipo</text>
+            <text x="450" y="455">candidatos por extrator</text>
+            <text x="450" y="577">evidência no texto CRU</text>
+            <text x="740" y="577">muda a entrada, não repete</text>
+            <text x="450" y="655">datas · moeda · IDs · derivações</text>
+            <text x="450" y="733">LLM · o que faltou, nas 3 leituras</text>
+            <text x="450" y="831">6 tools determinísticas</text>
+            <text x="740" y="831">candidato compatível com o resto</text>
+            <text x="450" y="905">veredito em código</text>
+            <text x="450" y="993">reason codes → texto do operador</text>
+          </g>
+        </g>
+        <g stroke="var(--ink-soft)" stroke-width="1.4" fill="none"><path d="M450 40 V 60 M300 60 H 600 M300 60 V 74 M600 60 V 74"/></g>
+        <g stroke="currentColor" stroke-width="1.4" fill="none" marker-end="url(#c2)" color="var(--ink-soft)"><path d="M300 74 V 96"/><path d="M600 74 V 96"/></g>
+        <g stroke="currentColor" stroke-width="1.4" fill="none" marker-end="url(#c2)" color="var(--ink-soft)">
+          <path d="M450.0 246 V 288.0 H 160.0 V 330"/>
+          <path d="M450.0 246 V 330"/>
+          <path d="M656 824 H 534"/>
+          <path d="M450.0 464 V 540"/>
+          <path d="M450.0 664 V 696"/>
+          <path d="M656 570 H 534"/>
+          <path d="M300.0 142 V 171.0 H 450.0 V 200"/>
+          <path d="M160.0 376 V 397.0 H 450.0 V 418"/>
+          <path d="M450.0 742 V 794"/>
+          <path d="M600.0 142 V 171.0 H 450.0 V 200"/>
+          <path d="M450.0 376 V 418"/>
+          <path d="M450.0 914 V 956"/>
+        </g>
+        <g stroke="currentColor" stroke-width="1.3" fill="none" marker-end="url(#c2)" color="var(--accent)">
+          <path d="M450.0 586 V 618"/>
+          <path d="M534 556 H 656"/>
+          <path d="M534 810 H 656"/>
+          <path d="M450.0 840 V 868"/>
+        </g>
+        <g font-family="ui-monospace,monospace" font-size="9.5" fill="var(--accent)">
+          <text x="462" y="608" text-anchor="start">evidência ok</text>
+          <text x="594" y="548" text-anchor="middle">evidência ausente</text>
+          <text x="594" y="802" text-anchor="middle">valor ambíguo</text>
+          <text x="462" y="862" text-anchor="start">sem ambiguidade</text>
+        </g>
+        <rect x="300" y="1028" width="300" height="34" rx="8" fill="var(--surface)" stroke="var(--rule)" stroke-width="1.2"/>
+        <path d="M450 1002 V 1028" stroke="currentColor" stroke-width="1.4" fill="none" marker-end="url(#c2)" color="var(--ink-soft)"/>
+        <g font-family="ui-monospace,monospace" font-size="10.5" text-anchor="middle" font-weight="600"><text x="360" y="1050" fill="var(--auto)">AUTO</text><text x="450" y="1050" fill="var(--review)">REVIEW</text><text x="548" y="1050" fill="var(--block)">BLOCKED</text></g>
+      </svg>
+      <figcaption>src/asset_servicing/ · graph.py · nodes.py · state.py</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="eyebrow">Estado</p>
+      <h2>O que trafega entre os nós</h2>
+    </div>
+    <pre><span class="c"># state.py — o contrato do grafo</span>
+<span class="k">class</span> AgentState(BaseModel):
+    document      : SourceDocument         <span class="c"># blocos, bbox, reader_kind, degrau, as 3 leituras</span>
+    votes         : Annotated[list[ClassifierVote], operator.add]
+    classification: Classification | None  <span class="c"># saída do consenso</span>
+    candidates    : Annotated[list[tuple[str, FieldCandidate]], operator.add]
+    fields        : dict[str, ExtractedField]
+    validations   : list[ValidationResult] <span class="c"># nome, args e retorno de cada tool</span>
+    triage        : Triage | None
+    <span class="c"># contadores de ciclo — a única defesa contra loop infinito</span>
+    reprompt_count: int = 0
+    repair_count  : int = 0
+    <span class="c"># mesmo reducer, mesmo motivo: dois nós do fan-out podem falhar no</span>
+    <span class="c"># mesmo tick, e duas falhas simultâneas não podem derrubar o documento</span>
+    errors        : Annotated[list[NodeError], operator.add]</pre>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="eyebrow">Tools</p>
+      <h2>O que cada camada pode chamar</h2>
+    </div>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Camada</th><th>Tool</th><th>Retorno</th><th>Se falhar</th><th>Exemplo</th></tr></thead>
+        <tbody>
+          <tr><td>Ingestão</td><td><code>docling:parser</code></td><td>blocos da camada de texto · a string do gerador</td><td>scan → zero bloco, abstém-se</td><td><button class="exbtn" data-ex="docling:parser">▣ entrada · saída</button></td></tr>
+          <tr><td>Ingestão</td><td><code>docling:ocr</code></td><td>blocos de PP-OCRv6 sobre os pixels</td><td>sem célula → não vota naquela região</td><td><button class="exbtn" data-ex="docling:ocr">▣ entrada · saída</button></td></tr>
+          <tr><td>Ingestão</td><td><code>docling:vlm</code></td><td>blocos de DocTags · tokens sobre a página</td><td>célula sem geometria → fora do voto, dentro da varredura</td><td><button class="exbtn" data-ex="docling:vlm">▣ entrada · saída</button></td></tr>
+          <tr><td>Ingestão</td><td><code>consensus.resolve</code></td><td>bloco vencedor + leituras vencidas em <code>alternatives</code></td><td>leitor único → degrau <code>baixa</code></td><td><button class="exbtn" data-ex="consensus.resolve">▣ entrada · saída</button></td></tr>
+          <tr><td>Classificação</td><td><code>match_markers</code></td><td>ranking + marcadores casados</td><td>prior fraco é resultado válido</td></tr>
+          <tr><td>Extração</td><td><code>read_table_pairs</code></td><td>pares rótulo→valor com bbox</td><td>vazio → cai na prosa</td></tr>
+          <tr><td>Extração</td><td><code>locate_evidence</code></td><td>bloco, bbox, qualidade do casamento</td><td>não achou → <code>UNGROUNDED</code></td></tr>
+          <tr><td>Validação</td><td><code>lookup_golden_record</code></td><td>MATCH · MISMATCH · NOT_FOUND · KEY_CONFLICT · INACTIVE</td><td>exceção → WARN, registra</td><td><button class="exbtn" data-ex="lookup_golden_record">▣ entrada · saída</button></td></tr>
+          <tr><td>Validação</td><td><code>check_date_coherence</code></td><td>violações nomeadas com as duas datas</td><td>datas ausentes são puladas</td><td><button class="exbtn" data-ex="check_date_coherence">▣ entrada · saída</button></td></tr>
+          <tr><td>Validação</td><td><code>check_amount_coherence</code></td><td>líquido esperado, delta, tolerância</td><td>sem alíquota → INFO</td><td><button class="exbtn" data-ex="check_amount_coherence">▣ entrada · saída</button></td></tr>
+          <tr><td>Validação</td><td><code>check_event_type_consistency</code></td><td>conflito título↔corpo</td><td>—</td><td><button class="exbtn" data-ex="check_event_type_consistency">▣ entrada · saída</button></td></tr>
+          <tr><td>Validação</td><td><code>check_identifier_format</code></td><td>estrutura + checksums</td><td><strong>sempre INFO</strong>, nunca bloqueia</td><td><button class="exbtn" data-ex="check_identifier_format">▣ entrada · saída</button></td></tr>
+          <tr><td>Validação</td><td><code>check_required_fields</code></td><td>ausentes vs. ausências justificadas</td><td>tipo desconhecido → fallback</td><td><button class="exbtn" data-ex="check_required_fields">▣ entrada · saída</button></td></tr>
+          <tr><td>Reporter</td><td><code>render_snippet</code></td><td>PNG do recorte da região</td><td>falha → registro segue sem imagem</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</div>
